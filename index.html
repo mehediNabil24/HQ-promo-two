@@ -65,12 +65,26 @@
             </div>
           </header>
 
-          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
-            <a class="site-nav__link is-active" href="index.html">Home</a>
-            <a class="site-nav__link" href="services.html">Service</a>
-            <a class="site-nav__link" href="#about">About</a>
-            <a class="site-nav__link" href="api.html">API</a>
-            <a class="site-nav__link" href="#">Contact</a>
+          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden aria-label="Mobile">
+            <div class="mobile-nav__links">
+              <a class="mobile-nav__link is-active" href="index.html">Home</a>
+              <a class="mobile-nav__link" href="services.html">Service</a>
+              <a class="mobile-nav__link" href="#about">About</a>
+              <a class="mobile-nav__link" href="api.html">API</a>
+              <a class="mobile-nav__link" href="#footer">Contact</a>
+            </div>
+            <div class="mobile-nav__footer">
+              <a class="btn-gradient mobile-nav__cta" href="#signin">
+                <img
+                  class="btn-gradient__icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+                <span>Sign In</span>
+              </a>
+            </div>
           </nav>
         </div>
       </div>
@@ -246,7 +260,7 @@
                     <img src="assets/images/avatar-3.png" alt="" width="24" height="24" />
                     <img src="assets/images/avatar-4.png" alt="" width="24" height="24" />
                   </div>
-                  <p class="trust-badge__text">Trusted by 68K users</p>
+                  <p class="trust-badge__text">Trusted by our growing community</p>
                 </aside>
               </div>
             </div>

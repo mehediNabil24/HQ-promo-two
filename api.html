@@ -60,12 +60,26 @@
             </div>
           </header>
 
-          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
-            <a class="site-nav__link" href="index.html">Home</a>
-            <a class="site-nav__link" href="services.html">Service</a>
-            <a class="site-nav__link" href="index.html#about">About</a>
-            <a class="site-nav__link is-active" href="api.html">API</a>
-            <a class="site-nav__link" href="#">Contact</a>
+          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden aria-label="Mobile">
+            <div class="mobile-nav__links">
+              <a class="mobile-nav__link" href="index.html">Home</a>
+              <a class="mobile-nav__link" href="services.html">Service</a>
+              <a class="mobile-nav__link" href="index.html#about">About</a>
+              <a class="mobile-nav__link is-active" href="api.html">API</a>
+              <a class="mobile-nav__link" href="index.html#footer">Contact</a>
+            </div>
+            <div class="mobile-nav__footer">
+              <a class="btn-gradient mobile-nav__cta" href="index.html#signin">
+                <img
+                  class="btn-gradient__icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+                <span>Sign In</span>
+              </a>
+            </div>
           </nav>
         </div>
       </div>
