@@ -534,4 +534,57 @@
     ...CLIENT_REVIEWS.slice(2),
     ...CLIENT_REVIEWS.slice(0, 2),
   ]);
+
+  const servicesPlatformTabs = document.querySelector("[data-services-platform-tabs]");
+  const serviceAccordion = document.querySelector("[data-service-accordion]");
+
+  if (serviceAccordion) {
+    serviceAccordion.querySelectorAll("[data-service-group]").forEach((group) => {
+      const header = group.querySelector(".service-group__header");
+      const panel = group.querySelector(".service-group__panel");
+      if (!header || !panel) return;
+
+      header.addEventListener("click", () => {
+        const isOpen = group.classList.contains("is-open");
+
+        if (isOpen) {
+          group.classList.remove("is-open");
+          header.setAttribute("aria-expanded", "false");
+          panel.hidden = true;
+          return;
+        }
+
+        group.classList.add("is-open");
+        header.setAttribute("aria-expanded", "true");
+        panel.hidden = false;
+      });
+    });
+  }
+
+  if (servicesPlatformTabs) {
+    servicesPlatformTabs.addEventListener("click", (event) => {
+      const tab = event.target.closest(".platform-tab");
+      if (!tab || !servicesPlatformTabs.contains(tab)) return;
+
+      servicesPlatformTabs.querySelectorAll(".platform-tab").forEach((button) => {
+        const active = button === tab;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+
+      const targetId = tab.dataset.target;
+      if (!targetId) return;
+
+      const targetGroup = document.getElementById(targetId);
+      if (!targetGroup) return;
+
+      targetGroup.classList.add("is-open");
+      const header = targetGroup.querySelector(".service-group__header");
+      const panel = targetGroup.querySelector(".service-group__panel");
+      if (header) header.setAttribute("aria-expanded", "true");
+      if (panel) panel.hidden = false;
+
+      targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 })();
