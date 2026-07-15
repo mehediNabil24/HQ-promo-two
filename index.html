@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HqPromo — Grow Faster Across Every Social Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="site-header__logo" href="#" aria-label="HqPromo home">
+          <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+        </a>
+
+        <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+          <a class="site-nav__link is-active" href="#">Home</a>
+          <a class="site-nav__link" href="#services">Service</a>
+          <a class="site-nav__link" href="#">About</a>
+          <a class="site-nav__link" href="#">API</a>
+          <a class="site-nav__link" href="#">Contact</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a class="btn-gradient site-header__cta" href="#signin">
+            <img
+              class="btn-gradient__icon"
+              src="assets/icons/lock.svg"
+              alt=""
+              width="16"
+              height="16"
+            />
+            <span>Sign In</span>
+          </a>
+
+          <button
+            class="site-header__toggle d-lg-none"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobileNav"
+            data-nav-toggle
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+        </div>
+      </header>
+
+      <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
+        <a class="site-nav__link is-active" href="#">Home</a>
+        <a class="site-nav__link" href="#services">Service</a>
+        <a class="site-nav__link" href="#">About</a>
+        <a class="site-nav__link" href="#">API</a>
+        <a class="site-nav__link" href="#">Contact</a>
+      </nav>
+
+      <main>
+      <section class="hero">
+        <div class="row g-4 g-xl-5 align-items-end">
+          <div class="col-12 col-lg-6">
+            <section class="hero-copy">
+              <h1 class="hero-copy__title">
+                <span class="hero-copy__title-plain">Grow Faster with HqPromo </span>
+                <span class="hero-copy__title-gradient"
+                  >Across Every Social Platform</span
+                >
+              </h1>
+              <p class="hero-copy__lead">
+                HqPromo helps you grow on Instagram, TikTok, YouTube, Facebook, X,
+                Spotify, Telegram, Discord, Twitch, and more with fast delivery,
+                affordable pricing, and reliable SMM services.
+              </p>
+
+              <form class="auth-form" id="signin" novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label class="form-label auth-form__label" for="username"
+                      >User Name</label
+                    >
+                    <div class="auth-input">
+                      <img
+                        class="auth-input__icon"
+                        src="assets/icons/user.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                      />
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="user name"
+                        autocomplete="username"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label auth-form__label" for="password"
+                      >Password</label
+                    >
+                    <div class="auth-input">
+                      <img
+                        class="auth-input__icon"
+                        src="assets/icons/password.svg"
+                        alt=""
+                        width="18"
+                        height="18"
+                      />
+                      <input
+                        class="form-control"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="********"
+                        autocomplete="current-password"
+                      />
+                      <button
+                        class="auth-input__toggle"
+                        type="button"
+                        data-password-toggle
+                        aria-label="Show password"
+                        aria-pressed="false"
+                      >
+                        <img
+                          src="assets/icons/eye-off.svg"
+                          alt=""
+                          width="16"
+                          height="16"
+                          data-eye-icon
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="auth-form__meta">
+                  <label class="auth-check">
+                    <input type="checkbox" name="remember" />
+                    <span class="auth-check__box" aria-hidden="true">
+                      <img
+                        class="auth-check__idle"
+                        src="assets/icons/checkbox.svg"
+                        alt=""
+                        width="20"
+                        height="20"
+                      />
+                    </span>
+                    <span>Remember me</span>
+                  </label>
+                  <a class="auth-form__forgot" href="#">Forgot password?</a>
+                </div>
+
+                <div class="auth-form__actions">
+                  <button class="btn-gradient auth-form__signin" type="submit">
+                    Sign In
+                  </button>
+                  <button class="btn-google" type="button">
+                    <span class="btn-google__icon">
+                      <img
+                        src="assets/icons/google.svg"
+                        alt=""
+                        width="28"
+                        height="28"
+                      />
+                    </span>
+                    <span>Sign Up with Google</span>
+                  </button>
+                </div>
+
+                <p class="auth-form__footnote">
+                  Don’t have an account?
+                  <a href="#">Create an Account</a>
+                </p>
+              </form>
+            </section>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="hero-visual">
+              <div class="hero-visual__panel" aria-hidden="true"></div>
+              <img
+                class="hero-visual__person"
+                src="assets/images/hero-woman.png"
+                alt="HqPromo customer pointing toward the sign-in form"
+                width="405"
+                height="585"
+              />
+              <img
+                class="hero-visual__rocket"
+                src="assets/images/rocket.png"
+                alt=""
+                width="172"
+                height="268"
+                aria-hidden="true"
+              />
+
+              <aside class="review-card">
+                <img
+                  class="review-card__logo"
+                  src="assets/icons/google-review.svg"
+                  alt="Google"
+                  width="40"
+                  height="40"
+                />
+                <div class="review-card__body">
+                  <div class="review-card__stars" aria-hidden="true">
+                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                    <img src="assets/icons/star-half.svg" alt="" width="14" height="14" />
+                  </div>
+                  <p class="review-card__text">
+                    <span class="review-card__score">4.9</span> Reviews
+                  </p>
+                </div>
+              </aside>
+
+              <aside class="trust-badge">
+                <div class="trust-badge__avatars" aria-hidden="true">
+                  <img src="assets/images/avatar-1.png" alt="" width="24" height="24" />
+                  <img src="assets/images/avatar-2.png" alt="" width="24" height="24" />
+                  <img src="assets/images/avatar-3.png" alt="" width="24" height="24" />
+                  <img src="assets/images/avatar-4.png" alt="" width="24" height="24" />
+                </div>
+                <p class="trust-badge__text">Trusted by 68K users</p>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services" id="services" aria-labelledby="services-title">
+        <div class="services__intro">
+          <h2 class="services__title" id="services-title">
+            Promotion Services for Every Stage of Your Growth
+          </h2>
+          <p class="services__lead">
+            Supporting artists, creators, businesses, and brands with professional
+            promotion across social media, music, radio, digital publications, and
+            marketing channels.
+          </p>
+        </div>
+
+        <div
+          class="platform-tabs"
+          role="tablist"
+          aria-label="Promotion platforms"
+          data-platform-tabs
+        >
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="facebook"
+            data-label="Facebook"
+            data-icon="assets/platforms/facebook.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/facebook.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Facebook</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="instagram"
+            data-label="Instagram"
+            data-icon="assets/platforms/instagram.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/instagram.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Instagram</span>
+          </button>
+          <button
+            class="platform-tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-platform="twitter"
+            data-label="Twitter"
+            data-icon="assets/platforms/twitter-x.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/twitter-x.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">X (Twitter)</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="youtube"
+            data-label="YouTube"
+            data-icon="assets/platforms/youtube.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/youtube.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">YouTube</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="tiktok"
+            data-label="TikTok"
+            data-icon="assets/platforms/tiktok.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/tiktok.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">TikTok</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="linkedin"
+            data-label="LinkedIn"
+            data-icon="assets/platforms/linkedin.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/linkedin.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">LinkedIn</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="telegram"
+            data-label="Telegram"
+            data-icon="assets/platforms/telegram.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/telegram.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Telegram</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="discord"
+            data-label="Discord"
+            data-icon="assets/platforms/discord.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/discord.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Discord</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="spotify"
+            data-label="Spotify"
+            data-icon="assets/platforms/spotify.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/spotify.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Spotify</span>
+          </button>
+          <button
+            class="platform-tab platform-tab--soundcloud"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="soundcloud"
+            data-label="SoundCloud"
+            data-icon="assets/platforms/soundcloud.svg"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/soundcloud.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">SoundCloud</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="snapchat"
+            data-label="Snapchat"
+            data-icon="assets/platforms/snapchat.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/snapchat.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Snapchat</span>
+          </button>
+          <button
+            class="platform-tab platform-tab--traffic"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="traffic"
+            data-label="Website Traffic"
+            data-icon="assets/platforms/website-traffic.svg"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/website-traffic.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Website Traffic</span>
+          </button>
+        </div>
+
+        <div class="services__plans" data-service-plans>
+          <div class="swiper plans-swiper" data-plans-swiper>
+            <div class="swiper-wrapper" data-plans-wrapper></div>
+            <div
+              class="swiper-pagination plans-swiper__pagination"
+              aria-label="Service plan pages"
+            ></div>
+          </div>
+        </div>
+      </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
