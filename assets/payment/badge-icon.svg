@@ -1,0 +1,38 @@
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="26" height="26" fill="#606060"/>
+<g id="home page light theme">
+<rect width="1920" height="9519" transform="translate(-867.5 -5826.19)" fill="#FFF9F3"/>
+<g id="Frame 2147242452">
+<g id="Frame 2147242448">
+<g id="Frame 2147242435">
+<g id="Frame 2147242430">
+<g id="Frame 2147242422">
+<g id="Frame 2147242420">
+<g id="Group 2147228390">
+<ellipse id="Ellipse 46931" cx="13" cy="13" rx="13" ry="3" transform="rotate(180 13 13)" fill="url(#paint0_linear_23569_8141)"/>
+<ellipse id="Ellipse 46930" cx="13" cy="13" rx="13" ry="3" transform="rotate(90 13 13)" fill="url(#paint1_linear_23569_8141)"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_23569_8141" x1="0" y1="13" x2="26" y2="13" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FBBD08"/>
+<stop offset="0.25" stop-color="#F47B20"/>
+<stop offset="0.5" stop-color="#C4272E"/>
+<stop offset="0.75" stop-color="#8B1A4A"/>
+<stop offset="1" stop-color="#3D1053"/>
+</linearGradient>
+<linearGradient id="paint1_linear_23569_8141" x1="0" y1="13" x2="26" y2="13" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FBBD08"/>
+<stop offset="0.25" stop-color="#F47B20"/>
+<stop offset="0.5" stop-color="#C4272E"/>
+<stop offset="0.75" stop-color="#8B1A4A"/>
+<stop offset="1" stop-color="#3D1053"/>
+</linearGradient>
+</defs>
+</svg>

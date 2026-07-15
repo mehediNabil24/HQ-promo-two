@@ -422,4 +422,116 @@
       setActivePanel(tab);
     });
   }
+
+  const CLIENT_REVIEWS = [
+    {
+      media: "assets/reviews/media-thumbs.png",
+      avatar: "assets/reviews/avatar-glasses.png",
+      date: "January 18, 3:20 PM",
+    },
+    {
+      media: "assets/reviews/media-office.png",
+      avatar: "assets/reviews/avatar-office.png",
+      date: "January 25, 11:30 AM",
+    },
+    {
+      media: "assets/reviews/media-suit.png",
+      avatar: "assets/reviews/avatar-1.png",
+      date: "February 2, 4:15 PM",
+    },
+    {
+      media: "assets/reviews/media-thumbs.png",
+      avatar: "assets/reviews/avatar-2.png",
+      date: "February 10, 9:45 AM",
+    },
+    {
+      media: "assets/reviews/media-office.png",
+      avatar: "assets/reviews/avatar-glasses.png",
+      date: "February 18, 1:05 PM",
+    },
+    {
+      media: "assets/reviews/media-suit.png",
+      avatar: "assets/reviews/avatar-office.png",
+      date: "March 1, 6:40 PM",
+    },
+  ];
+
+  function buildReviewCard(review) {
+    const stars = Array.from({ length: 5 })
+      .map(
+        () =>
+          '<img src="assets/reviews/star.svg" alt="" width="16" height="16" />'
+      )
+      .join("");
+
+    return `
+      <article class="review-clip">
+        <div class="review-clip__media">
+          <img src="${review.media}" alt="" width="240" height="203" />
+          <button class="review-clip__play" type="button" aria-label="Play customer review video">
+            <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+          </button>
+        </div>
+        <div class="review-clip__body">
+          <img
+            class="review-clip__quote"
+            src="assets/reviews/quote.svg"
+            alt=""
+            width="85"
+            height="74"
+            aria-hidden="true"
+          />
+          <div class="review-clip__rating" aria-label="5 out of 5 stars">
+            ${stars}
+          </div>
+          <p class="review-clip__text">
+            Add a real customer testimonial here once available.
+          </p>
+          <hr class="review-clip__divider" aria-hidden="true" />
+          <div class="review-clip__footer">
+            <div class="review-clip__author">
+              <img
+                class="review-clip__avatar"
+                src="${review.avatar}"
+                alt=""
+                width="51"
+                height="51"
+              />
+              <div class="review-clip__meta">
+                <div class="review-clip__name-row">
+                  <p class="review-clip__name">[Customer Name]</p>
+                  <img
+                    class="review-clip__verified"
+                    src="assets/reviews/verified.svg"
+                    alt=""
+                    width="18"
+                    height="18"
+                  />
+                </div>
+                <p class="review-clip__role">[Role, City]</p>
+              </div>
+            </div>
+            <time class="review-clip__date">${review.date}</time>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function fillReviewTrack(track, reviews) {
+    if (!track) return;
+    const sequence = reviews.map(buildReviewCard).join("");
+    // Duplicate for seamless infinite scroll
+    track.innerHTML = sequence + sequence;
+  }
+
+  const reviewsLtr = document.querySelector('[data-reviews-track="ltr"]');
+  const reviewsRtl = document.querySelector('[data-reviews-track="rtl"]');
+
+  fillReviewTrack(reviewsLtr, CLIENT_REVIEWS);
+  // Offset bottom row so cards don't stack in a vertical column
+  fillReviewTrack(reviewsRtl, [
+    ...CLIENT_REVIEWS.slice(2),
+    ...CLIENT_REVIEWS.slice(0, 2),
+  ]);
 })();

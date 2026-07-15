@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat+Alternates:wght@600&family=Outfit:wght@600&display=swap"
       rel="stylesheet"
     />
     <link
@@ -24,233 +24,238 @@
   <body>
     <div class="page-shell">
       <div class="site-header-wrap">
-        <header class="site-header">
-          <a class="site-header__logo" href="#" aria-label="HqPromo home">
-            <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
-          </a>
+        <div class="container">
+          <header class="site-header">
+            <a class="site-header__logo" href="#" aria-label="HqPromo home">
+              <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+            </a>
 
-          <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+            <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+              <a class="site-nav__link is-active" href="#">Home</a>
+              <a class="site-nav__link" href="#platform-services">Service</a>
+              <a class="site-nav__link" href="#about">About</a>
+              <a class="site-nav__link" href="#">API</a>
+              <a class="site-nav__link" href="#">Contact</a>
+            </nav>
+
+            <div class="site-header__actions">
+              <a class="btn-gradient site-header__cta" href="#signin">
+                <img
+                  class="btn-gradient__icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+                <span>Sign In</span>
+              </a>
+
+              <button
+                class="site-header__toggle d-lg-none"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+                data-nav-toggle
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="visually-hidden">Menu</span>
+              </button>
+            </div>
+          </header>
+
+          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
             <a class="site-nav__link is-active" href="#">Home</a>
             <a class="site-nav__link" href="#platform-services">Service</a>
             <a class="site-nav__link" href="#about">About</a>
             <a class="site-nav__link" href="#">API</a>
             <a class="site-nav__link" href="#">Contact</a>
           </nav>
-
-          <div class="site-header__actions">
-            <a class="btn-gradient site-header__cta" href="#signin">
-              <img
-                class="btn-gradient__icon"
-                src="assets/icons/lock.svg"
-                alt=""
-                width="16"
-                height="16"
-              />
-              <span>Sign In</span>
-            </a>
-
-            <button
-              class="site-header__toggle d-lg-none"
-              type="button"
-              aria-expanded="false"
-              aria-controls="mobileNav"
-              data-nav-toggle
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-              <span class="visually-hidden">Menu</span>
-            </button>
-          </div>
-        </header>
-
-        <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
-          <a class="site-nav__link is-active" href="#">Home</a>
-          <a class="site-nav__link" href="#platform-services">Service</a>
-          <a class="site-nav__link" href="#about">About</a>
-          <a class="site-nav__link" href="#">API</a>
-          <a class="site-nav__link" href="#">Contact</a>
-        </nav>
+        </div>
       </div>
 
       <main>
       <section class="hero">
-        <div class="row g-4 g-xl-5 align-items-end">
-          <div class="col-12 col-lg-6">
-            <section class="hero-copy">
-              <h1 class="hero-copy__title">
-                <span class="hero-copy__title-plain">Grow Faster with HqPromo </span>
-                <span class="hero-copy__title-gradient"
-                  >Across Every Social Platform</span
-                >
-              </h1>
-              <p class="hero-copy__lead">
-                HqPromo helps you grow on Instagram, TikTok, YouTube, Facebook, X,
-                Spotify, Telegram, Discord, Twitch, and more with fast delivery,
-                affordable pricing, and reliable SMM services.
-              </p>
+        <div class="container">
+          <div class="row g-4 g-xl-5 align-items-end">
+            <div class="col-12 col-lg-6">
+              <section class="hero-copy">
+                <h1 class="hero-copy__title">
+                  <span class="hero-copy__title-plain">Grow Faster with HqPromo </span>
+                  <span class="hero-copy__title-gradient"
+                    >Across Every Social Platform</span
+                  >
+                </h1>
+                <p class="hero-copy__lead">
+                  HqPromo helps you grow on Instagram, TikTok, YouTube, Facebook, X,
+                  Spotify, Telegram, Discord, Twitch, and more with fast delivery,
+                  affordable pricing, and reliable SMM services.
+                </p>
 
-              <form class="auth-form" id="signin" novalidate>
-                <div class="row g-3">
-                  <div class="col-12 col-md-6">
-                    <label class="form-label auth-form__label" for="username"
-                      >User Name</label
-                    >
-                    <div class="auth-input">
-                      <img
-                        class="auth-input__icon"
-                        src="assets/icons/user.svg"
-                        alt=""
-                        width="16"
-                        height="16"
-                      />
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="user name"
-                        autocomplete="username"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <label class="form-label auth-form__label" for="password"
-                      >Password</label
-                    >
-                    <div class="auth-input">
-                      <img
-                        class="auth-input__icon"
-                        src="assets/icons/password.svg"
-                        alt=""
-                        width="18"
-                        height="18"
-                      />
-                      <input
-                        class="form-control"
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="********"
-                        autocomplete="current-password"
-                      />
-                      <button
-                        class="auth-input__toggle"
-                        type="button"
-                        data-password-toggle
-                        aria-label="Show password"
-                        aria-pressed="false"
+                <form class="auth-form" id="signin" novalidate>
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <label class="form-label auth-form__label" for="username"
+                        >User Name</label
                       >
+                      <div class="auth-input">
                         <img
-                          src="assets/icons/eye-off.svg"
+                          class="auth-input__icon"
+                          src="assets/icons/user.svg"
                           alt=""
                           width="16"
                           height="16"
-                          data-eye-icon
                         />
-                      </button>
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="username"
+                          name="username"
+                          placeholder="user name"
+                          autocomplete="username"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <label class="form-label auth-form__label" for="password"
+                        >Password</label
+                      >
+                      <div class="auth-input">
+                        <img
+                          class="auth-input__icon"
+                          src="assets/icons/password.svg"
+                          alt=""
+                          width="18"
+                          height="18"
+                        />
+                        <input
+                          class="form-control"
+                          type="password"
+                          id="password"
+                          name="password"
+                          placeholder="********"
+                          autocomplete="current-password"
+                        />
+                        <button
+                          class="auth-input__toggle"
+                          type="button"
+                          data-password-toggle
+                          aria-label="Show password"
+                          aria-pressed="false"
+                        >
+                          <img
+                            src="assets/icons/eye-off.svg"
+                            alt=""
+                            width="16"
+                            height="16"
+                            data-eye-icon
+                          />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="auth-form__meta">
-                  <label class="auth-check">
-                    <input type="checkbox" name="remember" />
-                    <span class="auth-check__box" aria-hidden="true">
-                      <img
-                        class="auth-check__idle"
-                        src="assets/icons/checkbox.svg"
-                        alt=""
-                        width="20"
-                        height="20"
-                      />
-                    </span>
-                    <span>Remember me</span>
-                  </label>
-                  <a class="auth-form__forgot" href="#">Forgot password?</a>
-                </div>
-
-                <div class="auth-form__actions">
-                  <button class="btn-gradient auth-form__signin" type="submit">
-                    Sign In
-                  </button>
-                  <button class="btn-google" type="button">
-                    <span class="btn-google__icon">
-                      <img
-                        src="assets/icons/google.svg"
-                        alt=""
-                        width="28"
-                        height="28"
-                      />
-                    </span>
-                    <span>Sign Up with Google</span>
-                  </button>
-                </div>
-
-                <p class="auth-form__footnote">
-                  Don’t have an account?
-                  <a href="#">Create an Account</a>
-                </p>
-              </form>
-            </section>
-          </div>
-
-          <div class="col-12 col-lg-6">
-            <div class="hero-visual">
-              <div class="hero-visual__panel" aria-hidden="true"></div>
-              <img
-                class="hero-visual__person"
-                src="assets/images/hero-woman.png"
-                alt="HqPromo customer pointing toward the sign-in form"
-                width="405"
-                height="585"
-              />
-              <img
-                class="hero-visual__rocket"
-                src="assets/images/rocket.png"
-                alt=""
-                width="172"
-                height="268"
-                aria-hidden="true"
-              />
-
-              <aside class="review-card">
-                <img
-                  class="review-card__logo"
-                  src="assets/icons/google-review.svg"
-                  alt="Google"
-                  width="40"
-                  height="40"
-                />
-                <div class="review-card__body">
-                  <div class="review-card__stars" aria-hidden="true">
-                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
-                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
-                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
-                    <img src="assets/icons/star.svg" alt="" width="16" height="16" />
-                    <img src="assets/icons/star-half.svg" alt="" width="14" height="14" />
+                  <div class="auth-form__meta">
+                    <label class="auth-check">
+                      <input type="checkbox" name="remember" />
+                      <span class="auth-check__box" aria-hidden="true">
+                        <img
+                          class="auth-check__idle"
+                          src="assets/icons/checkbox.svg"
+                          alt=""
+                          width="20"
+                          height="20"
+                        />
+                      </span>
+                      <span>Remember me</span>
+                    </label>
+                    <a class="auth-form__forgot" href="#">Forgot password?</a>
                   </div>
-                  <p class="review-card__text">
-                    <span class="review-card__score">4.9</span> Reviews
-                  </p>
-                </div>
-              </aside>
 
-              <aside class="trust-badge">
-                <div class="trust-badge__avatars" aria-hidden="true">
-                  <img src="assets/images/avatar-1.png" alt="" width="24" height="24" />
-                  <img src="assets/images/avatar-2.png" alt="" width="24" height="24" />
-                  <img src="assets/images/avatar-3.png" alt="" width="24" height="24" />
-                  <img src="assets/images/avatar-4.png" alt="" width="24" height="24" />
-                </div>
-                <p class="trust-badge__text">Trusted by 68K users</p>
-              </aside>
+                  <div class="auth-form__actions">
+                    <button class="btn-gradient auth-form__signin" type="submit">
+                      Sign In
+                    </button>
+                    <button class="btn-google" type="button">
+                      <span class="btn-google__icon">
+                        <img
+                          src="assets/icons/google.svg"
+                          alt=""
+                          width="28"
+                          height="28"
+                        />
+                      </span>
+                      <span>Sign Up with Google</span>
+                    </button>
+                  </div>
+
+                  <p class="auth-form__footnote">
+                    Don’t have an account?
+                    <a href="#">Create an Account</a>
+                  </p>
+                </form>
+              </section>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="hero-visual">
+                <div class="hero-visual__panel" aria-hidden="true"></div>
+                <img
+                  class="hero-visual__person"
+                  src="assets/images/hero-woman.png"
+                  alt="HqPromo customer pointing toward the sign-in form"
+                  width="405"
+                  height="585"
+                />
+                <img
+                  class="hero-visual__rocket"
+                  src="assets/images/rocket.png"
+                  alt=""
+                  width="172"
+                  height="268"
+                  aria-hidden="true"
+                />
+
+                <aside class="review-card">
+                  <img
+                    class="review-card__logo"
+                    src="assets/icons/google-review.svg"
+                    alt="Google"
+                    width="40"
+                    height="40"
+                  />
+                  <div class="review-card__body">
+                    <div class="review-card__stars" aria-hidden="true">
+                      <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                      <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                      <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                      <img src="assets/icons/star.svg" alt="" width="16" height="16" />
+                      <img src="assets/icons/star-half.svg" alt="" width="14" height="14" />
+                    </div>
+                    <p class="review-card__text">
+                      <span class="review-card__score">4.9</span> Reviews
+                    </p>
+                  </div>
+                </aside>
+
+                <aside class="trust-badge">
+                  <div class="trust-badge__avatars" aria-hidden="true">
+                    <img src="assets/images/avatar-1.png" alt="" width="24" height="24" />
+                    <img src="assets/images/avatar-2.png" alt="" width="24" height="24" />
+                    <img src="assets/images/avatar-3.png" alt="" width="24" height="24" />
+                    <img src="assets/images/avatar-4.png" alt="" width="24" height="24" />
+                  </div>
+                  <p class="trust-badge__text">Trusted by 68K users</p>
+                </aside>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="services" id="services" aria-labelledby="services-title">
+        <div class="container">
         <div class="services__intro">
           <h2 class="services__title" id="services-title">
             Promotion Services for Every Stage of Your Growth
@@ -603,9 +608,11 @@
             ></div>
           </div>
         </div>
+        </div>
       </section>
 
       <section class="about" id="about" aria-labelledby="about-title">
+        <div class="container">
         <div class="row g-4 g-xl-5 align-items-center">
           <div class="col-12 col-lg-6">
             <div class="about__content">
@@ -692,18 +699,20 @@
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       <section class="platform-services" id="platform-services" aria-labelledby="platform-services-title">
-        <div class="platform-services__intro">
-          <div class="platform-services__badge">
+        <div class="container">
+        <div class="section-header section-header--lg">
+          <div class="section-header__badge">
             <img src="assets/about/badge-icon.svg" alt="" width="26" height="26" />
-            <span class="platform-services__badge-text">our services</span>
+            <span class="section-header__badge-text">our services</span>
           </div>
-          <h2 class="platform-services__title" id="platform-services-title">
+          <h2 class="section-header__title" id="platform-services-title">
             Powerful SMM Services for Fast Growth
           </h2>
-          <p class="platform-services__lead">
+          <p class="section-header__lead">
             Explore our comprehensive range of social media marketing services designed
             to help you grow your presence across all major platforms. From Facebook to
             TikTok, we've got you covered.
@@ -1071,15 +1080,17 @@
             </a>
           </div>
         </article>
+        </div>
       </section>
 
       <section class="process" id="process" aria-labelledby="process-title">
-        <div class="process__intro">
-          <div class="process__badge">
+        <div class="container">
+        <div class="section-header">
+          <div class="section-header__badge">
             <img src="assets/about/badge-icon.svg" alt="" width="26" height="26" />
-            <span class="process__badge-text">WORKING PROCESS</span>
+            <span class="section-header__badge-text">WORKING PROCESS</span>
           </div>
-          <h2 class="process__title" id="process-title">
+          <h2 class="section-header__title" id="process-title">
             Easy Steps to Social Media Growth By HQ PROMO
           </h2>
         </div>
@@ -1254,6 +1265,237 @@
               </article>
             </li>
           </ol>
+        </div>
+        </div>
+      </section>
+
+      <section
+        class="why-choose section-pt-lg section-gap-lg"
+        id="why-choose"
+        aria-labelledby="why-choose-title"
+      >
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8">
+              <div class="section-header section-header--md">
+                <div class="section-header__badge">
+                  <img
+                    src="assets/about/badge-icon.svg"
+                    alt=""
+                    width="26"
+                    height="26"
+                  />
+                  <span class="section-header__badge-text">WORKING PROCESS</span>
+                </div>
+                <h2 class="section-header__title" id="why-choose-title">
+                  Why Choose HQ PROMO
+                </h2>
+                <p class="section-header__lead">
+                  HQ Promo combines trusted service quality, advanced features, and
+                  seamless order management for a secure and reliable social media growth
+                  experience.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-choose__stage">
+            <div class="why-choose__frame">
+              <div class="why-choose__border why-choose__border--top" aria-hidden="true"></div>
+              <div class="why-choose__border why-choose__border--bottom" aria-hidden="true"></div>
+              <div class="why-choose__border why-choose__border--left" aria-hidden="true"></div>
+              <div class="why-choose__border why-choose__border--right" aria-hidden="true"></div>
+
+              <div class="row g-4 g-xl-5 why-choose__row">
+                <div class="col-12 col-xl-4 order-2 order-xl-1">
+                  <div class="why-choose__col why-choose__col--left">
+                    <article class="why-choose__item">
+                      <div class="why-choose__item-head">
+                        <div class="why-choose__icon" aria-hidden="true">
+                          <img
+                            src="assets/why-choose/icon-star.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                        <h3 class="why-choose__item-title">Premium Service Quality</h3>
+                      </div>
+                      <p class="why-choose__item-text">
+                        Enjoy high-quality social media services delivered through trusted
+                        providers, ensuring reliable performance, consistent results, and a
+                        smooth experience for every order.
+                      </p>
+                    </article>
+
+                    <div class="why-choose__divider" aria-hidden="true"></div>
+
+                    <article class="why-choose__item">
+                      <div class="why-choose__item-head">
+                        <div class="why-choose__icon" aria-hidden="true">
+                          <img
+                            src="assets/why-choose/icon-zap.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                        <h3 class="why-choose__item-title">
+                          Lightning-Fast Order Processing
+                        </h3>
+                      </div>
+                      <p class="why-choose__item-text">
+                        Our automated system processes your orders quickly, helping you
+                        launch campaigns faster while maintaining accuracy and dependable
+                        delivery across multiple platforms.
+                      </p>
+                    </article>
+
+                    <div
+                      class="why-choose__divider why-choose__divider--stack"
+                      aria-hidden="true"
+                    ></div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 order-1 order-xl-2 why-choose__visual-col">
+                  <div class="why-choose__visual">
+                    <img
+                      class="why-choose__hero"
+                      src="assets/why-choose/hero-group.png"
+                      alt="Professional woman representing HQ Promo services"
+                      width="393"
+                      height="658"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-12 col-xl-4 order-3">
+                  <div class="why-choose__col why-choose__col--right">
+                    <article class="why-choose__item">
+                      <div class="why-choose__item-head">
+                        <div class="why-choose__icon" aria-hidden="true">
+                          <img
+                            src="assets/why-choose/icon-headphones.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                        <h3 class="why-choose__item-title">24/7 Expert Customer Support</h3>
+                      </div>
+                      <p class="why-choose__item-text">
+                        Our experienced support team is available day and night to assist
+                        with orders, answer your questions, and provide prompt solutions
+                        whenever you need help.
+                      </p>
+                    </article>
+
+                    <div class="why-choose__divider" aria-hidden="true"></div>
+
+                    <article class="why-choose__item">
+                      <div class="why-choose__item-head">
+                        <div class="why-choose__icon" aria-hidden="true">
+                          <img
+                            src="assets/why-choose/icon-building.svg"
+                            alt=""
+                            width="20"
+                            height="20"
+                          />
+                        </div>
+                        <h3 class="why-choose__item-title">Built for Agencies</h3>
+                      </div>
+                      <p class="why-choose__item-text">
+                        Whether you're an agency, freelancer, our platform offers powerful
+                        tools, bulk ordering, API integration, and scalable solutions to
+                        support your business growth.
+                      </p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <p class="why-choose__watermark" aria-hidden="true">
+                HQ PROMO
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="payment-methods section-pt-lg"
+        id="payment-methods"
+        aria-labelledby="payment-methods-title"
+      >
+        <div class="container">
+          <div class="payment-methods__inner">
+            <div class="section-header section-header--md">
+              <div class="section-header__badge">
+                <img
+                  src="assets/about/badge-icon.svg"
+                  alt=""
+                  width="26"
+                  height="26"
+                />
+                <span class="section-header__badge-text">PAYMENT METHOD</span>
+              </div>
+              <h2 class="section-header__title" id="payment-methods-title">
+                Multiple Secure Payment Options
+              </h2>
+              <p class="section-header__lead">
+                Add funds quickly and securely using bank transfer, international
+                payment gateways, or cryptocurrency.
+              </p>
+            </div>
+
+            <div class="payment-methods__logos">
+              <img
+                src="assets/payment/logos-group.png"
+                alt="Accepted payment methods: Visa, Mastercard, Stripe, Binance, and Cash App"
+                width="712"
+                height="200"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="client-reviews section-pt-lg section-gap-lg"
+        id="client-reviews"
+        aria-labelledby="client-reviews-title"
+      >
+        <div class="container">
+          <div class="section-header section-header--md">
+            <div class="section-header__badge">
+              <img
+                src="assets/about/badge-icon.svg"
+                alt=""
+                width="26"
+                height="26"
+              />
+              <span class="section-header__badge-text">CLIENT REVIEWS</span>
+            </div>
+            <h2 class="section-header__title" id="client-reviews-title">
+              What People Say About HQ Promo
+            </h2>
+            <p class="section-header__lead">
+              See what our customers have to say about our service quality, quick
+              delivery, dedicated support, and overall experience with HQ Promo.
+            </p>
+          </div>
+        </div>
+
+        <div class="client-reviews__marquee" aria-label="Customer video reviews">
+          <div
+            class="client-reviews__track client-reviews__track--ltr"
+            data-reviews-track="ltr"
+          ></div>
+          <div
+            class="client-reviews__track client-reviews__track--rtl"
+            data-reviews-track="rtl"
+          ></div>
         </div>
       </section>
       </main>
