@@ -23,53 +23,55 @@
   </head>
   <body>
     <div class="page-shell">
-      <header class="site-header">
-        <a class="site-header__logo" href="#" aria-label="HqPromo home">
-          <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
-        </a>
+      <div class="site-header-wrap">
+        <header class="site-header">
+          <a class="site-header__logo" href="#" aria-label="HqPromo home">
+            <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+          </a>
 
-        <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+          <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+            <a class="site-nav__link is-active" href="#">Home</a>
+            <a class="site-nav__link" href="#platform-services">Service</a>
+            <a class="site-nav__link" href="#about">About</a>
+            <a class="site-nav__link" href="#">API</a>
+            <a class="site-nav__link" href="#">Contact</a>
+          </nav>
+
+          <div class="site-header__actions">
+            <a class="btn-gradient site-header__cta" href="#signin">
+              <img
+                class="btn-gradient__icon"
+                src="assets/icons/lock.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Sign In</span>
+            </a>
+
+            <button
+              class="site-header__toggle d-lg-none"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobileNav"
+              data-nav-toggle
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="visually-hidden">Menu</span>
+            </button>
+          </div>
+        </header>
+
+        <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
           <a class="site-nav__link is-active" href="#">Home</a>
-          <a class="site-nav__link" href="#services">Service</a>
-          <a class="site-nav__link" href="#">About</a>
+          <a class="site-nav__link" href="#platform-services">Service</a>
+          <a class="site-nav__link" href="#about">About</a>
           <a class="site-nav__link" href="#">API</a>
           <a class="site-nav__link" href="#">Contact</a>
         </nav>
-
-        <div class="site-header__actions">
-          <a class="btn-gradient site-header__cta" href="#signin">
-            <img
-              class="btn-gradient__icon"
-              src="assets/icons/lock.svg"
-              alt=""
-              width="16"
-              height="16"
-            />
-            <span>Sign In</span>
-          </a>
-
-          <button
-            class="site-header__toggle d-lg-none"
-            type="button"
-            aria-expanded="false"
-            aria-controls="mobileNav"
-            data-nav-toggle
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span class="visually-hidden">Menu</span>
-          </button>
-        </div>
-      </header>
-
-      <nav class="mobile-nav d-lg-none" id="mobileNav" hidden>
-        <a class="site-nav__link is-active" href="#">Home</a>
-        <a class="site-nav__link" href="#services">Service</a>
-        <a class="site-nav__link" href="#">About</a>
-        <a class="site-nav__link" href="#">API</a>
-        <a class="site-nav__link" href="#">Contact</a>
-      </nav>
+      </div>
 
       <main>
       <section class="hero">
@@ -600,6 +602,658 @@
               aria-label="Service plan pages"
             ></div>
           </div>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="row g-4 g-xl-5 align-items-center">
+          <div class="col-12 col-lg-6">
+            <div class="about__content">
+              <div class="about__intro">
+                <div class="about__badge">
+                  <img
+                    src="assets/about/badge-icon.svg"
+                    alt=""
+                    width="26"
+                    height="26"
+                  />
+                  <span class="about__badge-text">About HQ Promo</span>
+                </div>
+                <h2 class="about__title" id="about-title">Who We Are</h2>
+                <p class="about__lead">
+                  At HQ Promo, we believe social media growth is more than just likes
+                  and followers. We provide fast, reliable, and affordable SMM services
+                  that help creators, businesses, agencies, and resellers build a
+                  stronger online presence across every major platform.
+                </p>
+              </div>
+
+              <ul class="about__list">
+                <li>
+                  <img
+                    src="assets/about/check.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                  <span>Fast Delivery with Smooth and Reliable Performance</span>
+                </li>
+                <li>
+                  <img
+                    src="assets/about/check.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                  <span
+                    >Real &amp; High-Quality Engagement to Build Strong Social
+                    Proof</span
+                  >
+                </li>
+                <li>
+                  <img
+                    src="assets/about/check.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                  />
+                  <span>Safe, Secure &amp; High Retention for Long-Term Growth</span>
+                </li>
+              </ul>
+
+              <a class="about__cta btn-gradient" href="#">
+                <span>Learn More About Us</span>
+                <iconify-icon
+                  icon="mdi:chevron-double-right"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="about__visual">
+              <img
+                class="about__glow"
+                src="assets/about/glow.png"
+                alt=""
+                width="417"
+                height="417"
+                aria-hidden="true"
+              />
+              <img
+                class="about__image"
+                src="assets/about/hero.png"
+                alt="HQ Promo dashboard and social growth analytics"
+                width="650"
+                height="520"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="platform-services" id="platform-services" aria-labelledby="platform-services-title">
+        <div class="platform-services__intro">
+          <div class="platform-services__badge">
+            <img src="assets/about/badge-icon.svg" alt="" width="26" height="26" />
+            <span class="platform-services__badge-text">our services</span>
+          </div>
+          <h2 class="platform-services__title" id="platform-services-title">
+            Powerful SMM Services for Fast Growth
+          </h2>
+          <p class="platform-services__lead">
+            Explore our comprehensive range of social media marketing services designed
+            to help you grow your presence across all major platforms. From Facebook to
+            TikTok, we've got you covered.
+          </p>
+        </div>
+
+        <div
+          class="platform-tabs"
+          role="tablist"
+          aria-label="SMM service platforms"
+          data-panel-tabs
+        >
+          <button
+            class="platform-tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            data-platform="facebook"
+            data-label="Facebook"
+            data-icon="assets/platforms/facebook.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/facebook.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Facebook</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="instagram"
+            data-label="Instagram"
+            data-icon="assets/platforms/instagram.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/instagram.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Instagram</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="twitter"
+            data-label="Twitter"
+            data-icon="assets/platforms/twitter-x.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/twitter-x.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">X (Twitter)</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="youtube"
+            data-label="YouTube"
+            data-icon="assets/platforms/youtube.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/youtube.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">YouTube</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="tiktok"
+            data-label="TikTok"
+            data-icon="assets/platforms/tiktok.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/tiktok.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">TikTok</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="linkedin"
+            data-label="LinkedIn"
+            data-icon="assets/platforms/linkedin.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/linkedin.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">LinkedIn</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="telegram"
+            data-label="Telegram"
+            data-icon="assets/platforms/telegram.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/telegram.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Telegram</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="discord"
+            data-label="Discord"
+            data-icon="assets/platforms/discord.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/discord.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Discord</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="spotify"
+            data-label="Spotify"
+            data-icon="assets/platforms/spotify.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/spotify.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Spotify</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="soundcloud"
+            data-label="SoundCloud"
+            data-icon="assets/platforms/soundcloud.svg"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/soundcloud.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">SoundCloud</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="snapchat"
+            data-label="Snapchat"
+            data-icon="assets/platforms/snapchat.png"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/snapchat.png"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Snapchat</span>
+          </button>
+          <button
+            class="platform-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            data-platform="traffic"
+            data-label="Website Traffic"
+            data-icon="assets/platforms/website-traffic.svg"
+          >
+            <span class="platform-tab__icon">
+              <img
+                class="platform-tab__polygon"
+                src="assets/icons/polygon.svg"
+                alt=""
+                width="38"
+                height="38"
+              />
+              <img
+                class="platform-tab__logo"
+                src="assets/platforms/website-traffic.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </span>
+            <span class="platform-tab__label">Website Traffic</span>
+          </button>
+        </div>
+
+        <article class="platform-panel" data-platform-panel>
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+              data-panel-image
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title" data-panel-title>Facebook SMM Panel</h3>
+              <p class="platform-panel__text" data-panel-text>
+                Facebook is still the biggest social media platform in Bangladesh with
+                millions of active users. Our Facebook SMM Panel helps you increase page
+                likes, post engagement, and video views quickly. It is perfect for
+                businesses, shops, and creators. You can grow your audience fast, get real
+                attention, and improve your online presence with simple and effective
+                services.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#" data-panel-cta>
+              <span>View Facebook Services</span>
+              <iconify-icon icon="mdi:chevron-double-right" width="20" height="20"></iconify-icon>
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <section class="process" id="process" aria-labelledby="process-title">
+        <div class="process__intro">
+          <div class="process__badge">
+            <img src="assets/about/badge-icon.svg" alt="" width="26" height="26" />
+            <span class="process__badge-text">WORKING PROCESS</span>
+          </div>
+          <h2 class="process__title" id="process-title">
+            Easy Steps to Social Media Growth By HQ PROMO
+          </h2>
+        </div>
+
+        <div class="process__track">
+          <ol class="process__steps">
+            <li class="process__step process__step--active">
+              <span class="process__pill">STEP 01</span>
+              <article class="process__card">
+                <div class="process__wave process__wave--idle" aria-hidden="true">
+                  <img src="assets/process/wave.png" alt="" />
+                </div>
+                <div class="process__wave process__wave--active" aria-hidden="true">
+                  <img src="assets/process/wave-active.png" alt="" />
+                </div>
+                <div class="process__icon">
+                  <img
+                    class="process__icon-bg process__icon-bg--idle"
+                    src="assets/process/polygon-idle.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-bg process__icon-bg--active"
+                    src="assets/process/polygon-active.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-glyph process__icon-glyph--light"
+                    src="assets/process/icon-signup.svg"
+                    alt=""
+                    width="27"
+                    height="20"
+                  />
+                </div>
+                <div class="process__copy">
+                  <h3 class="process__card-title">SIGN UP FOR FREE</h3>
+                  <p class="process__card-text">
+                    Sign up for your account, fill in the required information, and get
+                    instant access to powerful social media growth services.
+                  </p>
+                </div>
+              </article>
+            </li>
+
+            <li class="process__step">
+              <span class="process__pill">STEP 02</span>
+              <article class="process__card">
+                <div class="process__wave process__wave--idle" aria-hidden="true">
+                  <img src="assets/process/wave.png" alt="" />
+                </div>
+                <div class="process__wave process__wave--active" aria-hidden="true">
+                  <img src="assets/process/wave-active.png" alt="" />
+                </div>
+                <div class="process__icon">
+                  <img
+                    class="process__icon-bg process__icon-bg--idle"
+                    src="assets/process/polygon-idle.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-bg process__icon-bg--active"
+                    src="assets/process/polygon-active.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-glyph"
+                    src="assets/process/icon-funds-glyph.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                  />
+                </div>
+                <div class="process__copy">
+                  <h3 class="process__card-title">Add Funds</h3>
+                  <p class="process__card-text">
+                    Securely add funds to your account using your preferred payment method
+                    and keep your balance ready for instant orders.
+                  </p>
+                </div>
+              </article>
+            </li>
+
+            <li class="process__step">
+              <span class="process__pill">STEP 03</span>
+              <article class="process__card">
+                <div class="process__wave process__wave--idle" aria-hidden="true">
+                  <img src="assets/process/wave.png" alt="" />
+                </div>
+                <div class="process__wave process__wave--active" aria-hidden="true">
+                  <img src="assets/process/wave-active.png" alt="" />
+                </div>
+                <div class="process__icon">
+                  <img
+                    class="process__icon-bg process__icon-bg--idle"
+                    src="assets/process/polygon-idle.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-bg process__icon-bg--active"
+                    src="assets/process/polygon-active.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-glyph"
+                    src="assets/process/icon-service-glyph.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                  />
+                </div>
+                <div class="process__copy">
+                  <h3 class="process__card-title">Select Service</h3>
+                  <p class="process__card-text">
+                    Browse our wide range of social media services, choose the platform
+                    and package that fits your goals, then proceed with confidence.
+                  </p>
+                </div>
+              </article>
+            </li>
+
+            <li class="process__step">
+              <span class="process__pill">STEP 04</span>
+              <article class="process__card">
+                <div class="process__wave process__wave--idle" aria-hidden="true">
+                  <img src="assets/process/wave.png" alt="" />
+                </div>
+                <div class="process__wave process__wave--active" aria-hidden="true">
+                  <img src="assets/process/wave-active.png" alt="" />
+                </div>
+                <div class="process__icon">
+                  <img
+                    class="process__icon-bg process__icon-bg--idle"
+                    src="assets/process/polygon-idle.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-bg process__icon-bg--active"
+                    src="assets/process/polygon-active.svg"
+                    alt=""
+                    width="84"
+                    height="84"
+                  />
+                  <img
+                    class="process__icon-glyph"
+                    src="assets/process/icon-order-glyph.svg"
+                    alt=""
+                    width="28"
+                    height="28"
+                  />
+                </div>
+                <div class="process__copy">
+                  <h3 class="process__card-title">Place your order</h3>
+                  <p class="process__card-text">
+                    Enter your target link, confirm your order, and watch your social
+                    media growth begin with fast, reliable delivery.
+                  </p>
+                </div>
+              </article>
+            </li>
+          </ol>
         </div>
       </section>
       </main>

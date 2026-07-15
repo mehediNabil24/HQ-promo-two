@@ -1,0 +1,20 @@
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="13" cy="13" rx="13" ry="3" transform="rotate(180 13 13)" fill="url(#badgeGradA)"/>
+  <ellipse cx="13" cy="13" rx="13" ry="3" transform="rotate(90 13 13)" fill="url(#badgeGradB)"/>
+  <defs>
+    <linearGradient id="badgeGradA" x1="0" y1="13" x2="26" y2="13" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBD08"/>
+      <stop offset="0.25" stop-color="#F47B20"/>
+      <stop offset="0.5" stop-color="#C4272E"/>
+      <stop offset="0.75" stop-color="#8B1A4A"/>
+      <stop offset="1" stop-color="#3D1053"/>
+    </linearGradient>
+    <linearGradient id="badgeGradB" x1="0" y1="13" x2="26" y2="13" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBD08"/>
+      <stop offset="0.25" stop-color="#F47B20"/>
+      <stop offset="0.5" stop-color="#C4272E"/>
+      <stop offset="0.75" stop-color="#8B1A4A"/>
+      <stop offset="1" stop-color="#3D1053"/>
+    </linearGradient>
+  </defs>
+</svg>
