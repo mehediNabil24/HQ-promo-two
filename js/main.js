@@ -9,10 +9,18 @@
   const form = document.getElementById("signin");
   const themeToggles = document.querySelectorAll("[data-theme-toggle]");
 
+  const POLYGON_LIGHT = "assets/icons/polygon.svg";
+  const POLYGON_DARK = "assets/icons/polygon-dark.svg";
+
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle("theme-dark", isDark);
+
+    const polygonSrc = isDark ? POLYGON_DARK : POLYGON_LIGHT;
+    document.querySelectorAll(".platform-tab__polygon").forEach((img) => {
+      img.src = polygonSrc;
+    });
 
     themeToggles.forEach((toggle) => {
       const label = toggle.querySelector("[data-theme-label]");

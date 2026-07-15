@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="WhatsApp icon">
+<path id="Vector" d="M16.5 9.58C16.503 10.68 16.246 11.768 15.75 12.75C15.162 13.927 14.258 14.916 13.14 15.608C12.021 16.3 10.732 16.666 9.417 16.667C8.317 16.67 7.232 16.413 6.25 15.917L2.5 17.5L4.083 13.75C3.587 12.768 3.33 11.683 3.333 10.583C3.334 9.268 3.7 7.979 4.392 6.86C5.084 5.742 6.074 4.838 7.25 4.25C8.232 3.754 9.317 3.497 10.417 3.5H10.833C12.57 3.596 14.211 4.329 15.441 5.559C16.671 6.789 17.404 8.43 17.5 10.167V10.583" stroke="url(#paint0_linear_0_327)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_327" x1="2.5" y1="10.5" x2="17.5" y2="10.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FBBD08"/>
+<stop offset="0.25" stop-color="#F47B20"/>
+<stop offset="0.5" stop-color="#C4272E"/>
+<stop offset="0.75" stop-color="#8B1A4A"/>
+<stop offset="1" stop-color="#3D1053"/>
+</linearGradient>
+</defs>
+</svg>
