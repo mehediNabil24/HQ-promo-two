@@ -427,34 +427,72 @@
     {
       media: "assets/reviews/media-thumbs.png",
       avatar: "assets/reviews/avatar-glasses.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "January 18, 3:20 PM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     },
     {
       media: "assets/reviews/media-office.png",
       avatar: "assets/reviews/avatar-office.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "January 25, 11:30 AM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     },
     {
       media: "assets/reviews/media-suit.png",
       avatar: "assets/reviews/avatar-1.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "February 2, 4:15 PM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     },
     {
       media: "assets/reviews/media-thumbs.png",
       avatar: "assets/reviews/avatar-2.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "February 10, 9:45 AM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     },
     {
       media: "assets/reviews/media-office.png",
       avatar: "assets/reviews/avatar-glasses.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "February 18, 1:05 PM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     },
     {
       media: "assets/reviews/media-suit.png",
       avatar: "assets/reviews/avatar-office.png",
+      name: "[Customer Name]",
+      role: "[Role, City]",
+      text: "Add a real customer testimonial here once available.",
       date: "March 1, 6:40 PM",
+      video:
+        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     },
   ];
+
+  function escapeAttr(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
 
   function buildReviewCard(review) {
     const stars = Array.from({ length: 5 })
@@ -465,9 +503,17 @@
       .join("");
 
     return `
-      <article class="review-clip">
+      <article
+        class="review-clip"
+        data-review-video="${escapeAttr(review.video)}"
+        data-review-poster="${escapeAttr(review.media)}"
+        data-review-avatar="${escapeAttr(review.avatar)}"
+        data-review-name="${escapeAttr(review.name)}"
+        data-review-role="${escapeAttr(review.role)}"
+        data-review-text="${escapeAttr(review.text)}"
+      >
         <div class="review-clip__media">
-          <img src="${review.media}" alt="" width="240" height="203" />
+          <img src="${escapeAttr(review.media)}" alt="" width="240" height="203" />
           <button class="review-clip__play" type="button" aria-label="Play customer review video">
             <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
           </button>
@@ -484,22 +530,20 @@
           <div class="review-clip__rating" aria-label="5 out of 5 stars">
             ${stars}
           </div>
-          <p class="review-clip__text">
-            Add a real customer testimonial here once available.
-          </p>
+          <p class="review-clip__text">${escapeAttr(review.text)}</p>
           <hr class="review-clip__divider" aria-hidden="true" />
           <div class="review-clip__footer">
             <div class="review-clip__author">
               <img
                 class="review-clip__avatar"
-                src="${review.avatar}"
+                src="${escapeAttr(review.avatar)}"
                 alt=""
                 width="51"
                 height="51"
               />
               <div class="review-clip__meta">
                 <div class="review-clip__name-row">
-                  <p class="review-clip__name">[Customer Name]</p>
+                  <p class="review-clip__name">${escapeAttr(review.name)}</p>
                   <img
                     class="review-clip__verified"
                     src="assets/reviews/verified.svg"
@@ -508,10 +552,10 @@
                     height="18"
                   />
                 </div>
-                <p class="review-clip__role">[Role, City]</p>
+                <p class="review-clip__role">${escapeAttr(review.role)}</p>
               </div>
             </div>
-            <time class="review-clip__date">${review.date}</time>
+            <time class="review-clip__date">${escapeAttr(review.date)}</time>
           </div>
         </div>
       </article>
@@ -534,4 +578,199 @@
     ...CLIENT_REVIEWS.slice(2),
     ...CLIENT_REVIEWS.slice(0, 2),
   ]);
+
+  const shortsModal = document.getElementById("shortsModal");
+  const shortsVideo = document.getElementById("shortsVideo");
+  const shortsAvatar = document.getElementById("shortsAvatar");
+  const shortsTitle = document.getElementById("shortsModalTitle");
+  const shortsRole = document.getElementById("shortsRole");
+  const shortsQuote = document.getElementById("shortsQuote");
+  const shortsProgress = document.getElementById("shortsProgress");
+  const shortsMarquee = document.querySelector(".client-reviews__marquee");
+  let shortsLastFocus = null;
+
+  function setShortsPausedState(isPaused) {
+    shortsModal?.classList.toggle("is-paused", isPaused);
+  }
+
+  function syncShortsProgress() {
+    if (!shortsVideo || !shortsProgress || !shortsVideo.duration) {
+      if (shortsProgress) shortsProgress.style.width = "0%";
+      return;
+    }
+    const pct = (shortsVideo.currentTime / shortsVideo.duration) * 100;
+    shortsProgress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+  }
+
+  function openShortsModal(card) {
+    if (!shortsModal || !shortsVideo || !card) return;
+
+    shortsLastFocus = document.activeElement;
+
+    const videoSrc = card.dataset.reviewVideo || "";
+    const poster = card.dataset.reviewPoster || "";
+    const avatar = card.dataset.reviewAvatar || "";
+    const name = card.dataset.reviewName || "[Customer Name]";
+    const role = card.dataset.reviewRole || "[Role, City]";
+    const text =
+      card.dataset.reviewText ||
+      "Add a real customer testimonial here once available.";
+
+    if (shortsAvatar && avatar) shortsAvatar.src = avatar;
+    if (shortsTitle) shortsTitle.textContent = name;
+    if (shortsRole) shortsRole.textContent = role;
+    if (shortsQuote) shortsQuote.textContent = text;
+
+    shortsVideo.pause();
+    shortsVideo.removeAttribute("src");
+    shortsVideo.poster = poster;
+    shortsVideo.src = videoSrc;
+    shortsVideo.load();
+    if (shortsProgress) shortsProgress.style.width = "0%";
+
+    shortsModal.hidden = false;
+    document.body.classList.add("is-shorts-open");
+    setShortsPausedState(true);
+
+    const playPromise = shortsVideo.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise
+        .then(() => setShortsPausedState(false))
+        .catch(() => setShortsPausedState(true));
+    }
+
+    shortsModal.querySelector(".shorts-modal__close")?.focus();
+  }
+
+  function closeShortsModal() {
+    if (!shortsModal || shortsModal.hidden) return;
+
+    if (shortsVideo) {
+      shortsVideo.pause();
+      shortsVideo.removeAttribute("src");
+      shortsVideo.load();
+    }
+
+    if (shortsProgress) shortsProgress.style.width = "0%";
+    shortsModal.hidden = true;
+    document.body.classList.remove("is-shorts-open");
+    setShortsPausedState(true);
+
+    if (shortsLastFocus && typeof shortsLastFocus.focus === "function") {
+      shortsLastFocus.focus();
+    }
+  }
+
+  function toggleShortsPlayback() {
+    if (!shortsVideo) return;
+    if (shortsVideo.paused) {
+      const playPromise = shortsVideo.play();
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise
+          .then(() => setShortsPausedState(false))
+          .catch(() => setShortsPausedState(true));
+      } else {
+        setShortsPausedState(false);
+      }
+    } else {
+      shortsVideo.pause();
+      setShortsPausedState(true);
+    }
+  }
+
+  if (shortsMarquee) {
+    shortsMarquee.addEventListener("click", (event) => {
+      const playBtn = event.target.closest(".review-clip__play");
+      if (!playBtn) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const card = playBtn.closest(".review-clip");
+      openShortsModal(card);
+    });
+  }
+
+  shortsModal?.querySelectorAll("[data-shorts-close]").forEach((el) => {
+    el.addEventListener("click", closeShortsModal);
+  });
+
+  shortsModal
+    ?.querySelector("[data-shorts-toggle]")
+    ?.addEventListener("click", toggleShortsPlayback);
+
+  shortsVideo?.addEventListener("play", () => setShortsPausedState(false));
+  shortsVideo?.addEventListener("pause", () => {
+    if (!shortsModal?.hidden) setShortsPausedState(true);
+  });
+  shortsVideo?.addEventListener("ended", () => {
+    setShortsPausedState(true);
+    if (shortsProgress) shortsProgress.style.width = "100%";
+  });
+  shortsVideo?.addEventListener("timeupdate", syncShortsProgress);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeShortsModal();
+    if (event.key === " " && shortsModal && !shortsModal.hidden) {
+      const tag = (event.target && event.target.tagName) || "";
+      if (tag === "BUTTON" || tag === "INPUT" || tag === "TEXTAREA") return;
+      event.preventDefault();
+      toggleShortsPlayback();
+    }
+  });
+
+  const faqTabs = document.querySelector("[data-faq-tabs]");
+  const faqPanels = document.querySelectorAll("[data-faq-panel]");
+
+  function activateFaqTab(tab) {
+    if (!faqTabs || !tab) return;
+    const key = tab.dataset.faqTab;
+    if (!key) return;
+
+    faqTabs.querySelectorAll("[data-faq-tab]").forEach((btn) => {
+      const active = btn === tab;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-selected", String(active));
+      btn.tabIndex = active ? 0 : -1;
+    });
+
+    faqPanels.forEach((panel) => {
+      const match = panel.dataset.faqPanel === key;
+      panel.classList.toggle("is-active", match);
+      panel.hidden = !match;
+    });
+  }
+
+  if (faqTabs) {
+    faqTabs.addEventListener("click", (event) => {
+      const tab = event.target.closest("[data-faq-tab]");
+      if (!tab || !faqTabs.contains(tab)) return;
+      activateFaqTab(tab);
+    });
+
+    faqTabs.addEventListener("keydown", (event) => {
+      const tabs = Array.from(faqTabs.querySelectorAll("[data-faq-tab]"));
+      const current = document.activeElement?.closest?.("[data-faq-tab]");
+      if (!current || !tabs.includes(current)) return;
+
+      let index = tabs.indexOf(current);
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        event.preventDefault();
+        index = (index + 1) % tabs.length;
+        tabs[index].focus();
+        activateFaqTab(tabs[index]);
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        event.preventDefault();
+        index = (index - 1 + tabs.length) % tabs.length;
+        tabs[index].focus();
+        activateFaqTab(tabs[index]);
+      } else if (event.key === "Home") {
+        event.preventDefault();
+        tabs[0].focus();
+        activateFaqTab(tabs[0]);
+      } else if (event.key === "End") {
+        event.preventDefault();
+        tabs[tabs.length - 1].focus();
+        activateFaqTab(tabs[tabs.length - 1]);
+      }
+    });
+  }
 })();
