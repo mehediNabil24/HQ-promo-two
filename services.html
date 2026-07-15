@@ -19,6 +19,10 @@
   </head>
   <body>
     <div class="page-shell services-page-shell">
+      <div class="services-page__top-bg" aria-hidden="true">
+        <img src="assets/services/top-bg.png" alt="" width="1920" height="839" />
+      </div>
+
       <div class="site-header-wrap">
         <div class="container">
           <header class="site-header">
@@ -72,10 +76,6 @@
       </div>
 
       <main class="services-page">
-        <div class="services-page__top-bg" aria-hidden="true">
-          <img src="assets/services/top-bg.svg" alt="" width="1920" height="839" />
-        </div>
-
         <div class="container">
           <section class="api-hero services-hero" aria-labelledby="services-hero-title">
             <div class="api-hero__copy">
@@ -407,12 +407,42 @@
           </div>
 
           <div class="services-toolbar">
-            <button class="services-toolbar__filter" type="button">
-              <span class="services-toolbar__filter-icon" aria-hidden="true">
-                <iconify-icon icon="stash:filter-duotone" width="24" height="24"></iconify-icon>
-              </span>
-              <span>Filter Categories</span>
-            </button>
+            <div class="services-toolbar__filter-wrap" data-filter-dropdown>
+              <button
+                class="services-toolbar__filter"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-controls="servicesFilterMenu"
+                data-filter-toggle
+              >
+                <span class="services-toolbar__filter-icon" aria-hidden="true">
+                  <iconify-icon icon="stash:filter-duotone" width="24" height="24"></iconify-icon>
+                </span>
+                <span data-filter-label>Filter Categories</span>
+              </button>
+              <ul
+                class="services-toolbar__menu"
+                id="servicesFilterMenu"
+                role="listbox"
+                hidden
+                data-filter-menu
+              >
+                <li role="option" tabindex="0" data-filter="all" class="is-active">All Categories</li>
+                <li role="option" tabindex="0" data-filter="facebook">Facebook</li>
+                <li role="option" tabindex="0" data-filter="instagram">Instagram</li>
+                <li role="option" tabindex="0" data-filter="twitter">X (Twitter)</li>
+                <li role="option" tabindex="0" data-filter="youtube">YouTube</li>
+                <li role="option" tabindex="0" data-filter="tiktok">TikTok</li>
+                <li role="option" tabindex="0" data-filter="linkedin">LinkedIn</li>
+                <li role="option" tabindex="0" data-filter="telegram">Telegram</li>
+                <li role="option" tabindex="0" data-filter="discord">Discord</li>
+                <li role="option" tabindex="0" data-filter="spotify">Spotify</li>
+                <li role="option" tabindex="0" data-filter="soundcloud">SoundCloud</li>
+                <li role="option" tabindex="0" data-filter="snapchat">Snapchat</li>
+                <li role="option" tabindex="0" data-filter="traffic">Website Traffic</li>
+              </ul>
+            </div>
             <label class="services-toolbar__search">
               <span class="visually-hidden">Search services</span>
               <iconify-icon
@@ -422,12 +452,16 @@
                 height="20"
                 aria-hidden="true"
               ></iconify-icon>
-              <input type="search" placeholder="Search services..." />
+              <input
+                type="search"
+                placeholder="Search services..."
+                data-services-search
+              />
             </label>
           </div>
 
           <div class="service-accordion" data-service-accordion>
-            <section class="service-group" id="instagram-services" data-service-group>
+            <section class="service-group" id="instagram-services" data-service-group data-platform="instagram">
               <button
                 class="service-group__header"
                 type="button"
@@ -452,14 +486,131 @@
                   aria-hidden="true"
                 ></iconify-icon>
               </button>
-              <div
-                class="service-group__panel"
-                id="instagram-services-panel"
-                hidden
-              ></div>
+              <div class="service-group__panel" id="instagram-services-panel">
+                <div class="service-group__panel-inner">
+                  <div class="service-group__grid">
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/instagram.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Starter</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>1,000 followers</li>
+                          <li>1,000 likes</li>
+                          <li>1,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card plan-card--popular">
+                      <span class="plan-card__badge">Most Popular</span>
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/instagram.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Professional</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>2,000 followers</li>
+                          <li>2,000 likes</li>
+                          <li>2,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/instagram.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Business</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 followers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/instagram.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">VIP Elite</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 followers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+                  </div>
+                </div>
+              </div>
             </section>
 
-            <section class="service-group" id="youtube-services" data-service-group>
+            <section class="service-group" id="youtube-services" data-service-group data-platform="youtube">
               <button
                 class="service-group__header"
                 type="button"
@@ -484,13 +635,135 @@
                   aria-hidden="true"
                 ></iconify-icon>
               </button>
-              <div class="service-group__panel" id="youtube-services-panel" hidden></div>
+              <div class="service-group__panel" id="youtube-services-panel">
+                <div class="service-group__panel-inner">
+                  <div class="service-group__grid">
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/youtube.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Starter</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>1,000 subscribers</li>
+                          <li>1,000 likes</li>
+                          <li>1,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card plan-card--popular">
+                      <span class="plan-card__badge">Most Popular</span>
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/youtube.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Professional</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>2,000 subscribers</li>
+                          <li>2,000 likes</li>
+                          <li>2,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/youtube.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Business</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 subscribers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/youtube.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">VIP Elite</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 subscribers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 views</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+                  </div>
+                </div>
+              </div>
             </section>
 
             <section
               class="service-group is-open"
               id="facebook-services"
               data-service-group
+              data-platform="facebook"
             >
               <button
                 class="service-group__header"
@@ -517,6 +790,7 @@
                 ></iconify-icon>
               </button>
               <div class="service-group__panel" id="facebook-services-panel">
+                <div class="service-group__panel-inner">
                 <div class="service-group__grid">
                   <article class="plan-card">
                     <div class="plan-card__noise" aria-hidden="true"></div>
@@ -679,6 +953,7 @@
                     <a class="plan-card__cta" href="#">Buy now</a>
                   </article>
                 </div>
+                </div>
               </div>
             </section>
 
@@ -686,6 +961,7 @@
               class="service-group is-open"
               id="twitter-services"
               data-service-group
+              data-platform="twitter"
             >
               <button
                 class="service-group__header"
@@ -712,6 +988,7 @@
                 ></iconify-icon>
               </button>
               <div class="service-group__panel" id="twitter-services-panel">
+                <div class="service-group__panel-inner">
                 <div class="service-group__grid">
                   <article class="plan-card">
                     <div class="plan-card__noise" aria-hidden="true"></div>
@@ -874,10 +1151,11 @@
                     <a class="plan-card__cta" href="#">Buy now</a>
                   </article>
                 </div>
+                </div>
               </div>
             </section>
 
-            <section class="service-group" id="linkedin-services" data-service-group>
+            <section class="service-group" id="linkedin-services" data-service-group data-platform="linkedin">
               <button
                 class="service-group__header"
                 type="button"
@@ -902,7 +1180,128 @@
                   aria-hidden="true"
                 ></iconify-icon>
               </button>
-              <div class="service-group__panel" id="linkedin-services-panel" hidden></div>
+              <div class="service-group__panel" id="linkedin-services-panel">
+                <div class="service-group__panel-inner">
+                  <div class="service-group__grid">
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/linkedin.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Starter</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>1,000 followers</li>
+                          <li>1,000 likes</li>
+                          <li>1,000 comments</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card plan-card--popular">
+                      <span class="plan-card__badge">Most Popular</span>
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/linkedin.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Professional</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>2,000 followers</li>
+                          <li>2,000 likes</li>
+                          <li>2,000 comments</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/linkedin.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">Business</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 followers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 comments</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+
+                    <article class="plan-card">
+                      <div class="plan-card__noise" aria-hidden="true"></div>
+                      <div class="plan-card__body">
+                        <div class="plan-card__brand">
+                          <img class="plan-card__logo" src="assets/platforms/linkedin.png" alt="" width="48" height="48" />
+                          <h3 class="plan-card__name">VIP Elite</h3>
+                        </div>
+                        <div class="plan-card__meta">
+                          <div class="plan-card__rating">
+                            <div class="plan-card__stars" aria-hidden="true">
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                              <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                            </div>
+                            <span>(2,725)</span>
+                          </div>
+                          <p class="plan-card__price">$189.95 per month</p>
+                        </div>
+                        <ul class="plan-card__features">
+                          <li>5,000 followers</li>
+                          <li>5,000 likes</li>
+                          <li>5,000 comments</li>
+                        </ul>
+                      </div>
+                      <a class="plan-card__cta" href="#">Buy now</a>
+                    </article>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
         </div>

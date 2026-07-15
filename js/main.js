@@ -581,26 +581,23 @@
 
   const servicesPlatformTabs = document.querySelector("[data-services-platform-tabs]");
   const serviceAccordion = document.querySelector("[data-service-accordion]");
+  const filterDropdown = document.querySelector("[data-filter-dropdown]");
+  const servicesSearch = document.querySelector("[data-services-search]");
+
+  function setServiceGroupOpen(group, open) {
+    if (!group) return;
+    const header = group.querySelector(".service-group__header");
+    group.classList.toggle("is-open", open);
+    if (header) header.setAttribute("aria-expanded", String(open));
+  }
 
   if (serviceAccordion) {
     serviceAccordion.querySelectorAll("[data-service-group]").forEach((group) => {
       const header = group.querySelector(".service-group__header");
-      const panel = group.querySelector(".service-group__panel");
-      if (!header || !panel) return;
+      if (!header) return;
 
       header.addEventListener("click", () => {
-        const isOpen = group.classList.contains("is-open");
-
-        if (isOpen) {
-          group.classList.remove("is-open");
-          header.setAttribute("aria-expanded", "false");
-          panel.hidden = true;
-          return;
-        }
-
-        group.classList.add("is-open");
-        header.setAttribute("aria-expanded", "true");
-        panel.hidden = false;
+        setServiceGroupOpen(group, !group.classList.contains("is-open"));
       });
     });
   }
@@ -622,13 +619,86 @@
       const targetGroup = document.getElementById(targetId);
       if (!targetGroup) return;
 
-      targetGroup.classList.add("is-open");
-      const header = targetGroup.querySelector(".service-group__header");
-      const panel = targetGroup.querySelector(".service-group__panel");
-      if (header) header.setAttribute("aria-expanded", "true");
-      if (panel) panel.hidden = false;
-
+      setServiceGroupOpen(targetGroup, true);
       targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  if (filterDropdown) {
+    const filterToggle = filterDropdown.querySelector("[data-filter-toggle]");
+    const filterMenu = filterDropdown.querySelector("[data-filter-menu]");
+    const filterLabel = filterDropdown.querySelector("[data-filter-label]");
+
+    function closeFilterMenu() {
+      if (!filterToggle || !filterMenu) return;
+      filterToggle.setAttribute("aria-expanded", "false");
+      filterMenu.hidden = true;
+    }
+
+    function openFilterMenu() {
+      if (!filterToggle || !filterMenu) return;
+      filterToggle.setAttribute("aria-expanded", "true");
+      filterMenu.hidden = false;
+    }
+
+    filterToggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = filterToggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeFilterMenu();
+      else openFilterMenu();
+    });
+
+    filterMenu?.addEventListener("click", (event) => {
+      const option = event.target.closest("[data-filter]");
+      if (!option || !filterMenu.contains(option)) return;
+
+      const filter = option.dataset.filter || "all";
+      const label = option.textContent.trim();
+
+      filterMenu.querySelectorAll("[data-filter]").forEach((item) => {
+        item.classList.toggle("is-active", item === option);
+      });
+
+      if (filterLabel) {
+        filterLabel.textContent =
+          filter === "all" ? "Filter Categories" : label;
+      }
+
+      serviceAccordion?.querySelectorAll("[data-service-group]").forEach((group) => {
+        const platform = group.dataset.platform || "";
+        const match = filter === "all" || platform === filter;
+        group.classList.toggle("is-filtered-out", !match);
+        if (match && filter !== "all") setServiceGroupOpen(group, true);
+      });
+
+      servicesPlatformTabs?.querySelectorAll(".platform-tab").forEach((button) => {
+        const active = filter !== "all" && button.dataset.platform === filter;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+
+      closeFilterMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!filterDropdown.contains(event.target)) closeFilterMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeFilterMenu();
+    });
+  }
+
+  if (servicesSearch && serviceAccordion) {
+    servicesSearch.addEventListener("input", () => {
+      const query = servicesSearch.value.trim().toLowerCase();
+
+      serviceAccordion.querySelectorAll("[data-service-group]").forEach((group) => {
+        const title =
+          group.querySelector(".service-group__title")?.textContent || "";
+        const match = !query || title.toLowerCase().includes(query);
+        group.classList.toggle("is-filtered-out", !match);
+      });
     });
   }
 

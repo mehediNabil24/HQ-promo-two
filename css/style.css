@@ -3982,39 +3982,62 @@ body.is-shorts-open .client-reviews__track {
 
 /* ---------- Services page ---------- */
 .services-page-shell {
-  padding-bottom: 100px;
-}
-
-.services-page {
   position: relative;
-  padding-top: 40px;
+  isolation: isolate;
+  padding-bottom: 100px;
+  overflow: clip;
 }
 
 .services-page__top-bg {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: min(839px, 72vh);
-  overflow: hidden;
-  pointer-events: none;
+  left: 50%;
   z-index: 0;
+  width: 100vw;
+  max-width: none;
+  height: 839px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .services-page__top-bg img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
 }
 
-.services-page .container {
+.services-page-shell > .site-header-wrap {
+  z-index: 100;
+}
+
+.services-page {
   position: relative;
   z-index: 1;
+  padding-top: 40px;
+}
+
+.services-page .container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.services-page .services-hero,
+.services-page .services-platform-tabs,
+.services-page .services-toolbar,
+.services-page .service-accordion {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
 }
 
 .services-platform-tabs {
   margin-top: 28px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  justify-content: stretch;
 }
 
 .services-toolbar {
@@ -4028,34 +4051,97 @@ body.is-shorts-open .client-reviews__track {
   background: var(--color-white);
 }
 
+.services-toolbar__filter-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
 .services-toolbar__filter {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 0;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 18px 8px 8px;
   border: 0;
-  background: transparent;
-  color: var(--color-black);
+  border-radius: 14px;
+  background-image: var(--gradient-brand);
+  color: var(--color-white);
   font-family: inherit;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
   cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.services-toolbar__filter:hover {
+  opacity: 0.94;
+}
+
+.services-toolbar__filter[aria-expanded="true"] {
+  box-shadow: 0 8px 20px rgba(196, 39, 46, 0.2);
 }
 
 .services-toolbar__filter-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
+}
+
+.services-toolbar__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 220px;
+  max-height: 320px;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid rgba(84, 84, 84, 0.12);
+  border-radius: 14px;
+  background: var(--color-white);
+  box-shadow: 0 12px 32px rgba(24, 24, 24, 0.12);
+}
+
+.services-toolbar__menu[hidden] {
+  display: none;
+}
+
+.services-toolbar__menu li {
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--color-black);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.services-toolbar__menu li:hover,
+.services-toolbar__menu li:focus {
+  outline: none;
+  background: rgba(244, 123, 32, 0.08);
+}
+
+.services-toolbar__menu li.is-active {
   background-image: var(--gradient-brand);
   color: var(--color-white);
 }
 
 .services-toolbar__search {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -4063,9 +4149,13 @@ body.is-shorts-open .client-reviews__track {
   min-width: 0;
   height: 48px;
   padding: 0 20px;
-  border: 1px solid rgba(84, 84, 84, 0.16);
+  border: 1px solid transparent;
   border-radius: 16px;
-  background: var(--color-white);
+  background:
+    linear-gradient(#fff9f3, #ffffff) padding-box,
+    var(--gradient-brand) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .services-toolbar__search-icon {
@@ -4101,6 +4191,11 @@ body.is-shorts-open .client-reviews__track {
   border: 1px solid rgba(84, 84, 84, 0.16);
   border-radius: 16px;
   background: var(--color-white);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.service-group.is-filtered-out {
+  display: none;
 }
 
 .service-group__header {
@@ -4113,11 +4208,13 @@ body.is-shorts-open .client-reviews__track {
   padding: 20px;
   border: 0;
   background: var(--color-white);
+  background-image: none;
   color: var(--color-black);
   font-family: inherit;
   text-align: left;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.35s ease, color 0.35s ease,
+    background-image 0.35s ease;
 }
 
 .service-group.is-open .service-group__header {
@@ -4148,14 +4245,30 @@ body.is-shorts-open .client-reviews__track {
 .service-group__chevron {
   flex-shrink: 0;
   color: currentColor;
-  transition: transform 0.2s ease;
+  transform: rotate(-90deg);
+  transition: transform 0.35s ease;
 }
 
 .service-group.is-open .service-group__chevron {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .service-group__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.service-group.is-open .service-group__panel {
+  grid-template-rows: 1fr;
+}
+
+.service-group__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.service-group.is-open .service-group__panel-inner {
   border-top: 1px solid rgba(84, 84, 84, 0.12);
 }
 
@@ -4172,6 +4285,10 @@ body.is-shorts-open .client-reviews__track {
 }
 
 @media (max-width: 1199.98px) {
+  .services-platform-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .services-toolbar {
     gap: 20px;
     padding: 20px;
@@ -4189,19 +4306,122 @@ body.is-shorts-open .client-reviews__track {
   }
 
   .services-page__top-bg {
-    height: min(520px, 55vh);
+    height: 520px;
   }
 
-  .services-platform-tabs {
-    margin-top: 20px;
+  .services-page .services-hero {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .services-page .services-hero .api-hero__title {
+    font-size: 22px;
+  }
+
+  .services-page .services-hero .api-hero__lead {
+    font-size: 13px;
+  }
+
+  .services-page .services-platform-tabs {
+    margin-top: 16px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: 1;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab:hover {
+    transform: none;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__polygon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__logo,
+  .services-page .services-platform-tabs .platform-tab__icon > img.platform-tab__logo {
+    width: 18px;
+    height: 18px;
   }
 
   .services-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    margin-top: 20px;
-    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .services-toolbar__filter-wrap {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .services-toolbar__filter {
+    width: auto;
+    min-height: 44px;
+    padding: 6px 12px 6px 6px;
+    font-size: 13px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .services-toolbar__filter-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .services-toolbar__filter-icon iconify-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .services-toolbar__menu {
+    left: 0;
+    right: auto;
+    width: min(280px, calc(100vw - 48px));
+  }
+
+  .services-toolbar__search {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+  }
+
+  .services-toolbar__search input {
+    font-size: 14px;
   }
 
   .service-accordion {
@@ -4222,5 +4442,65 @@ body.is-shorts-open .client-reviews__track {
     grid-template-columns: 1fr;
     gap: 16px;
     padding: 16px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .services-page .services-platform-tabs {
+    gap: 8px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab {
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__polygon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .services-page .services-platform-tabs .platform-tab__logo,
+  .services-page .services-platform-tabs .platform-tab__icon > img.platform-tab__logo {
+    width: 16px;
+    height: 16px;
+  }
+
+  .services-toolbar {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .services-toolbar__filter {
+    position: relative;
+    min-height: 40px;
+    padding: 6px;
+    gap: 0;
+  }
+
+  .services-toolbar__filter [data-filter-label] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .services-toolbar__search {
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .services-toolbar__search input {
+    font-size: 13px;
   }
 }
