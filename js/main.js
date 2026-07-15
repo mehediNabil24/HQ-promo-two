@@ -1,11 +1,46 @@
 (function () {
   "use strict";
 
+  const THEME_KEY = "hqpromo-theme";
   const passwordInput = document.getElementById("password");
   const passwordToggle = document.querySelector("[data-password-toggle]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const mobileNav = document.getElementById("mobileNav");
   const form = document.getElementById("signin");
+  const themeToggles = document.querySelectorAll("[data-theme-toggle]");
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("theme-dark", isDark);
+
+    themeToggles.forEach((toggle) => {
+      const label = toggle.querySelector("[data-theme-label]");
+      toggle.classList.toggle("is-dark", isDark);
+      toggle.setAttribute("aria-pressed", String(isDark));
+      toggle.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light theme" : "Switch to dark theme"
+      );
+      if (label) label.textContent = isDark ? "Dark" : "Light";
+    });
+  };
+
+  const storedTheme = localStorage.getItem(THEME_KEY);
+  const initialTheme =
+    storedTheme === "dark" || storedTheme === "light" ? storedTheme : "light";
+  applyTheme(initialTheme);
+
+  themeToggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const next =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "light"
+          : "dark";
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+    });
+  });
 
   if (passwordToggle && passwordInput) {
     passwordToggle.addEventListener("click", () => {
@@ -276,26 +311,35 @@
     if (!plansSwiperEl || typeof Swiper === "undefined") return null;
 
     return new Swiper(plansSwiperEl, {
-      slidesPerView: "auto",
-      spaceBetween: 24,
+      slidesPerView: 1.15,
+      spaceBetween: 16,
       slidesPerGroup: 1,
       speed: 500,
       watchOverflow: true,
-      centeredSlides: false,
+      centeredSlides: true,
+      centeredSlidesBounds: true,
       pagination: {
         el: ".plans-swiper__pagination",
         clickable: true,
       },
       breakpoints: {
+        576: {
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+        },
         768: {
-          slidesPerView: "auto",
-          slidesPerGroup: 2,
+          slidesPerView: 2,
           spaceBetween: 24,
+          centeredSlides: false,
+          centeredSlidesBounds: false,
         },
         1200: {
-          slidesPerView: "auto",
-          slidesPerGroup: 3,
+          slidesPerView: 3,
           spaceBetween: 32,
+          centeredSlides: false,
+          centeredSlidesBounds: false,
         },
       },
     });

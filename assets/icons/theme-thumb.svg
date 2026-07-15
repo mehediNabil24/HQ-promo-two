@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="xMidYMid meet" width="32" height="32" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="14.5" cy="14.5" r="14.5" fill="url(#themeThumbLightGrad)"/>
+  <path fill="white" d="M13.75 9.25V6.25H15.25V9.25H13.75ZM18.74 11.31l-1.03-1.03 2.1-2.16 1.05 1.07-2.12 2.12ZM19.75 15.25v-1.5h3v1.5h-3ZM13.75 22.75v-3h1.5v3h-1.5ZM10.26 11.28 8.12 9.19l1.07-1.05 2.12 2.12-1.05 1.02ZM19.79 20.88l-2.08-2.16 1.01-1.01 2.14 2.06-1.07 1.11ZM6.25 15.25v-1.5h3v1.5h-3ZM9.19 20.88 8.14 19.81l2.1-2.1.54.51.54.52-2.13 2.14ZM14.5 19.5c-1.25 0-2.31-.44-3.19-1.31A4.34 4.34 0 0 1 10 15c0-1.25.44-2.31 1.31-3.19A4.34 4.34 0 0 1 14.5 10.5c1.25 0 2.31.44 3.19 1.31A4.34 4.34 0 0 1 19 15c0 1.25-.44 2.31-1.31 3.19A4.34 4.34 0 0 1 14.5 19.5Z"/>
+  <defs>
+    <linearGradient id="themeThumbLightGrad" x1="0" y1="14.5" x2="29" y2="14.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBD08"/>
+      <stop offset="0.25" stop-color="#F47B20"/>
+      <stop offset="0.5" stop-color="#C4272E"/>
+      <stop offset="0.75" stop-color="#8B1A4A"/>
+      <stop offset="1" stop-color="#3D1053"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -15,6 +15,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("hqpromo-theme");
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            document.documentElement.classList.add("theme-dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   </head>
   <body>
@@ -35,6 +46,33 @@
             </nav>
 
             <div class="site-header__actions">
+              <button
+                class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-pressed="false"
+                aria-label="Switch to dark theme"
+              >
+                <span class="theme-toggle__track" aria-hidden="true"></span>
+                <span class="theme-toggle__label" data-theme-label>Light</span>
+                <span class="theme-toggle__thumb" aria-hidden="true">
+                  <img
+                    class="theme-toggle__icon theme-toggle__icon--light"
+                    src="assets/icons/theme-thumb.svg"
+                    alt=""
+                    width="32"
+                    height="32"
+                  />
+                  <img
+                    class="theme-toggle__icon theme-toggle__icon--dark"
+                    src="assets/icons/theme-thumb-dark.svg"
+                    alt=""
+                    width="32"
+                    height="32"
+                  />
+                </span>
+              </button>
+
               <a class="btn-gradient site-header__cta" href="index.html#signin">
                 <img
                   class="btn-gradient__icon"
