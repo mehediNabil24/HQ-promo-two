@@ -28,85 +28,84 @@
     </script>
   </head>
   <body>
-    <div class="page-shell">
-      <div class="site-header-wrap">
-        <div class="container">
-          <header class="site-header">
-            <a class="site-header__logo" href="index.html" aria-label="HqPromo home">
-              <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+    <div class="site-header-wrap">
+      <div class="container">
+        <header class="site-header">
+          <a class="site-header__logo" href="index.html" aria-label="HqPromo home">
+            <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+          </a>
+
+          <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+            <a class="site-nav__link" href="index.html">Home</a>
+            <a class="site-nav__link" href="services.html">Service</a>
+            <a class="site-nav__link" href="about-us.html">About</a>
+            <a class="site-nav__link is-active" href="api.html">API</a>
+            <a class="site-nav__link" href="#">Contact</a>
+          </nav>
+
+          <div class="site-header__actions">
+            <button
+              class="theme-toggle"
+              type="button"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark theme"
+            >
+              <span class="theme-toggle__track" aria-hidden="true"></span>
+              <span class="theme-toggle__label" data-theme-label>Light</span>
+              <span class="theme-toggle__thumb" aria-hidden="true">
+                <img
+                  class="theme-toggle__icon theme-toggle__icon--light"
+                  src="assets/icons/theme-thumb.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                />
+                <img
+                  class="theme-toggle__icon theme-toggle__icon--dark"
+                  src="assets/icons/theme-thumb-dark.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                />
+              </span>
+            </button>
+
+            <a class="btn-gradient site-header__cta" href="index.html#signin">
+              <img
+                class="btn-gradient__icon"
+                src="assets/icons/lock.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+              <span>Sign In</span>
             </a>
 
-            <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
-              <a class="site-nav__link" href="index.html">Home</a>
-              <a class="site-nav__link" href="services.html">Service</a>
-              <a class="site-nav__link" href="about-us.html">About</a>
-              <a class="site-nav__link is-active" href="api.html">API</a>
-              <a class="site-nav__link" href="#">Contact</a>
-            </nav>
+            <button
+              class="site-header__toggle d-lg-none"
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobileNav"
+              data-nav-toggle
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span class="visually-hidden">Menu</span>
+            </button>
+          </div>
+        </header>
 
-            <div class="site-header__actions">
-              <button
-                class="theme-toggle"
-                type="button"
-                data-theme-toggle
-                aria-pressed="false"
-                aria-label="Switch to dark theme"
-              >
-                <span class="theme-toggle__track" aria-hidden="true"></span>
-                <span class="theme-toggle__label" data-theme-label>Light</span>
-                <span class="theme-toggle__thumb" aria-hidden="true">
-                  <img
-                    class="theme-toggle__icon theme-toggle__icon--light"
-                    src="assets/icons/theme-thumb.svg"
-                    alt=""
-                    width="32"
-                    height="32"
-                  />
-                  <img
-                    class="theme-toggle__icon theme-toggle__icon--dark"
-                    src="assets/icons/theme-thumb-dark.svg"
-                    alt=""
-                    width="32"
-                    height="32"
-                  />
-                </span>
-              </button>
-
-              <a class="btn-gradient site-header__cta" href="index.html#signin">
-                <img
-                  class="btn-gradient__icon"
-                  src="assets/icons/lock.svg"
-                  alt=""
-                  width="16"
-                  height="16"
-                />
-                <span>Sign In</span>
-              </a>
-
-              <button
-                class="site-header__toggle d-lg-none"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobileNav"
-                data-nav-toggle
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span class="visually-hidden">Menu</span>
-              </button>
-            </div>
-          </header>
-
-          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden aria-label="Mobile">
-            <div class="mobile-nav__links">
-              <a class="mobile-nav__link" href="index.html">Home</a>
-              <a class="mobile-nav__link" href="services.html">Service</a>
-              <a class="mobile-nav__link" href="about-us.html">About</a>
-              <a class="mobile-nav__link is-active" href="api.html">API</a>
-              <a class="mobile-nav__link" href="index.html#footer">Contact</a>
-            </div>
-            <div class="mobile-nav__footer">
+        <nav class="mobile-nav d-lg-none" id="mobileNav" hidden aria-label="Mobile">
+          <div class="mobile-nav__links">
+            <a class="mobile-nav__link" href="index.html">Home</a>
+            <a class="mobile-nav__link" href="services.html">Service</a>
+            <a class="mobile-nav__link" href="about-us.html">About</a>
+            <a class="mobile-nav__link is-active" href="api.html">API</a>
+            <a class="mobile-nav__link" href="index.html#footer">Contact</a>
+          </div>
+          <div class="mobile-nav__footer">
               <a class="btn-gradient mobile-nav__cta" href="index.html#signin">
                 <img
                   class="btn-gradient__icon"
@@ -121,6 +120,10 @@
           </nav>
         </div>
       </div>
+
+    <div class="page-shell">
+
+
 
       <main class="api-page">
         <div class="container">

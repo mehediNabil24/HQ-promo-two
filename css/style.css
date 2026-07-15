@@ -51,13 +51,18 @@ html[data-theme="dark"] .theme-toggle__track {
 }
 
 html[data-theme="dark"] .site-header {
-  background: #141414;
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(20, 20, 20, 0.45);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
 }
 
 html[data-theme="dark"] .mobile-nav {
-  background: #141414;
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(20, 20, 20, 0.55);
+  border-color: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
 }
 
 html[data-theme="dark"] .mobile-nav__link:hover,
@@ -67,6 +72,21 @@ html[data-theme="dark"] .mobile-nav__link:focus-visible {
 
 html[data-theme="dark"] .mobile-nav__footer {
   border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .platform-tab:not(.is-active) {
+  background-color: #1a1a1a;
+  border-color: #f47b20;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .platform-tab:not(.is-active):hover {
+  background-color: #242424;
+  border-color: #f47b20;
+}
+
+html[data-theme="dark"] .trust-badge {
+  background: rgba(0, 0, 0, 0.11);
 }
 
 /* ---------- Shared section header ---------- */
@@ -144,11 +164,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html {
-  overflow-x: clip;
-}
-
 body {
+  position: relative;
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-sans);
@@ -168,24 +185,28 @@ a {
 /* ---------- Shell ---------- */
 .page-shell {
   position: relative;
+  z-index: 1;
   isolation: isolate;
-  padding: 48px 0 100px;
+  padding: 24px 0 100px;
+  overflow-x: clip;
 }
 
-.page-top-bg {
+.page-top-bg,
+.services-page__top-bg,
+.about-page__top-bg {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 0;
   z-index: 0;
-  width: 100vw;
-  max-width: none;
+  width: 100%;
   height: 839px;
-  transform: translateX(-50%);
   pointer-events: none;
   overflow: hidden;
 }
 
-.page-top-bg img {
+.page-top-bg img,
+.services-page__top-bg img,
+.about-page__top-bg img {
   display: block;
   width: 100%;
   height: 100%;
@@ -193,18 +214,15 @@ a {
   object-position: top center;
 }
 
-.page-shell > .site-header-wrap,
 .page-shell > main {
   position: relative;
   z-index: 1;
 }
 
-.page-shell > .site-header-wrap {
-  z-index: 100;
-}
-
 @media (max-width: 767.98px) {
-  .page-top-bg {
+  .page-top-bg,
+  .services-page__top-bg,
+  .about-page__top-bg {
     height: 520px;
   }
 }
@@ -219,6 +237,9 @@ a {
   position: sticky;
   top: 16px;
   z-index: 100;
+  width: 100%;
+  padding-top: 16px;
+  margin-bottom: 8px;
 }
 
 .site-header {
@@ -228,10 +249,12 @@ a {
   align-items: center;
   gap: 1.5rem;
   padding: 16px 24px;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--radius-header);
   box-shadow: var(--shadow-header);
+  backdrop-filter: blur(16px) saturate(1.35);
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
   animation: fade-up 0.7s ease both;
 }
 
@@ -448,10 +471,12 @@ a {
   gap: 8px;
   margin-top: 12px;
   padding: 12px;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 20px;
   box-shadow: 0 18px 40px rgba(24, 24, 24, 0.1);
+  backdrop-filter: blur(16px) saturate(1.35);
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
   animation: mobile-nav-in 0.28s ease both;
 }
 
@@ -584,7 +609,7 @@ body.is-nav-open::before {
   border: 0;
   border-radius: 12px;
   background-image: var(--gradient-brand);
-  color: var(--color-white);
+  color: #ffffff;
   font-family: inherit;
   font-size: 16px;
   font-weight: 600;
@@ -597,7 +622,7 @@ body.is-nav-open::before {
 .btn-gradient:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
-  color: var(--color-white);
+  color: #ffffff;
 }
 
 .btn-gradient:active {
@@ -1128,10 +1153,12 @@ body.is-nav-open::before {
 
 @media (max-width: 991.98px) {
   .page-shell {
-    padding: 24px 0 48px;
+    padding: 16px 0 48px;
   }
 
-  .page-top-bg {
+  .page-top-bg,
+  .services-page__top-bg,
+  .about-page__top-bg {
     height: 640px;
   }
 
@@ -1355,7 +1382,7 @@ body.is-nav-open::before {
   background-image: var(--gradient-brand);
   background-origin: border-box;
   background-clip: border-box;
-  color: var(--color-white);
+  color: #ffffff;
   outline: none;
   box-shadow: 0 8px 20px rgba(196, 39, 46, 0.18);
 }
@@ -4320,32 +4347,12 @@ body.is-shorts-open .client-reviews__track {
   position: relative;
   isolation: isolate;
   padding-bottom: 100px;
-  overflow: clip;
+  overflow-x: clip;
 }
 
-.services-page__top-bg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 0;
-  width: 100vw;
-  max-width: none;
-  height: 839px;
-  transform: translateX(-50%);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.services-page__top-bg img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.services-page-shell > .site-header-wrap {
-  z-index: 100;
+.services-page-shell > main {
+  position: relative;
+  z-index: 1;
 }
 
 .services-page {
@@ -4640,10 +4647,6 @@ body.is-shorts-open .client-reviews__track {
     padding-top: 24px;
   }
 
-  .services-page__top-bg {
-    height: 520px;
-  }
-
   .services-page .services-hero {
     padding: 20px;
     border-radius: 16px;
@@ -4845,32 +4848,7 @@ body.is-shorts-open .client-reviews__track {
   position: relative;
   isolation: isolate;
   padding-bottom: 100px;
-  overflow: clip;
-}
-
-.about-page__top-bg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 0;
-  width: 100vw;
-  max-width: none;
-  height: 839px;
-  transform: translateX(-50%);
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.about-page__top-bg img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.about-page-shell > .site-header-wrap {
-  z-index: 100;
+  overflow-x: clip;
 }
 
 .about-page {
@@ -4982,10 +4960,6 @@ body.is-shorts-open .client-reviews__track {
 }
 
 @media (max-width: 767.98px) {
-  .about-page__top-bg {
-    height: 520px;
-  }
-
   .about-hero__actions {
     gap: 12px;
   }
