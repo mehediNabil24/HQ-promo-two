@@ -975,4 +975,29 @@
       }
     });
   }
+
+  const diffDeck = document.querySelector("[data-diff-deck]");
+  if (diffDeck) {
+    const diffCards = Array.from(diffDeck.querySelectorAll("[data-diff-card]"));
+    const diffNext = diffDeck.querySelector("[data-diff-next]");
+    let diffActive = 0;
+
+    const renderDiffDeck = () => {
+      diffCards.forEach((card, index) => {
+        const offset =
+          (index - diffActive + diffCards.length) % diffCards.length;
+        card.dataset.stack = String(offset);
+        card.classList.toggle("is-front", offset === 0);
+        card.hidden = false;
+        card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+      });
+    };
+
+    diffNext?.addEventListener("click", () => {
+      diffActive = (diffActive + 1) % diffCards.length;
+      renderDiffDeck();
+    });
+
+    renderDiffDeck();
+  }
 })();

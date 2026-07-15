@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 22">
+<circle id="Ellipse 3" cx="18" cy="18" r="18" fill="url(#paint0_linear_0_5)"/>
+<g id="arrow-right">
+<path id="Vector" d="M13.8008 18H22.2008" stroke="var(--stroke-0, white)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M18 13.8008L22.2 18.0008L18 22.2008" stroke="var(--stroke-0, white)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_5" x1="0" y1="18" x2="36" y2="18" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FBBD08"/>
+<stop offset="0.25" stop-color="#F47B20"/>
+<stop offset="0.5" stop-color="#C4272E"/>
+<stop offset="0.75" stop-color="#8B1A4A"/>
+<stop offset="1" stop-color="#3D1053"/>
+</linearGradient>
+</defs>
+</svg>

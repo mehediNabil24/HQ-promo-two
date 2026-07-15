@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HqPromo — Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat+Alternates:wght@600&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("hqpromo-theme");
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            document.documentElement.classList.add("theme-dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  </head>
+  <body>
+    <div class="page-shell contact-page-shell">
+      <div class="page-top-bg contact-page__top-bg" aria-hidden="true">
+        <img src="assets/services/top-bg.png" alt="" width="1920" height="839" />
+      </div>
+
+      <div class="site-header-wrap">
+        <div class="container">
+          <header class="site-header">
+            <a class="site-header__logo" href="index.html" aria-label="HqPromo home">
+              <img src="assets/images/logo.png" alt="HqPromo" width="48" height="48" />
+            </a>
+
+            <nav class="site-nav d-none d-lg-flex" aria-label="Primary">
+              <a class="site-nav__link" href="index.html">Home</a>
+              <a class="site-nav__link" href="services.html">Service</a>
+              <a class="site-nav__link" href="about-us.html">About</a>
+              <a class="site-nav__link" href="api.html">API</a>
+              <a class="site-nav__link is-active" href="contact-us.html">Contact</a>
+            </nav>
+
+            <div class="site-header__actions">
+              <button
+                class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-pressed="false"
+                aria-label="Switch to dark theme"
+              >
+                <span class="theme-toggle__track" aria-hidden="true"></span>
+                <span class="theme-toggle__label" data-theme-label>Light</span>
+                <span class="theme-toggle__thumb" aria-hidden="true">
+                  <img
+                    class="theme-toggle__icon theme-toggle__icon--light"
+                    src="assets/icons/theme-thumb.svg"
+                    alt=""
+                    width="32"
+                    height="32"
+                  />
+                  <img
+                    class="theme-toggle__icon theme-toggle__icon--dark"
+                    src="assets/icons/theme-thumb-dark.svg"
+                    alt=""
+                    width="32"
+                    height="32"
+                  />
+                </span>
+              </button>
+
+              <a class="btn-gradient site-header__cta" href="index.html#signin">
+                <img
+                  class="btn-gradient__icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+                <span>Sign In</span>
+              </a>
+
+              <button
+                class="site-header__toggle d-lg-none"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobileNav"
+                data-nav-toggle
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="visually-hidden">Menu</span>
+              </button>
+            </div>
+          </header>
+
+          <nav class="mobile-nav d-lg-none" id="mobileNav" hidden aria-label="Mobile">
+            <div class="mobile-nav__links">
+              <a class="mobile-nav__link" href="index.html">Home</a>
+              <a class="mobile-nav__link" href="services.html">Service</a>
+              <a class="mobile-nav__link" href="about-us.html">About</a>
+              <a class="mobile-nav__link" href="api.html">API</a>
+              <a class="mobile-nav__link is-active" href="contact-us.html">Contact</a>
+            </div>
+            <div class="mobile-nav__footer">
+              <a class="btn-gradient mobile-nav__cta" href="index.html#signin">
+                <img
+                  class="btn-gradient__icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+                <span>Sign In</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      
+<main class="contact-page">
+        <div class="container">
+          <header class="contact-hero">
+            <h1 class="contact-hero__title">
+              Contact With
+              <span class="contact-hero__title-accent">Us</span>
+            </h1>
+            <p class="contact-hero__lead">
+              We're here to make your experience simple and hassle-free. Whether
+              you need technical support, have questions about our services, or
+              require assistance with an order, our team is always ready to help
+              with prompt and professional service.
+            </p>
+          </header>
+
+          <section class="contact-panel" aria-labelledby="contact-form-title">
+            <h2 class="visually-hidden" id="contact-form-title">Send us a message</h2>
+            <form class="contact-form" action="#" method="post">
+              <div class="contact-form__row">
+                <div class="contact-field">
+                  <label class="contact-field__label" for="contactFirstName"
+                    >First Name</label
+                  >
+                  <input
+                    class="contact-field__input"
+                    id="contactFirstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="first name"
+                    autocomplete="given-name"
+                    required
+                  />
+                </div>
+                <div class="contact-field">
+                  <label class="contact-field__label" for="contactLastName"
+                    >Last Name</label
+                  >
+                  <input
+                    class="contact-field__input"
+                    id="contactLastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="last name"
+                    autocomplete="family-name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="contact-field">
+                <label class="contact-field__label" for="contactEmail">Email</label>
+                <input
+                  class="contact-field__input"
+                  id="contactEmail"
+                  name="email"
+                  type="email"
+                  placeholder="enter your email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="contact-field">
+                <label class="contact-field__label" for="contactMessage"
+                  >Message</label
+                >
+                <textarea
+                  class="contact-field__input contact-field__input--area"
+                  id="contactMessage"
+                  name="message"
+                  rows="6"
+                  placeholder="I’d love to learn more about your services"
+                  required
+                ></textarea>
+              </div>
+
+              <button class="contact-form__submit" type="submit">
+                <span>Submit Now</span>
+                <span class="contact-form__submit-icon" aria-hidden="true">
+                  <img
+                    src="assets/contact/submit-arrow.svg"
+                    alt=""
+                    width="16"
+                    height="24"
+                  />
+                </span>
+              </button>
+            </form>
+
+            <div class="contact-panel__visual">
+              <img
+                src="assets/contact/contact-us.png"
+                alt="HQ Promo support specialist ready to help"
+                width="542"
+                height="486"
+              />
+            </div>
+          </section>
+
+          <section class="contact-cards" aria-label="Contact channels">
+            <article class="contact-card">
+              <div class="contact-card__icon">
+                <img
+                  src="assets/contact/email.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h3 class="contact-card__title">Email</h3>
+              <a class="contact-card__value" href="mailto:support@hqpromo.com"
+                >support@hqpromo.com</a
+              >
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-card__icon">
+                <img
+                  src="assets/contact/whatsapp.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h3 class="contact-card__title">WhatsApp</h3>
+              <p class="contact-card__value">+1(*************)</p>
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-card__icon">
+                <img
+                  src="assets/contact/telegram.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h3 class="contact-card__title">Telegram</h3>
+              <p class="contact-card__value">**************</p>
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-card__icon">
+                <img
+                  src="assets/contact/business-hour.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </div>
+              <h3 class="contact-card__title">Business Hour</h3>
+              <p class="contact-card__value">Monday - Sunday 24 Hours</p>
+            </article>
+          </section>
+
+          <section class="contact-map" aria-label="Location map">
+            <div class="contact-map__frame">
+              <iframe
+                title="HQ Promo location map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2798892767!2d-74.25986773313416!3d40.69767006458889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="contact-map__pin">
+              <p class="contact-map__pin-label">Location:</p>
+              <p class="contact-map__pin-address">
+                [Business Address – To Be Confirmed]
+              </p>
+              <span class="contact-map__pin-icon" aria-hidden="true">
+                <img
+                  src="assets/contact/location.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+              </span>
+            </div>
+          </section>
+        </div>
+      </main>
+
+    </div>
+
+    <footer class="site-footer" id="footer">
+      <img
+        class="site-footer__bg"
+        src="assets/footer/bg.png"
+        alt=""
+        width="1920"
+        height="510"
+        aria-hidden="true"
+      />
+      <div class="container site-footer__container">
+        <div class="site-footer__top">
+          <div class="site-footer__brand">
+            <div class="site-footer__brand-copy">
+              <a class="site-footer__logo" href="index.html">
+                <img
+                  src="assets/footer/logo.png"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <span>HQ Promo</span>
+              </a>
+              <p class="site-footer__desc">
+                HQ Promo is a leading and reliable social media marketing platform
+                committed to providing fast, effective, and premium growth solutions
+                across all popular social networks.
+              </p>
+            </div>
+            <div class="site-footer__social">
+              <p class="site-footer__social-title">Follow Us</p>
+              <div class="site-footer__social-list">
+                <a
+                  class="site-footer__social-link"
+                  href="#"
+                  aria-label="Facebook"
+                >
+                  <img
+                    src="assets/footer/facebook.png"
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                </a>
+                <a
+                  class="site-footer__social-link"
+                  href="#"
+                  aria-label="Instagram"
+                >
+                  <img
+                    src="assets/footer/instagram.png"
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                </a>
+                <a
+                  class="site-footer__social-link"
+                  href="#"
+                  aria-label="X (Twitter)"
+                >
+                  <img
+                    src="assets/footer/twitter.png"
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                </a>
+                <a
+                  class="site-footer__social-link"
+                  href="#"
+                  aria-label="LinkedIn"
+                >
+                  <img
+                    src="assets/footer/linkedin.png"
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                </a>
+                <a
+                  class="site-footer__social-link"
+                  href="#"
+                  aria-label="YouTube"
+                >
+                  <img
+                    src="assets/footer/youtube.png"
+                    alt=""
+                    width="22"
+                    height="22"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="site-footer__nav" aria-label="Quick links">
+            <p class="site-footer__heading">Quick Links</p>
+            <ul class="site-footer__list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <nav class="site-footer__nav" aria-label="Company">
+            <p class="site-footer__heading">Company</p>
+            <ul class="site-footer__list">
+              <li><a href="terms.html">Terms Of Services</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="#">Refund Policy</a></li>
+              <li><a href="index.html#faq">FAQs</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+          </nav>
+
+          <div class="site-footer__contact">
+            <p class="site-footer__heading site-footer__heading--contact">
+              Contact Info
+            </p>
+            <ul class="site-footer__contact-list">
+              <li>
+                <span class="site-footer__contact-icon" aria-hidden="true">
+                  <img src="assets/footer/email.svg" alt="" width="16" height="16" />
+                </span>
+                <a href="mailto:support@hqpromo.com">support@hqpromo.com</a>
+              </li>
+              <li>
+                <span class="site-footer__contact-icon" aria-hidden="true">
+                  <img src="assets/footer/phone.svg" alt="" width="16" height="16" />
+                </span>
+                <span>+1 (**********)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__legal">
+          <p>
+            © 2026 HQ Promo. We are not affiliated with any social media platforms
+            mentioned on this website. We only provide social media marketing
+            services.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
