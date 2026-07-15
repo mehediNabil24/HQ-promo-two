@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="xMidYMid meet" width="32" height="32" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="14.5" cy="14.5" r="14.5" fill="url(#themeThumbDarkGrad)"/>
+  <path
+    fill="white"
+    d="M17.9 8.6a6.9 6.9 0 1 0 5 10.1 7.9 7.9 0 1 1-5-10.1Z"
+  />
+  <defs>
+    <linearGradient id="themeThumbDarkGrad" x1="0" y1="14.5" x2="29" y2="29" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBD08"/>
+      <stop offset="0.25" stop-color="#F47B20"/>
+      <stop offset="0.5" stop-color="#C4272E"/>
+      <stop offset="0.75" stop-color="#8B1A4A"/>
+      <stop offset="1" stop-color="#3D1053"/>
+    </linearGradient>
+  </defs>
+</svg>
