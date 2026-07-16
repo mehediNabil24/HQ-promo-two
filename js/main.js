@@ -1142,4 +1142,18 @@
       });
     }
   }
+
+  /* Dashboard: payment method tabs */
+  const dashPayTabs = document.querySelector("[data-dash-pay-tabs]");
+
+  dashPayTabs?.addEventListener("click", (event) => {
+    const tab = event.target.closest(".dash-pay-tab");
+    if (!tab || !dashPayTabs.contains(tab)) return;
+
+    dashPayTabs.querySelectorAll(".dash-pay-tab").forEach((button) => {
+      const isActive = button === tab;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+  });
 })();
