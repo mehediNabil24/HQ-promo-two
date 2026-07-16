@@ -7519,17 +7519,31 @@ html[data-theme="dark"] .contact-map__pin-address {
 
 .dash-select-wrap {
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
+  gap: 12px;
   min-height: 64px;
-  padding-left: 18px;
+  padding: 8px 18px;
   border-radius: 12px;
   background: #eee;
+  overflow: visible;
+}
+
+.dash-select-wrap:has(.select2-container--open) {
+  z-index: 20;
+}
+
+.dash-panel,
+.dash-panel .card-body,
+.dash-order-form {
+  overflow: visible;
 }
 
 .dash-select-wrap__icon {
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
   width: 32px;
   height: 32px;
   object-fit: contain;
@@ -7539,6 +7553,7 @@ html[data-theme="dark"] .contact-map__pin-address {
 .dash-service-id {
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7554,40 +7569,175 @@ html[data-theme="dark"] .contact-map__pin-address {
   pointer-events: none;
 }
 
-.dash-select {
+.dash-select2-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.dash-select2-option__icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.dash-select2-option__badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 4px 16px;
+  border-radius: 999px;
+  background-image: var(--gradient-brand);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.dash-select2-option__text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: "Outfit", var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.dash-select-wrap
+  .select2-results__option
+  .dash-select2-option__text {
+  font-size: 14px;
+  white-space: normal;
+}
+
+.dash-select-wrap .dash-select {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  padding: 16px 48px 16px 62px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.dash-select-wrap .select2-container {
+  flex: 1;
+  min-width: 0;
+  width: 100% !important;
+}
+
+.dash-select-wrap .select2-container--default .select2-selection--single {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 28px 0 0;
   border: 0;
   border-radius: 12px;
   background: transparent;
-  box-shadow: none;
-  font-family: "Outfit", var(--font-sans);
-  font-size: 16px;
-  color: var(--color-body);
-  appearance: none;
-  -webkit-appearance: none;
+  outline: none;
   cursor: pointer;
 }
 
-.dash-select-wrap--service .dash-select {
-  padding-left: 86px;
-}
-
-.dash-select:focus {
-  border: 0;
-  box-shadow: none;
-  background: transparent;
-}
-
-.dash-select-wrap__chevron {
-  position: absolute;
-  right: 18px;
-  z-index: 1;
+.dash-select-wrap
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  padding: 0;
+  font-family: "Outfit", var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--color-body);
-  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-select-wrap
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  top: 50%;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+}
+
+.dash-select-wrap
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  border-color: var(--color-body) transparent transparent transparent;
+  border-width: 6px 5px 0 5px;
+  transform: translate(-50%, -35%);
+}
+
+.dash-select-wrap
+  .select2-container--default.select2-container--open
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  border-color: transparent transparent var(--color-body) transparent;
+  border-width: 0 5px 6px 5px;
+  transform: translate(-50%, -65%);
+}
+
+.dash-select-wrap
+  .select2-container--default.select2-container--focus
+  .select2-selection--single,
+.dash-select-wrap
+  .select2-container--default.select2-container--open
+  .select2-selection--single {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.dash-select-wrap .select2-dropdown {
+  left: 0 !important;
+  width: 100% !important;
+  margin-top: 8px;
+  border: 1px solid #dfe0e4;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(24, 24, 24, 0.08);
+}
+
+.dash-select-wrap .select2-container--default .select2-dropdown--above {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.dash-select-wrap .select2-search--dropdown {
+  display: none !important;
+}
+
+.select2-container--default .select2-results__option {
+  padding: 10px 14px;
+  font-family: "Outfit", var(--font-sans);
+  font-size: 14px;
+  color: var(--color-body);
+}
+
+.select2-container--default
+  .select2-results__option--highlighted.select2-results__option--selectable {
+  background: rgba(244, 123, 32, 0.12);
+  color: var(--color-black);
+}
+
+.select2-container--default .select2-results__option--selected {
+  background: rgba(244, 123, 32, 0.08);
+  color: var(--color-black);
 }
 
 .dash-input {
@@ -7781,12 +7931,11 @@ html[data-theme="dark"] .contact-map__pin-address {
     display: none;
   }
 
-  .dash-select {
+  .dash-select-wrap
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
     font-size: 14px;
-  }
-
-  .dash-select-wrap--service .dash-select {
-    padding-left: 78px;
   }
 }
 
@@ -7878,6 +8027,24 @@ html[data-theme="dark"] .dash-select-wrap,
 html[data-theme="dark"] .dash-input,
 html[data-theme="dark"] .dash-details-body {
   background: #2a2a2a;
+  color: var(--color-body);
+}
+
+html[data-theme="dark"] .select2-container--default .select2-dropdown,
+html[data-theme="dark"] .dash-select-wrap .select2-dropdown {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .select2-container--default .select2-results__option {
+  color: var(--color-body);
+}
+
+html[data-theme="dark"]
+  .dash-select-wrap
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
   color: var(--color-body);
 }
 

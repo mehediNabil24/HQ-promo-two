@@ -1051,4 +1051,76 @@
       setDashSidebarOpen(false);
     }
   });
+
+  /* Dashboard: Select2 for Category / Service */
+  if (typeof jQuery !== "undefined" && typeof jQuery.fn.select2 === "function") {
+    const $ = jQuery;
+    const $dashSelects = $("[data-dash-select2]");
+
+    if ($dashSelects.length) {
+      const escapeHtml = (value) =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+
+      const formatCategoryOption = (option) => {
+        if (!option.id) return option.text;
+
+        const icon = $(option.element).data("icon");
+        const text = escapeHtml(option.text);
+
+        if (!icon) return option.text;
+
+        return $(
+          `<span class="dash-select2-option">
+            <img class="dash-select2-option__icon" src="${escapeHtml(icon)}" alt="" width="32" height="32" />
+            <span class="dash-select2-option__text">${text}</span>
+          </span>`
+        );
+      };
+
+      const formatServiceOption = (option) => {
+        if (!option.id) return option.text;
+
+        const id = escapeHtml(option.id);
+        const text = escapeHtml(option.text);
+
+        return $(
+          `<span class="dash-select2-option">
+            <span class="dash-select2-option__badge">${id}</span>
+            <span class="dash-select2-option__text">${text}</span>
+          </span>`
+        );
+      };
+
+      $dashSelects.each(function () {
+        const $select = $(this);
+        const $wrap = $select.closest(".dash-select-wrap");
+        const withIcon = $select.is("[data-dash-select2-icon]");
+        const withService = $select.is("[data-dash-select2-service]");
+
+        const options = {
+          width: "100%",
+          dropdownParent: $wrap.length ? $wrap : $(document.body),
+          minimumResultsForSearch: Infinity,
+        };
+
+        if (withIcon) {
+          options.templateResult = formatCategoryOption;
+          options.templateSelection = formatCategoryOption;
+          options.escapeMarkup = (markup) => markup;
+        }
+
+        if (withService) {
+          options.templateResult = formatServiceOption;
+          options.templateSelection = formatServiceOption;
+          options.escapeMarkup = (markup) => markup;
+        }
+
+        $select.select2(options);
+      });
+    }
+  }
 })();
