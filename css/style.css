@@ -8571,8 +8571,10 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
   transition: left 0.25s ease, transform 0.25s ease;
 }
 
-.dash-sidebar-edge-toggle iconify-icon {
+.dash-sidebar-edge-toggle img {
   display: block;
+  width: 16px;
+  height: 16px;
   transition: transform 0.25s ease;
 }
 
@@ -8591,7 +8593,7 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
   transform: translateY(-50%);
 }
 
-.dash-page.is-sidebar-collapsed .dash-sidebar-edge-toggle iconify-icon {
+.dash-page.is-sidebar-collapsed .dash-sidebar-edge-toggle img {
   transform: rotate(180deg);
 }
 
