@@ -12,15 +12,29 @@
   const POLYGON_LIGHT = "assets/icons/polygon.svg";
   const POLYGON_DARK = "assets/icons/polygon-dark.svg";
 
+  const syncPlatformPolygons = () => {
+    const isDark =
+      document.documentElement.getAttribute("data-theme") === "dark";
+    document.querySelectorAll(".platform-tab").forEach((tab) => {
+      const img = tab.querySelector(".platform-tab__polygon");
+      if (!img) return;
+      if (!isDark) {
+        img.src = POLYGON_LIGHT;
+        return;
+      }
+      // Dark mode: solid white on active tabs, subtle white on inactive
+      img.src = tab.classList.contains("is-active")
+        ? POLYGON_LIGHT
+        : POLYGON_DARK;
+    });
+  };
+
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle("theme-dark", isDark);
 
-    const polygonSrc = isDark ? POLYGON_DARK : POLYGON_LIGHT;
-    document.querySelectorAll(".platform-tab__polygon").forEach((img) => {
-      img.src = polygonSrc;
-    });
+    syncPlatformPolygons();
 
     themeToggles.forEach((toggle) => {
       const label = toggle.querySelector("[data-theme-label]");
@@ -381,6 +395,8 @@
       button.setAttribute("aria-selected", String(active));
     });
 
+    syncPlatformPolygons();
+
     renderPlans(platform, label, icon);
   }
 
@@ -478,6 +494,8 @@
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-selected", String(active));
     });
+
+    syncPlatformPolygons();
 
     if (panelTitle) panelTitle.textContent = panel.title;
     if (panelText) panelText.textContent = panel.text;
@@ -692,6 +710,8 @@
         button.setAttribute("aria-selected", String(active));
       });
 
+      syncPlatformPolygons();
+
       const targetId = tab.dataset.target;
       if (!targetId) return;
 
@@ -755,6 +775,8 @@
         button.classList.toggle("is-active", active);
         button.setAttribute("aria-selected", String(active));
       });
+
+      syncPlatformPolygons();
 
       closeFilterMenu();
     });

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <mask id="aboutCtaArrowMask" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="3" width="16" height="18">
+    <circle cx="6.40592" cy="4.54069" r="1.49186" fill="#02324F"/>
+    <circle cx="1.49186" cy="1.49186" r="1.49186" transform="matrix(-1 0 0 1 15.3555 14.2383)" fill="#02324F"/>
+    <circle cx="10.1364" cy="8.27116" r="1.49186" fill="#02324F"/>
+    <circle cx="1.49186" cy="1.49186" r="1.49186" transform="matrix(-1 0 0 1 11.6289 17.9668)" fill="#02324F"/>
+    <circle cx="13.8669" cy="11.9997" r="1.49186" fill="#02324F"/>
+    <circle cx="10.1364" cy="4.54069" r="1.49186" fill="#02324F"/>
+    <circle cx="1.49186" cy="1.49186" r="1.49186" transform="matrix(-1 0 0 1 11.6289 14.2383)" fill="#02324F"/>
+    <circle cx="13.8669" cy="8.27116" r="1.49186" fill="#02324F"/>
+    <circle cx="1.49186" cy="1.49186" r="1.49186" transform="matrix(-1 0 0 1 7.89844 17.9668)" fill="#02324F"/>
+    <circle cx="17.5934" cy="11.9997" r="1.49186" fill="#02324F"/>
+  </mask>
+  <g mask="url(#aboutCtaArrowMask)">
+    <rect x="-0.308594" y="0.0644531" width="23.1238" height="23.8698" fill="white"/>
+  </g>
+</svg>
