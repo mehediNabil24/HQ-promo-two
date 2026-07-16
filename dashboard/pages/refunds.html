@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard — HQ Promo</title>
+    <title>Refunds — HQ Promo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link
@@ -19,7 +19,6 @@
   </head>
   <body class="dash-page">
     <div class="dash-shell d-flex">
-      <!-- Sidebar -->
       <aside
         class="dash-sidebar flex-shrink-0"
         aria-label="Dashboard navigation"
@@ -90,7 +89,7 @@
             <div class="collapse show" id="navOrderServices">
               <ul class="dash-nav__list list-unstyled mb-0">
                 <li>
-                  <a class="dash-nav__link is-active" href="../pages/neworder/neworder.html">
+                  <a class="dash-nav__link" href="neworder/neworder.html">
                     <iconify-icon
                       icon="mdi:cart-outline"
                       width="24"
@@ -110,7 +109,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="#">
+                  <a class="dash-nav__link" href="my-orders.html">
                     <iconify-icon
                       icon="solar:box-linear"
                       width="24"
@@ -130,7 +129,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="#">
+                  <a class="dash-nav__link" href="dashboard-services.html">
                     <iconify-icon
                       icon="mdi:cog-outline"
                       width="24"
@@ -140,7 +139,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="#">
+                  <a class="dash-nav__link" href="tickets.html">
                     <iconify-icon
                       icon="solar:headphones-round-linear"
                       width="24"
@@ -183,7 +182,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="../pages/refunds.html">
+                  <a class="dash-nav__link is-active" href="refunds.html">
                     <iconify-icon
                       icon="solar:undo-left-round-linear"
                       width="24"
@@ -203,7 +202,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="#">
+                  <a class="dash-nav__link" href="subscriptions.html">
                     <iconify-icon
                       icon="ph:arrows-left-right"
                       width="24"
@@ -246,7 +245,7 @@
                   </a>
                 </li>
                 <li>
-                  <a class="dash-nav__link" href="../pages/updates.html">
+                  <a class="dash-nav__link" href="updates.html">
                     <iconify-icon
                       icon="solar:refresh-linear"
                       width="24"
@@ -271,7 +270,6 @@
         <iconify-icon icon="mdi:chevron-left" width="16" height="16" aria-hidden="true"></iconify-icon>
       </button>
 
-      <!-- Main -->
       <div class="dash-content flex-grow-1 min-w-0 d-flex flex-column">
         <header
           class="dash-header d-flex align-items-center justify-content-between"
@@ -290,14 +288,13 @@
               ></iconify-icon>
             </button>
             <div class="dash-header__title d-flex align-items-center gap-2">
-              <!-- Page title slot -->
               <iconify-icon
                 class="dash-header__title-icon"
-                icon="mdi:view-dashboard-outline"
+                icon="solar:undo-left-round-linear"
                 width="24"
                 height="24"
               ></iconify-icon>
-              <span>Dashboard</span>
+              <span>Refunds</span>
             </div>
           </div>
 
@@ -373,13 +370,14 @@
                   width="32"
                   height="32"
                 />
-                                <span
+                <span
                   class="theme-toggle__icon theme-toggle__icon--dark"
                   aria-hidden="true"
                 >
                   <iconify-icon
                     icon="ph:moon-fill"
-                    width="20" height="20"
+                    width="20"
+                    height="20"
                   ></iconify-icon>
                 </span>
               </span>
@@ -455,7 +453,309 @@
         </header>
 
         <main class="dash-main flex-grow-1">
-          <!-- Page content slot: insert each dashboard page body here -->
+          <section class="dash-orders-page">
+            <div class="dash-orders-intro">
+              <h1 class="dash-orders-intro__title">Refunds</h1>
+              <p class="dash-orders-intro__text">
+                Refund details are available for the past 90 days.
+              </p>
+            </div>
+
+            <div class="dash-orders-toolbar">
+              <div
+                class="dash-orders-filters"
+                role="group"
+                aria-label="Refund filters"
+              >
+                <button class="dash-orders-filter is-active" type="button">
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon
+                      icon="stash:filter-duotone"
+                      width="24"
+                      height="24"
+                    ></iconify-icon>
+                  </span>
+                  <span>All</span>
+                </button>
+                <button class="dash-orders-filter" type="button">
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon
+                      icon="material-symbols:avg-time-outline-rounded"
+                      width="24"
+                      height="24"
+                    ></iconify-icon>
+                  </span>
+                  <span>Partial</span>
+                </button>
+                <button class="dash-orders-filter" type="button">
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon
+                      icon="material-symbols:cancel-outline-rounded"
+                      width="24"
+                      height="24"
+                    ></iconify-icon>
+                  </span>
+                  <span>Cancelled</span>
+                </button>
+                <button class="dash-orders-filter" type="button">
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon
+                      icon="lets-icons:done-ring-round"
+                      width="24"
+                      height="24"
+                    ></iconify-icon>
+                  </span>
+                  <span>Completed</span>
+                </button>
+              </div>
+
+              <label class="dash-orders-search" aria-label="Search refunds">
+                <iconify-icon
+                  class="dash-orders-search__icon"
+                  icon="ic:round-search"
+                  width="20"
+                  height="20"
+                ></iconify-icon>
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Type services ID"
+                />
+              </label>
+            </div>
+
+            <div class="dash-orders-card card border-0">
+              <div class="dash-orders-table-wrap">
+                <table class="dash-orders-table dash-refunds-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <div class="dash-orders-select">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            aria-label="Select all refunds"
+                          />
+                          <span>Order Id</span>
+                          <button
+                            class="dash-orders-copy-btn"
+                            type="button"
+                            aria-label="Copy order IDs"
+                          >
+                            <iconify-icon
+                              icon="mdi:content-copy"
+                              width="12"
+                              height="12"
+                            ></iconify-icon>
+                          </button>
+                        </div>
+                      </th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Charge</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="dash-orders-select">
+                          <input class="form-check-input" type="checkbox" />
+                          <span>8751</span>
+                        </div>
+                      </td>
+                      <td>20/02/2024 02:28:45</td>
+                      <td>$41.25</td>
+                      <td>
+                        <span class="dash-orders-status dash-orders-status--completed"
+                          >Completed</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <nav class="dash-orders-pagination" aria-label="Refunds pagination">
+              <button class="dash-orders-pagination__btn dash-orders-pagination__btn--nav" type="button">
+                <iconify-icon icon="mdi:triangle-small-left" width="10" height="10" aria-hidden="true"></iconify-icon>
+                <span>Back</span>
+              </button>
+              <button class="dash-orders-pagination__btn" type="button">1</button>
+              <button class="dash-orders-pagination__btn is-active" type="button" aria-current="page">2</button>
+              <button class="dash-orders-pagination__btn" type="button">3</button>
+              <button class="dash-orders-pagination__btn" type="button">4</button>
+              <button class="dash-orders-pagination__btn dash-orders-pagination__btn--nav is-active" type="button">
+                <span>Next</span>
+                <iconify-icon icon="mdi:triangle-small-right" width="10" height="10" aria-hidden="true"></iconify-icon>
+              </button>
+            </nav>
+          </section>
         </main>
       </div>
     </div>
