@@ -2,8 +2,7 @@
   "use strict";
 
   const THEME_KEY = "hqpromo-theme";
-  const passwordInput = document.getElementById("password");
-  const passwordToggle = document.querySelector("[data-password-toggle]");
+  const passwordToggles = document.querySelectorAll("[data-password-toggle]");
   const navToggle = document.querySelector("[data-nav-toggle]");
   const mobileNav = document.getElementById("mobileNav");
   const form = document.getElementById("signin");
@@ -50,7 +49,15 @@
     });
   });
 
-  if (passwordToggle && passwordInput) {
+  passwordToggles.forEach((passwordToggle) => {
+    const wrap = passwordToggle.closest(".sign-in-field__input-wrap, .auth-input");
+    const passwordInput = wrap
+      ? wrap.querySelector('input[type="password"], input[type="text"]')
+      : document.getElementById("password");
+    if (!passwordInput) return;
+
+    const eyeIcons = passwordToggle.querySelectorAll("[data-eye-icon], img");
+
     passwordToggle.addEventListener("click", () => {
       const isHidden = passwordInput.type === "password";
       passwordInput.type = isHidden ? "text" : "password";
@@ -60,8 +67,28 @@
         isHidden ? "Hide password" : "Show password"
       );
       passwordToggle.classList.toggle("is-visible", isHidden);
+
+      eyeIcons.forEach((eyeIcon) => {
+        const current = eyeIcon.getAttribute("src") || "";
+        if (
+          !/eye-off/i.test(current) &&
+          !/eye\.svg/i.test(current) &&
+          !/eye-light\.svg/i.test(current)
+        ) {
+          return;
+        }
+        if (isHidden) {
+          eyeIcon.src = current
+            .replace(/eye-off-light\.svg$/i, "eye-light.svg")
+            .replace(/eye-off\.svg$/i, "eye.svg");
+        } else {
+          eyeIcon.src = current
+            .replace(/eye-light\.svg$/i, "eye-off-light.svg")
+            .replace(/eye\.svg$/i, "eye-off.svg");
+        }
+      });
     });
-  }
+  });
 
   if (navToggle && mobileNav) {
     const setNavOpen = (open) => {
