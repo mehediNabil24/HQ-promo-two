@@ -393,7 +393,7 @@ a {
 }
 
 .theme-toggle__icon--dark {
-  opacity: 0;
+  display: none;
 }
 
 .theme-toggle.is-dark .theme-toggle__thumb {
@@ -406,10 +406,6 @@ a {
 }
 
 .theme-toggle.is-dark .theme-toggle__icon--light {
-  opacity: 0;
-}
-
-.theme-toggle.is-dark .theme-toggle__icon--dark {
   opacity: 1;
 }
 
@@ -8051,13 +8047,18 @@ html[data-theme="dark"] .contact-map__pin-address {
 
 @media (max-width: 767.98px) {
   .dash-platform-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .dash-platform-tabs .platform-tab {
     font-size: 14px;
     min-height: 52px;
-    padding: 8px 10px;
+    padding: 8px;
+    gap: 0;
+  }
+
+  .dash-platform-tabs .platform-tab__label {
+    display: none;
   }
 
   .dash-stat .card-body {
@@ -8103,15 +8104,18 @@ html[data-theme="dark"] .contact-map__pin-address {
 
 @media (max-width: 575.98px) {
   .dash-platform-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 10px;
   }
 
   .dash-platform-tabs .platform-tab {
-    font-size: 13px;
     min-height: 48px;
     padding: 8px;
-    gap: 6px;
+    gap: 0;
+  }
+
+  .dash-platform-tabs .platform-tab__label {
+    display: none;
   }
 
   .dash-header {
