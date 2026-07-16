@@ -1079,6 +1079,35 @@
     });
   }
 
+  const ticketFilterToggle = document.querySelector("[data-ticket-filter-toggle]");
+  if (ticketFilterToggle) {
+    ticketFilterToggle.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-ticket-filter]");
+      if (!btn || !ticketFilterToggle.contains(btn)) return;
+
+      ticketFilterToggle
+        .querySelectorAll("[data-ticket-filter]")
+        .forEach((item) => {
+          item.classList.toggle("is-active", item === btn);
+        });
+    });
+  }
+
+  const ticketPagination = document.querySelector("[data-ticket-pagination]");
+  if (ticketPagination) {
+    ticketPagination.addEventListener("click", (event) => {
+      const pageBtn = event.target.closest("[data-ticket-page]");
+      if (!pageBtn || !ticketPagination.contains(pageBtn)) return;
+
+      ticketPagination
+        .querySelectorAll("[data-ticket-page]")
+        .forEach((item) => {
+          item.classList.toggle("is-active", item === pageBtn);
+          item.toggleAttribute("aria-current", item === pageBtn);
+        });
+    });
+  }
+
   const dashSidebarToggle = document.querySelector("[data-dash-sidebar-toggle]");
   const dashSidebarBackdrop = document.querySelector("[data-dash-sidebar-backdrop]");
   const dashPage = document.querySelector(".dash-page");
