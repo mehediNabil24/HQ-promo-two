@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HqPromo — Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat+Alternates:wght@600&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("hqpromo-theme");
+          if (theme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            document.documentElement.classList.add("theme-dark");
+          } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            document.documentElement.classList.remove("theme-dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  </head>
+  <body class="sign-in-page">
+    <div class="sign-in-layout">
+      <div class="sign-in-form-side">
+        <div class="sign-in-form-wrapper">
+          <div class="sign-in-header">
+            <img
+              src="assets/sign-in/logo-light.png"
+              alt="HqPromo"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--light"
+            />
+            <img
+              src="assets/sign-in/logo.png"
+              alt="HqPromo"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--dark"
+            />
+            <div class="sign-in-header__text">
+              <h1 class="sign-in-header__title">Sign in your Account</h1>
+              <p class="sign-in-header__subtitle">
+                Welcome back! Please enter your details.
+              </p>
+            </div>
+          </div>
+
+          <div class="sign-in-tabs">
+            <a href="sign-in.html" class="sign-in-tab sign-in-tab--active">
+              <img
+                class="si-icon--light"
+                src="assets/sign-in/lock-light.svg"
+                alt=""
+                width="19"
+                height="19"
+              />
+              <img
+                class="si-icon--dark"
+                src="assets/sign-in/lock.svg"
+                alt=""
+                width="19"
+                height="19"
+              />
+              <span class="sign-in-tab__label">Sign In</span>
+            </a>
+            <a href="sign-up.html" class="sign-in-tab">
+              <img
+                class="si-icon--light"
+                src="assets/sign-in/user-light.svg"
+                alt=""
+                width="19"
+                height="19"
+              />
+              <img
+                class="si-icon--dark"
+                src="assets/sign-in/user.svg"
+                alt=""
+                width="19"
+                height="19"
+              />
+              <span class="sign-in-tab__label">Sign Up</span>
+            </a>
+          </div>
+
+          <form class="sign-in-form" autocomplete="off">
+            <div class="sign-in-form__fields">
+              <div class="sign-in-field">
+                <label class="sign-in-field__label" for="username">
+                  User Name
+                </label>
+                <div class="sign-in-field__input-wrap">
+                  <img
+                    class="sign-in-field__icon si-icon--light"
+                    src="assets/sign-in/user-field-light.svg"
+                    alt=""
+                    width="19"
+                    height="19"
+                  />
+                  <img
+                    class="sign-in-field__icon si-icon--dark"
+                    src="assets/sign-in/user-field.svg"
+                    alt=""
+                    width="19"
+                    height="19"
+                  />
+                  <input
+                    class="sign-in-field__input"
+                    type="text"
+                    id="username"
+                    placeholder="user name"
+                    autocomplete="username"
+                  />
+                </div>
+              </div>
+
+              <div class="sign-in-field">
+                <label class="sign-in-field__label" for="password">
+                  Password
+                </label>
+                <div class="sign-in-field__input-wrap">
+                  <img
+                    class="sign-in-field__icon si-icon--light"
+                    src="assets/sign-in/password-light.svg"
+                    alt=""
+                    width="21"
+                    height="21"
+                  />
+                  <img
+                    class="sign-in-field__icon si-icon--dark"
+                    src="assets/sign-in/password.svg"
+                    alt=""
+                    width="21"
+                    height="21"
+                  />
+                  <input
+                    class="sign-in-field__input"
+                    type="password"
+                    id="password"
+                    placeholder="password"
+                    autocomplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    class="sign-in-field__toggle"
+                    aria-label="Toggle password visibility"
+                    data-password-toggle
+                  >
+                    <img
+                      class="si-icon--light"
+                      src="assets/sign-in/eye-off-light.svg"
+                      alt=""
+                      width="21"
+                      height="21"
+                      data-eye-icon
+                    />
+                    <img
+                      class="si-icon--dark"
+                      src="assets/sign-in/eye-off.svg"
+                      alt=""
+                      width="21"
+                      height="21"
+                      data-eye-icon
+                    />
+                  </button>
+                </div>
+              </div>
+
+              <div class="sign-in-options">
+                <label class="sign-in-checkbox">
+                  <input type="checkbox" class="sign-in-checkbox__input" />
+                  <span class="sign-in-checkbox__box"></span>
+                  <span class="sign-in-checkbox__text">Remember me</span>
+                </label>
+                <a href="reset-password.html" class="sign-in-forgot"
+                  >Forgot Password</a
+                >
+              </div>
+            </div>
+
+            <div class="sign-in-form__footer">
+              <div class="sign-in-actions">
+                <button type="submit" class="sign-in-btn sign-in-btn--primary">
+                  <img
+                    class="si-icon--light"
+                    src="assets/sign-in/lock-light.svg"
+                    alt=""
+                    width="19"
+                    height="19"
+                  />
+                  <img
+                    class="si-icon--dark"
+                    src="assets/sign-in/lock.svg"
+                    alt=""
+                    width="19"
+                    height="19"
+                  />
+                  Sign In
+                </button>
+                <button type="button" class="sign-in-btn sign-in-btn--google">
+                  <img
+                    src="assets/sign-in/google.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    class="sign-in-btn__google-icon"
+                  />
+                  <span class="sign-in-btn__label">Sign In</span>
+                </button>
+              </div>
+
+              <p class="sign-in-create">
+                Don't have an account?
+                <a href="sign-up.html" class="sign-in-create__link"
+                  >Create Account</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="sign-in-image-side">
+        <div class="sign-in-hero">
+          <img
+            src="assets/sign-in/subtract.svg"
+            alt=""
+            class="sign-in-hero__bg"
+          />
+          <img
+            src="assets/sign-in/hero-image.png"
+            alt="Sign in"
+            class="sign-in-hero__img"
+          />
+          <a href="index.html" class="sign-in-back">
+            <span class="sign-in-back__icon" aria-hidden="true">
+              <img
+                class="sign-in-back__icon-img--light"
+                src="assets/sign-in/arrow-back-light.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+              <img
+                class="sign-in-back__icon-img--dark"
+                src="assets/sign-in/arrow-back.svg"
+                alt=""
+                width="28"
+                height="28"
+              />
+            </span>
+            <span class="sign-in-back__label">Back</span>
+          </a>
+          <div class="sign-in-trust">
+            <div class="sign-in-trust__avatars">
+              <img
+                src="assets/images/avatar-1.png"
+                alt=""
+                width="24"
+                height="24"
+                class="sign-in-trust__avatar"
+              />
+              <img
+                src="assets/images/avatar-2.png"
+                alt=""
+                width="24"
+                height="24"
+                class="sign-in-trust__avatar"
+              />
+              <img
+                src="assets/images/avatar-3.png"
+                alt=""
+                width="24"
+                height="24"
+                class="sign-in-trust__avatar"
+              />
+              <img
+                src="assets/images/avatar-4.png"
+                alt=""
+                width="24"
+                height="24"
+                class="sign-in-trust__avatar"
+              />
+            </div>
+            <p class="sign-in-trust__text">Satisfied Clients in HQ Promo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
