@@ -8,23 +8,23 @@
   const form = document.getElementById("signin");
   const themeToggles = document.querySelectorAll("[data-theme-toggle]");
 
-  const POLYGON_LIGHT = "assets/icons/polygon.svg";
-  const POLYGON_DARK = "assets/icons/polygon-dark.svg";
-
   const syncPlatformPolygons = () => {
     const isDark =
       document.documentElement.getAttribute("data-theme") === "dark";
     document.querySelectorAll(".platform-tab").forEach((tab) => {
       const img = tab.querySelector(".platform-tab__polygon");
       if (!img) return;
+      const current = img.getAttribute("src") || "";
+      const slash = current.lastIndexOf("/");
+      const dir = slash >= 0 ? current.slice(0, slash + 1) : "";
       if (!isDark) {
-        img.src = POLYGON_LIGHT;
+        img.src = dir + "polygon.svg";
         return;
       }
       // Dark mode: solid white on active tabs, subtle white on inactive
-      img.src = tab.classList.contains("is-active")
-        ? POLYGON_LIGHT
-        : POLYGON_DARK;
+      img.src = dir + (tab.classList.contains("is-active")
+        ? "polygon.svg"
+        : "polygon-dark.svg");
     });
   };
 
@@ -1048,5 +1048,150 @@
     });
 
     renderDiffDeck();
+  }
+
+  /* Dashboard: New Order page */
+  const dashPlatformTabs = document.querySelector("[data-dash-platform-tabs]");
+  if (dashPlatformTabs) {
+    dashPlatformTabs.addEventListener("click", (event) => {
+      const tab = event.target.closest(".platform-tab");
+      if (!tab || !dashPlatformTabs.contains(tab)) return;
+
+      dashPlatformTabs.querySelectorAll(".platform-tab").forEach((button) => {
+        const active = button === tab;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+
+      syncPlatformPolygons();
+    });
+  }
+
+  const orderTypeToggle = document.querySelector("[data-order-type-toggle]");
+  if (orderTypeToggle) {
+    orderTypeToggle.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-order-type]");
+      if (!btn || !orderTypeToggle.contains(btn)) return;
+
+      orderTypeToggle.querySelectorAll("[data-order-type]").forEach((item) => {
+        item.classList.toggle("is-active", item === btn);
+      });
+    });
+  }
+
+  const dashSidebarToggle = document.querySelector("[data-dash-sidebar-toggle]");
+  const dashSidebarBackdrop = document.querySelector("[data-dash-sidebar-backdrop]");
+  const dashPage = document.querySelector(".dash-page");
+
+  const setDashSidebarOpen = (open) => {
+    if (!dashPage) return;
+    dashPage.classList.toggle("is-sidebar-open", open);
+    if (dashSidebarBackdrop) dashSidebarBackdrop.hidden = !open;
+    if (dashSidebarToggle) {
+      dashSidebarToggle.setAttribute("aria-expanded", String(open));
+    }
+  };
+
+  dashSidebarToggle?.addEventListener("click", () => {
+    setDashSidebarOpen(!dashPage?.classList.contains("is-sidebar-open"));
+  });
+
+  dashSidebarBackdrop?.addEventListener("click", () => setDashSidebarOpen(false));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && dashPage?.classList.contains("is-sidebar-open")) {
+      setDashSidebarOpen(false);
+    }
+  });
+
+  /* Dashboard: currency switcher */
+  const dashCurrencyAmount = document.querySelector("[data-dash-currency-amount]");
+  const dashCurrencyOptions = document.querySelectorAll("[data-dash-currency]");
+
+  dashCurrencyOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const symbol = option.getAttribute("data-dash-currency-symbol") || "$";
+
+      dashCurrencyOptions.forEach((item) => {
+        item.classList.toggle("is-accent", item === option);
+      });
+
+      if (dashCurrencyAmount) {
+        const value = dashCurrencyAmount.textContent.replace(/^[^\d]*/, "");
+        dashCurrencyAmount.textContent = `${symbol}${value}`;
+      }
+    });
+  });
+
+  /* Dashboard: Select2 for Category / Service */
+  if (typeof jQuery !== "undefined" && typeof jQuery.fn.select2 === "function") {
+    const $ = jQuery;
+    const $dashSelects = $("[data-dash-select2]");
+
+    if ($dashSelects.length) {
+      const escapeHtml = (value) =>
+        String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+
+      const formatCategoryOption = (option) => {
+        if (!option.id) return option.text;
+
+        const icon = $(option.element).data("icon");
+        const text = escapeHtml(option.text);
+
+        if (!icon) return option.text;
+
+        return $(
+          `<span class="dash-select2-option">
+            <img class="dash-select2-option__icon" src="${escapeHtml(icon)}" alt="" width="32" height="32" />
+            <span class="dash-select2-option__text">${text}</span>
+          </span>`
+        );
+      };
+
+      const formatServiceOption = (option) => {
+        if (!option.id) return option.text;
+
+        const id = escapeHtml(option.id);
+        const text = escapeHtml(option.text);
+
+        return $(
+          `<span class="dash-select2-option">
+            <span class="dash-select2-option__badge">${id}</span>
+            <span class="dash-select2-option__text">${text}</span>
+          </span>`
+        );
+      };
+
+      $dashSelects.each(function () {
+        const $select = $(this);
+        const $wrap = $select.closest(".dash-select-wrap");
+        const withIcon = $select.is("[data-dash-select2-icon]");
+        const withService = $select.is("[data-dash-select2-service]");
+
+        const options = {
+          width: "100%",
+          dropdownParent: $wrap.length ? $wrap : $(document.body),
+          minimumResultsForSearch: Infinity,
+        };
+
+        if (withIcon) {
+          options.templateResult = formatCategoryOption;
+          options.templateSelection = formatCategoryOption;
+          options.escapeMarkup = (markup) => markup;
+        }
+
+        if (withService) {
+          options.templateResult = formatServiceOption;
+          options.templateSelection = formatServiceOption;
+          options.escapeMarkup = (markup) => markup;
+        }
+
+        $select.select2(options);
+      });
+    }
   }
 })();
