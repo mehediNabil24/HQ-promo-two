@@ -8,6 +8,11 @@
   const form = document.getElementById("signin");
   const themeToggles = document.querySelectorAll("[data-theme-toggle]");
 
+  const POLYGON_LIGHT = "assets/icons/polygon.svg";
+  const POLYGON_DARK = "assets/icons/polygon-dark.svg";
+  const PROCESS_POLYGON_ACTIVE = "assets/process/polygon-active.svg";
+  const PROCESS_POLYGON_ACTIVE_DARK = "assets/process/polygon-active-dark.svg";
+
   const syncPlatformPolygons = () => {
     const isDark =
       document.documentElement.getAttribute("data-theme") === "dark";
@@ -28,12 +33,21 @@
     });
   };
 
+  const syncProcessPolygons = () => {
+    const isDark =
+      document.documentElement.getAttribute("data-theme") === "dark";
+    document.querySelectorAll(".process__icon-bg--active").forEach((img) => {
+      img.src = isDark ? PROCESS_POLYGON_ACTIVE_DARK : PROCESS_POLYGON_ACTIVE;
+    });
+  };
+
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle("theme-dark", isDark);
 
     syncPlatformPolygons();
+    syncProcessPolygons();
 
     themeToggles.forEach((toggle) => {
       const label = toggle.querySelector("[data-theme-label]");
@@ -1194,4 +1208,18 @@
       });
     }
   }
+
+  // Process steps: move active state on hover
+  const processSteps = document.querySelectorAll(".process__step");
+  const processStepsContainer = document.querySelector(".process__steps");
+  processSteps.forEach((step) => {
+    step.addEventListener("mouseenter", () => {
+      processSteps.forEach((s) => s.classList.remove("process__step--active"));
+      step.classList.add("process__step--active");
+    });
+  });
+  processStepsContainer?.addEventListener("mouseleave", () => {
+    processSteps.forEach((s) => s.classList.remove("process__step--active"));
+    processSteps[0]?.classList.add("process__step--active");
+  });
 })();
