@@ -37,9 +37,9 @@ html {
   --shadow-card: 0 4px 4px rgba(0, 0, 0, 0.1);
   --page-max: 1440px;
   --scrollbar-size: 6px;
-  --scrollbar-track: transparent;
-  --scrollbar-thumb: rgba(24, 24, 24, 0.2);
-  --scrollbar-thumb-hover: rgba(24, 24, 24, 0.36);
+  --scrollbar-track: #efe8e0;
+  --scrollbar-thumb: rgba(244, 123, 32, 0.45);
+  --scrollbar-thumb-hover: rgba(244, 123, 32, 0.7);
 }
 
 html[data-theme="dark"] {
@@ -52,8 +52,9 @@ html[data-theme="dark"] {
   --color-page: #0b0b0b;
   --shadow-header: 0 4px 24px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --scrollbar-thumb: rgba(255, 255, 255, 0.22);
-  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.38);
+  --scrollbar-track: #242424;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.28);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.45);
 }
 
 html[data-theme="dark"] .theme-toggle__track {
@@ -422,33 +423,60 @@ body {
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-/* Minimal scrollbars (page + overflow sections) */
+/* Minimal scrollbars
+   NOTE: Do NOT set ::-webkit-scrollbar width/height on `*` or html/body.
+   That forces a classic (non-overlay) gutter; with a transparent track it
+   looks like empty blank space on the right. */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-*::-webkit-scrollbar {
+.dash-sidebar,
+.dash-orders-table-wrap,
+.dash-ticket-list-wrap,
+.dash-select-wrap .select2-results__options {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.dash-sidebar::-webkit-scrollbar,
+.dash-orders-table-wrap::-webkit-scrollbar,
+.dash-ticket-list-wrap::-webkit-scrollbar,
+.dash-select-wrap .select2-results__options::-webkit-scrollbar {
   width: var(--scrollbar-size);
   height: var(--scrollbar-size);
 }
 
-*::-webkit-scrollbar-track {
+.dash-sidebar::-webkit-scrollbar-track,
+.dash-orders-table-wrap::-webkit-scrollbar-track,
+.dash-ticket-list-wrap::-webkit-scrollbar-track,
+.dash-select-wrap .select2-results__options::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
+  border-radius: 999px;
 }
 
-*::-webkit-scrollbar-thumb {
+.dash-sidebar::-webkit-scrollbar-thumb,
+.dash-orders-table-wrap::-webkit-scrollbar-thumb,
+.dash-ticket-list-wrap::-webkit-scrollbar-thumb,
+.dash-select-wrap .select2-results__options::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
-*::-webkit-scrollbar-thumb:hover {
+.dash-sidebar::-webkit-scrollbar-thumb:hover,
+.dash-orders-table-wrap::-webkit-scrollbar-thumb:hover,
+.dash-ticket-list-wrap::-webkit-scrollbar-thumb:hover,
+.dash-select-wrap .select2-results__options::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-thumb-hover);
 }
 
-*::-webkit-scrollbar-corner {
+.dash-sidebar::-webkit-scrollbar-corner,
+.dash-orders-table-wrap::-webkit-scrollbar-corner,
+.dash-ticket-list-wrap::-webkit-scrollbar-corner,
+.dash-select-wrap .select2-results__options::-webkit-scrollbar-corner {
   background: transparent;
 }
 
@@ -8521,6 +8549,8 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
 /* ===== Dashboard / New Order ===== */
 .dash-page {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
   background: var(--color-page);
   font-family: var(--font-sans);
   color: var(--color-black);
@@ -8528,7 +8558,11 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
 
 .dash-shell {
   position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  overflow-x: clip;
   --dash-sidebar-width: 300px;
 }
 
@@ -8560,6 +8594,7 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
   justify-content: center;
   width: 32px;
   height: 32px;
+  margin: 0;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -8569,6 +8604,9 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
   transform: translate(-50%, -50%);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: left 0.25s ease, transform 0.25s ease;
+  /* Keep out of flex layout sizing */
+  flex: 0 0 0;
+  overflow: visible;
 }
 
 .dash-sidebar-edge-toggle img {
@@ -8581,9 +8619,11 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
 .dash-page.is-sidebar-collapsed .dash-sidebar {
   width: 0;
   min-width: 0;
-  padding-left: 0;
-  padding-right: 0;
-  border-right-width: 0;
+  max-width: 0;
+  flex: 0 0 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
   opacity: 0;
   pointer-events: none;
 }
@@ -8790,7 +8830,10 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
 }
 
 .dash-content {
+  flex: 1 1 0%;
   min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
   background: var(--color-page);
 }
 
@@ -10730,6 +10773,8 @@ html[data-theme="dark"] .dash-ticket-chat__bubble--customer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .dash-orders-intro {
