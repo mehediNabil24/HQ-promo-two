@@ -670,7 +670,122 @@
 
         <div class="services__plans" data-service-plans>
           <div class="swiper plans-swiper" data-plans-swiper>
-            <div class="swiper-wrapper" data-plans-wrapper></div>
+            <div class="swiper-wrapper" data-plans-wrapper>
+              <div class="swiper-slide">
+                <article class="plan-card">
+                  <div class="plan-card__noise" aria-hidden="true"></div>
+                  <div class="plan-card__body">
+                    <div class="plan-card__brand">
+                      <img
+                        class="plan-card__logo"
+                        src="assets/platforms/twitter-x.png"
+                        alt=""
+                        width="48"
+                        height="48"
+                        data-plan-icon
+                      />
+                      <h3 class="plan-card__name" data-plan-name>Twitter</h3>
+                    </div>
+                    <div class="plan-card__meta">
+                      <div class="plan-card__rating">
+                        <div class="plan-card__stars" aria-hidden="true">
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                        </div>
+                        <span>(2,725)</span>
+                      </div>
+                      <p class="plan-card__price">$189.95 per month</p>
+                    </div>
+                    <ul class="plan-card__features" data-plan-features>
+                      <li>500 followers</li>
+                      <li>500 Likes</li>
+                      <li>500 Retweets</li>
+                    </ul>
+                  </div>
+                  <a class="plan-card__cta" href="#">Buy now</a>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="plan-card plan-card--popular">
+                  <span class="plan-card__badge">Popular</span>
+                  <div class="plan-card__noise" aria-hidden="true"></div>
+                  <div class="plan-card__body">
+                    <div class="plan-card__brand">
+                      <img
+                        class="plan-card__logo"
+                        src="assets/platforms/twitter-x.png"
+                        alt=""
+                        width="48"
+                        height="48"
+                        data-plan-icon
+                      />
+                      <h3 class="plan-card__name" data-plan-name>Twitter</h3>
+                    </div>
+                    <div class="plan-card__meta">
+                      <div class="plan-card__rating">
+                        <div class="plan-card__stars" aria-hidden="true">
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                        </div>
+                        <span>(2,725)</span>
+                      </div>
+                      <p class="plan-card__price">$189.95 per month</p>
+                    </div>
+                    <ul class="plan-card__features" data-plan-features>
+                      <li>2,000 followers</li>
+                      <li>2,000 Likes</li>
+                      <li>2,000 Retweets</li>
+                    </ul>
+                  </div>
+                  <a class="plan-card__cta" href="#">Buy now</a>
+                </article>
+              </div>
+
+              <div class="swiper-slide">
+                <article class="plan-card">
+                  <div class="plan-card__noise" aria-hidden="true"></div>
+                  <div class="plan-card__body">
+                    <div class="plan-card__brand">
+                      <img
+                        class="plan-card__logo"
+                        src="assets/platforms/twitter-x.png"
+                        alt=""
+                        width="48"
+                        height="48"
+                        data-plan-icon
+                      />
+                      <h3 class="plan-card__name" data-plan-name>Twitter</h3>
+                    </div>
+                    <div class="plan-card__meta">
+                      <div class="plan-card__rating">
+                        <div class="plan-card__stars" aria-hidden="true">
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon icon="mdi:star" width="20" height="20"></iconify-icon>
+                          <iconify-icon class="is-muted" icon="mdi:star" width="20" height="20"></iconify-icon>
+                        </div>
+                        <span>(2,725)</span>
+                      </div>
+                      <p class="plan-card__price">$189.95 per month</p>
+                    </div>
+                    <ul class="plan-card__features" data-plan-features>
+                      <li>5,000 followers</li>
+                      <li>5,000 Likes</li>
+                      <li>5,000 Retweets</li>
+                    </ul>
+                  </div>
+                  <a class="plan-card__cta" href="#">Buy now</a>
+                </article>
+              </div>
+            </div>
             <div
               class="swiper-pagination plans-swiper__pagination"
               aria-label="Service plan pages"
@@ -1122,7 +1237,10 @@
           </button>
         </div>
 
-        <article class="platform-panel" data-platform-panel>
+        <article
+          class="platform-panel"
+          data-platform-panel="facebook"
+        >
           <div class="platform-panel__visual">
             <img
               class="platform-panel__image"
@@ -1130,13 +1248,12 @@
               alt=""
               width="319"
               height="441"
-              data-panel-image
             />
           </div>
           <div class="platform-panel__content">
             <div class="platform-panel__copy">
-              <h3 class="platform-panel__title" data-panel-title>Facebook SMM Panel</h3>
-              <p class="platform-panel__text" data-panel-text>
+              <h3 class="platform-panel__title">Facebook SMM Panel</h3>
+              <p class="platform-panel__text">
                 Facebook is still the biggest social media platform in Bangladesh with
                 millions of active users. Our Facebook SMM Panel helps you increase page
                 likes, post engagement, and video views quickly. It is perfect for
@@ -1145,8 +1262,415 @@
                 services.
               </p>
             </div>
-            <a class="platform-panel__cta btn-gradient" href="#" data-panel-cta>
+            <a class="platform-panel__cta btn-gradient" href="#">
               <span>View Facebook Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="instagram"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Instagram SMM Panel</h3>
+              <p class="platform-panel__text">
+                Instagram is where brands and creators build visual trust. Our Instagram
+                SMM Panel helps you grow followers, likes, comments, and reel views with
+                steady delivery. Ideal for fashion, food, lifestyle, and local businesses
+                that want more profile visits and stronger engagement on every post.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Instagram Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="twitter"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">X (Twitter) SMM Panel</h3>
+              <p class="platform-panel__text">
+                X is built for fast conversations and trending topics. Our Twitter SMM
+                Panel helps you boost followers, likes, and retweets so your posts reach
+                more people. Great for news pages, startups, influencers, and campaigns
+                that need quick visibility and social proof.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Twitter Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="youtube"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">YouTube SMM Panel</h3>
+              <p class="platform-panel__text">
+                YouTube rewards watch time and consistent growth. Our YouTube SMM Panel
+                helps you increase subscribers, likes, and views so your channel looks
+                active and trustworthy. Perfect for educators, gamers, brands, and
+                creators who want stronger ranking and more returning viewers.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View YouTube Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="tiktok"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">TikTok SMM Panel</h3>
+              <p class="platform-panel__text">
+                TikTok can turn one short video into massive reach. Our TikTok SMM Panel
+                helps you grow followers, likes, and views with reliable delivery. Built
+                for creators, shops, and agencies that want more discoverability, faster
+                momentum, and a stronger profile presence.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View TikTok Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="linkedin"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">LinkedIn SMM Panel</h3>
+              <p class="platform-panel__text">
+                LinkedIn is the go-to network for professionals and B2B brands. Our
+                LinkedIn SMM Panel helps you grow followers, post likes, and comments to
+                build authority. Ideal for companies, consultants, and recruiters who want
+                more profile credibility and better content reach.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View LinkedIn Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="telegram"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Telegram SMM Panel</h3>
+              <p class="platform-panel__text">
+                Telegram communities grow through members and active channels. Our
+                Telegram SMM Panel helps you increase members, post views, and reactions
+                so your channel feels lively. Perfect for news updates, crypto groups,
+                support communities, and brand announcements.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Telegram Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="discord"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Discord SMM Panel</h3>
+              <p class="platform-panel__text">
+                Discord servers thrive on active members and social proof. Our Discord
+                SMM Panel helps you grow members, boosts, and reactions to make your
+                community look established. Great for gaming, SaaS, creator hubs, and
+                product launches that need a stronger first impression.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Discord Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="spotify"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Spotify SMM Panel</h3>
+              <p class="platform-panel__text">
+                Spotify growth depends on plays, saves, and followers. Our Spotify SMM
+                Panel helps artists and labels increase streams and profile followers with
+                simple ordering. Ideal for new releases, playlist pushes, and campaigns
+                that need early momentum on tracks and albums.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Spotify Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="soundcloud"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">SoundCloud SMM Panel</h3>
+              <p class="platform-panel__text">
+                SoundCloud is where new music finds its first audience. Our SoundCloud
+                SMM Panel helps you boost plays, likes, and reposts so your tracks look
+                popular. Perfect for independent artists, producers, and promoters who
+                want more listens and stronger track engagement.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View SoundCloud Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="snapchat"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Snapchat SMM Panel</h3>
+              <p class="platform-panel__text">
+                Snapchat keeps audiences engaged with stories and quick views. Our
+                Snapchat SMM Panel helps you grow followers, views, and shares for better
+                reach. Built for creators, local brands, and campaigns that want more
+                attention on snaps and spotlight-style content.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Snapchat Services</span>
+              <img
+                class="platform-panel__cta-icon"
+                src="assets/about/arrow-right-double.svg"
+                alt=""
+                width="24"
+                height="24"
+              />
+            </a>
+          </div>
+        </article>
+
+        <article
+          class="platform-panel"
+          data-platform-panel="traffic"
+          hidden
+        >
+          <div class="platform-panel__visual">
+            <img
+              class="platform-panel__image"
+              src="assets/platform-services/panel-hero.png"
+              alt=""
+              width="319"
+              height="441"
+            />
+          </div>
+          <div class="platform-panel__content">
+            <div class="platform-panel__copy">
+              <h3 class="platform-panel__title">Website Traffic Panel</h3>
+              <p class="platform-panel__text">
+                Quality traffic helps your site look active and improves campaign
+                testing. Our Website Traffic Panel helps you send visits with flexible geo
+                and session options. Ideal for landing pages, product launches, and
+                marketers who need fast, measurable visitor volume.
+              </p>
+            </div>
+            <a class="platform-panel__cta btn-gradient" href="#">
+              <span>View Traffic Services</span>
               <img
                 class="platform-panel__cta-icon"
                 src="assets/about/arrow-right-double.svg"
@@ -1568,11 +2092,1475 @@
           <div
             class="client-reviews__track client-reviews__track--ltr"
             data-reviews-track="ltr"
-          ></div>
+          >
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 18, 3:20 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 25, 11:30 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-1.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-1.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 2, 4:15 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-2.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-2.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 10, 9:45 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 18, 1:05 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">March 1, 6:40 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 18, 3:20 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 25, 11:30 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-1.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-1.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 2, 4:15 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-2.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-2.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 10, 9:45 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 18, 1:05 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">March 1, 6:40 PM</time>
+                  </div>
+                </div>
+              </article>
+          </div>
           <div
             class="client-reviews__track client-reviews__track--rtl"
             data-reviews-track="rtl"
-          ></div>
+          >
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-1.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-1.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 2, 4:15 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-2.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-2.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 10, 9:45 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 18, 1:05 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">March 1, 6:40 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 18, 3:20 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 25, 11:30 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-1.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-1.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 2, 4:15 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-2.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-2.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 10, 9:45 AM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">February 18, 1:05 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-suit.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-suit.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">March 1, 6:40 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                data-review-poster="assets/reviews/media-thumbs.png"
+                data-review-avatar="assets/reviews/avatar-glasses.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-thumbs.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-glasses.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 18, 3:20 PM</time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="review-clip"
+                data-review-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+                data-review-poster="assets/reviews/media-office.png"
+                data-review-avatar="assets/reviews/avatar-office.png"
+                data-review-name="[Customer Name]"
+                data-review-role="[Role, City]"
+                data-review-text="Add a real customer testimonial here once available."
+              >
+                <div class="review-clip__media">
+                  <img src="assets/reviews/media-office.png" alt="" width="240" height="203" />
+                  <button class="review-clip__play" type="button" aria-label="Play customer review video">
+                    <img src="assets/reviews/play.svg" alt="" width="28" height="28" />
+                  </button>
+                </div>
+                <div class="review-clip__body">
+                  <img
+                    class="review-clip__quote"
+                    src="assets/reviews/quote.svg"
+                    alt=""
+                    width="85"
+                    height="74"
+                    aria-hidden="true"
+                  />
+                  <div class="review-clip__rating" aria-label="5 out of 5 stars">
+                    <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+              <img src="assets/reviews/star.svg" alt="" width="16" height="16" />
+                  </div>
+                  <p class="review-clip__text">Add a real customer testimonial here once available.</p>
+                  <hr class="review-clip__divider" aria-hidden="true" />
+                  <div class="review-clip__footer">
+                    <div class="review-clip__author">
+                      <img
+                        class="review-clip__avatar"
+                        src="assets/reviews/avatar-office.png"
+                        alt=""
+                        width="51"
+                        height="51"
+                      />
+                      <div class="review-clip__meta">
+                        <div class="review-clip__name-row">
+                          <p class="review-clip__name">[Customer Name]</p>
+                          <img
+                            class="review-clip__verified"
+                            src="assets/reviews/verified.svg"
+                            alt=""
+                            width="18"
+                            height="18"
+                          />
+                        </div>
+                        <p class="review-clip__role">[Role, City]</p>
+                      </div>
+                    </div>
+                    <time class="review-clip__date">January 25, 11:30 AM</time>
+                  </div>
+                </div>
+              </article>
+          </div>
         </div>
       </section>
 

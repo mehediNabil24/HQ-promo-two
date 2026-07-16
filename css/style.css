@@ -2344,6 +2344,10 @@ body.is-nav-open::before {
   border-radius: 24px;
 }
 
+.platform-panel[hidden] {
+  display: none;
+}
+
 .platform-panel__visual {
   position: relative;
   flex-shrink: 0;
