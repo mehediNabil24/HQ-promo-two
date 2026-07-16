@@ -1052,6 +1052,25 @@
     }
   });
 
+  /* Dashboard: currency switcher */
+  const dashCurrencyAmount = document.querySelector("[data-dash-currency-amount]");
+  const dashCurrencyOptions = document.querySelectorAll("[data-dash-currency]");
+
+  dashCurrencyOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+      const symbol = option.getAttribute("data-dash-currency-symbol") || "$";
+
+      dashCurrencyOptions.forEach((item) => {
+        item.classList.toggle("is-accent", item === option);
+      });
+
+      if (dashCurrencyAmount) {
+        const value = dashCurrencyAmount.textContent.replace(/^[^\d]*/, "");
+        dashCurrencyAmount.textContent = `${symbol}${value}`;
+      }
+    });
+  });
+
   /* Dashboard: Select2 for Category / Service */
   if (typeof jQuery !== "undefined" && typeof jQuery.fn.select2 === "function") {
     const $ = jQuery;

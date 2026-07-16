@@ -295,21 +295,59 @@
           </div>
 
           <div class="dash-header__actions d-flex align-items-center gap-2">
-            <button class="dash-wallet btn" type="button">
-              <span class="dash-wallet__icon" aria-hidden="true">
+            <div class="dropdown">
+              <button
+                class="dash-wallet btn"
+                type="button"
+                id="dashCurrencyMenu"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                data-bs-auto-close="true"
+                aria-expanded="false"
+                aria-label="Currency"
+              >
+                <span class="dash-wallet__icon" aria-hidden="true">
+                  <iconify-icon
+                    icon="mdi:wallet"
+                    width="14"
+                    height="14"
+                  ></iconify-icon>
+                </span>
+                <span class="dash-wallet__amount" data-dash-currency-amount
+                  >$0.00</span
+                >
                 <iconify-icon
-                  icon="mdi:wallet"
-                  width="14"
-                  height="14"
+                  icon="mdi:chevron-down"
+                  width="18"
+                  height="18"
                 ></iconify-icon>
-              </span>
-              <span class="dash-wallet__amount">$0.00</span>
-              <iconify-icon
-                icon="mdi:chevron-down"
-                width="18"
-                height="18"
-              ></iconify-icon>
-            </button>
+              </button>
+              <ul
+                class="dash-profile-menu dropdown-menu dropdown-menu-end"
+                aria-labelledby="dashCurrencyMenu"
+              >
+                <li>
+                  <button
+                    class="dash-profile-menu__link is-accent"
+                    type="button"
+                    data-dash-currency="USD"
+                    data-dash-currency-symbol="$"
+                  >
+                    USD
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="dash-profile-menu__link"
+                    type="button"
+                    data-dash-currency="EUR"
+                    data-dash-currency-symbol="€"
+                  >
+                    EUR
+                  </button>
+                </li>
+              </ul>
+            </div>
 
             <button
               class="theme-toggle"
@@ -353,24 +391,57 @@
               <span class="dash-notify__dot" aria-hidden="true"></span>
             </button>
 
-            <button
-              class="dash-user btn"
-              type="button"
-              aria-label="Account menu"
-            >
-              <img
-                class="dash-user__avatar rounded-circle"
-                src="../../../assets/dashboard/profile-pic.jpg"
-                alt=""
-                width="30"
-                height="30"
-              />
-              <iconify-icon
-                icon="mdi:chevron-down"
-                width="18"
-                height="18"
-              ></iconify-icon>
-            </button>
+            <div class="dropdown">
+              <button
+                class="dash-user btn"
+                type="button"
+                id="dashProfileMenu"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                data-bs-auto-close="true"
+                aria-expanded="false"
+                aria-label="Account menu"
+              >
+                <img
+                  class="dash-user__avatar rounded-circle"
+                  src="../../../assets/dashboard/profile-pic.jpg"
+                  alt=""
+                  width="30"
+                  height="30"
+                />
+                <iconify-icon
+                  icon="mdi:chevron-down"
+                  width="18"
+                  height="18"
+                ></iconify-icon>
+              </button>
+              <ul
+                class="dash-profile-menu dropdown-menu dropdown-menu-end"
+                aria-labelledby="dashProfileMenu"
+              >
+                <li>
+                  <a class="dash-profile-menu__link is-accent" href="#"
+                    >My Account</a
+                  >
+                </li>
+                <li>
+                  <a class="dash-profile-menu__link" href="#">Dashboard</a>
+                </li>
+                <li>
+                  <a class="dash-profile-menu__link" href="#">API</a>
+                </li>
+                <li>
+                  <a class="dash-profile-menu__link is-logout" href="#">
+                    <iconify-icon
+                      icon="heroicons-outline:logout"
+                      width="20"
+                      height="20"
+                    ></iconify-icon>
+                    <span>Log Out</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </header>
 
