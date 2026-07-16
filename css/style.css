@@ -91,7 +91,9 @@ html[data-theme="dark"] .platform-panel {
 }
 
 html[data-theme="dark"] .trust-badge {
-  background: rgba(0, 0, 0, 0.11);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 html[data-theme="dark"] .plan-card {
@@ -204,6 +206,30 @@ html[data-theme="dark"] .section-header__badge-text {
 
 html[data-theme="dark"] .payment-methods__logos img {
   content: url('../assets/payment/logos-group-dark.svg');
+}
+
+html[data-theme="dark"] .faq__tab.is-active {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .cta-banner__title,
+html[data-theme="dark"] .cta-banner__lead,
+html[data-theme="dark"] .cta-banner__btn {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .site-footer__social-title,
+html[data-theme="dark"] .site-footer__heading,
+html[data-theme="dark"] .site-footer__list a,
+html[data-theme="dark"] .site-footer__contact-list a,
+html[data-theme="dark"] .site-footer__contact-list span,
+html[data-theme="dark"] .site-footer__legal p,
+html[data-theme="dark"] .site-footer__logo span {
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .site-footer__list a:hover {
+  color: #f47b20;
 }
 
 html[data-theme="dark"] .process__step--active .process__card-title,
@@ -1857,7 +1883,7 @@ body.is-nav-open::before {
 
 @media (max-width: 1199.98px) {
   .platform-tabs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -1879,7 +1905,7 @@ body.is-nav-open::before {
   }
 
   .platform-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -1904,15 +1930,20 @@ body.is-nav-open::before {
     width: 18px;
     height: 18px;
   }
+
+  .platform-tab__label {
+    display: none;
+  }
 }
 
 @media (max-width: 575.98px) {
   .platform-tabs {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .platform-tab__label {
-    font-size: 16px;
+  .platform-tab {
+    min-height: 48px;
+    padding: 8px;
   }
 }
 
@@ -3070,7 +3101,10 @@ body.is-nav-open::before {
   padding: 0;
   border: 0;
   border-radius: 27px;
-  background: rgba(255, 255, 255, 0.12);
+  background: url('../assets/reviews/play-bg.svg') no-repeat center;
+  background-size: contain;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transform: translate(-50%, -50%);
   cursor: pointer;
 }
@@ -3700,6 +3734,62 @@ body.is-shorts-open .client-reviews__track {
     var(--color-white);
 }
 
+.faq-accordion__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.faq-accordion__arrow img {
+  width: 16px;
+  height: 16px;
+  display: block;
+  filter: invert(1);
+}
+
+html[data-theme="dark"] .faq-accordion__arrow img {
+  filter: none;
+}
+
+.faq-accordion__item:has(.accordion-collapse.show) .faq-accordion__arrow img {
+  transform: rotate(180deg);
+}
+
+html[data-theme="dark"] .faq-accordion__item {
+  background: radial-gradient(125.05% 57.76% at 36.17% 0%, rgba(202, 202, 202, 0.08) 0%, rgba(202, 202, 202, 0.00) 100%), #0D0D0D !important;
+  border-color: rgba(238, 238, 238, 0.12) !important;
+  box-shadow: 8.371px 2.21px 38.16px 0px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .faq-accordion__item:has(.accordion-collapse.show) {
+  background: radial-gradient(125.05% 57.76% at 36.17% 0%, rgba(202, 202, 202, 0.08) 0%, rgba(202, 202, 202, 0.00) 100%), #0D0D0D !important;
+}
+
+html[data-theme="dark"] .faq-accordion__item + .faq-accordion__item {
+  border-top-color: rgba(238, 238, 238, 0.12) !important;
+}
+
+html[data-theme="dark"] .faq-accordion__button {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .faq-accordion__body {
+  color: #c7c7c7;
+}
+
+html[data-theme="dark"] .faq-accordion__arrow {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 @media (max-width: 1199.98px) {
   .faq__tabs {
     gap: 12px;
@@ -4103,11 +4193,13 @@ body.is-shorts-open .client-reviews__track {
   font-weight: 500;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .site-footer__list a:hover {
-  color: var(--color-white);
+  color: #f47b20;
+  text-decoration: underline;
 }
 
 .site-footer__contact {
@@ -4164,11 +4256,9 @@ body.is-shorts-open .client-reviews__track {
   width: 100%;
   padding: 24px;
   border-radius: 20px;
-  background-color: transparent;
-  background-image: url("../assets/footer/site-footer__legal-bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-footer__legal p {
