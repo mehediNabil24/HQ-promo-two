@@ -10788,6 +10788,20 @@ html[data-theme='dark'] .dash-panel {
   border-radius: 10px;
   background: #eee;
   backdrop-filter: blur(5px);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+a.dash-ticket-row:hover {
+  background: #e4e4e4;
+  color: inherit;
+}
+
+a.dash-ticket-row:focus-visible {
+  outline: 2px solid #f47b20;
+  outline-offset: 2px;
 }
 
 .dash-ticket-row__col {
@@ -10899,6 +10913,10 @@ html[data-theme="dark"] .dash-ticket-select,
 html[data-theme="dark"] .dash-ticket-textarea,
 html[data-theme="dark"] .dash-ticket-row {
   background: #1b1b1b;
+}
+
+html[data-theme="dark"] a.dash-ticket-row:hover {
+  background: #242424;
 }
 
 html[data-theme="dark"] .dash-ticket-filters {
