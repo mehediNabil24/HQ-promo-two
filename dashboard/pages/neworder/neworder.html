@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Order — HQ Promo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  </head>
+  <body class="dash-page">
+    <div class="dash-shell d-flex">
+      <!-- Sidebar -->
+      <aside class="dash-sidebar flex-shrink-0" aria-label="Dashboard navigation">
+        <a class="dash-sidebar__logo d-inline-flex" href="../../../index.html" aria-label="HQ Promo home">
+          <img
+            src="../../../assets/images/logo.png"
+            alt="HQ Promo"
+            width="64"
+            height="64"
+          />
+        </a>
+
+        <div class="dash-profile card border-0 w-100">
+          <div class="card-body d-flex flex-column align-items-center text-center gap-2">
+            <div class="dash-profile__avatar">
+              <img
+                src="../../../assets/dashboard/profile-pic.jpg"
+                alt="Customer profile"
+                width="76"
+                height="70"
+              />
+            </div>
+            <p class="dash-profile__name mb-0">[Customer Name]</p>
+            <div class="dash-profile__balance d-flex align-items-stretch gap-1 w-100 justify-content-center">
+              <span class="dash-profile__amount">$400.99</span>
+              <button
+                class="dash-profile__add btn p-0"
+                type="button"
+                aria-label="Add funds"
+              >
+                <iconify-icon icon="ic:baseline-plus" width="18" height="18"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <nav class="dash-nav w-100" aria-label="Order and services">
+          <div class="dash-nav__section">
+            <button
+              class="dash-nav__heading"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navOrderServices"
+              aria-expanded="true"
+              aria-controls="navOrderServices"
+            >
+              <span>ORDER &amp; SERVICES</span>
+              <iconify-icon icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+            </button>
+            <div class="collapse show" id="navOrderServices">
+              <ul class="dash-nav__list list-unstyled mb-0">
+                <li>
+                  <a class="dash-nav__link is-active" href="neworder.html">
+                    <iconify-icon icon="mdi:cart-outline" width="24" height="24"></iconify-icon>
+                    <span>New Order</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:credit-card-outline" width="24" height="24"></iconify-icon>
+                    <span>Add Funds</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:package-variant-closed" width="24" height="24"></iconify-icon>
+                    <span>My Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:clipboard-text-outline" width="24" height="24"></iconify-icon>
+                    <span>Mass Order</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:headset" width="24" height="24"></iconify-icon>
+                    <span>Services</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:ticket-outline" width="24" height="24"></iconify-icon>
+                    <span>My Tickets</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dash-nav__section">
+            <button
+              class="dash-nav__heading"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navQuickLink"
+              aria-expanded="true"
+              aria-controls="navQuickLink"
+            >
+              <span>QUICK LINK</span>
+              <iconify-icon icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+            </button>
+            <div class="collapse show" id="navQuickLink">
+              <ul class="dash-nav__list list-unstyled mb-0">
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:water-outline" width="24" height="24"></iconify-icon>
+                    <span>Drip Feed</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:cash-refund" width="24" height="24"></iconify-icon>
+                    <span>Refunds</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:reload" width="24" height="24"></iconify-icon>
+                    <span>Refill</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:sync" width="24" height="24"></iconify-icon>
+                    <span>Subscriptions</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="dash-nav__section">
+            <button
+              class="dash-nav__heading"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navApiUpdates"
+              aria-expanded="true"
+              aria-controls="navApiUpdates"
+            >
+              <span>API &amp; UPDATES</span>
+              <iconify-icon icon="mdi:chevron-up" width="20" height="20"></iconify-icon>
+            </button>
+            <div class="collapse show" id="navApiUpdates">
+              <ul class="dash-nav__list list-unstyled mb-0">
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:code-tags" width="24" height="24"></iconify-icon>
+                    <span>API</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dash-nav__link" href="#">
+                    <iconify-icon icon="mdi:update" width="24" height="24"></iconify-icon>
+                    <span>Updates</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <div class="dash-content flex-grow-1 min-w-0 d-flex flex-column">
+        <header class="dash-header d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <button
+              class="dash-sidebar-toggle btn d-xl-none p-0"
+              type="button"
+              data-dash-sidebar-toggle
+              aria-label="Toggle sidebar"
+            >
+              <iconify-icon icon="mdi:menu" width="24" height="24"></iconify-icon>
+            </button>
+            <div class="dash-header__title d-flex align-items-center gap-2">
+              <iconify-icon
+                class="dash-header__title-icon"
+                icon="mdi:cart-outline"
+                width="24"
+                height="24"
+              ></iconify-icon>
+              <span>New Order</span>
+            </div>
+          </div>
+
+          <div class="dash-header__actions d-flex align-items-center gap-2">
+            <button class="dash-wallet btn" type="button">
+              <span class="dash-wallet__icon" aria-hidden="true">
+                <iconify-icon icon="mdi:wallet" width="14" height="14"></iconify-icon>
+              </span>
+              <span class="dash-wallet__amount">$0.00</span>
+              <iconify-icon icon="mdi:chevron-down" width="18" height="18"></iconify-icon>
+            </button>
+
+            <button
+              class="theme-toggle"
+              type="button"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark theme"
+            >
+              <span class="theme-toggle__track" aria-hidden="true"></span>
+              <span class="theme-toggle__label" data-theme-label>Light</span>
+              <span class="theme-toggle__thumb" aria-hidden="true">
+                <img
+                  class="theme-toggle__icon theme-toggle__icon--light"
+                  src="../../../assets/icons/theme-thumb.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                />
+                <img
+                  class="theme-toggle__icon theme-toggle__icon--dark"
+                  src="../../../assets/icons/theme-thumb-dark.svg"
+                  alt=""
+                  width="32"
+                  height="32"
+                />
+              </span>
+            </button>
+
+            <button
+              class="dash-notify btn"
+              type="button"
+              aria-label="Notifications"
+            >
+              <iconify-icon
+                icon="mdi:bell"
+                width="24"
+                height="24"
+              ></iconify-icon>
+              <span class="dash-notify__dot" aria-hidden="true"></span>
+            </button>
+
+            <button class="dash-user btn" type="button" aria-label="Account menu">
+              <img
+                class="dash-user__avatar rounded-circle"
+                src="../../../assets/dashboard/profile-pic.jpg"
+                alt=""
+                width="30"
+                height="30"
+              />
+              <iconify-icon icon="mdi:chevron-down" width="18" height="18"></iconify-icon>
+            </button>
+          </div>
+        </header>
+
+        <main class="dash-main flex-grow-1">
+          <!-- Welcome + stats + hero -->
+          <div class="row g-4 align-items-stretch mb-4">
+            <div class="col-xl-9">
+              <div class="dash-welcome">
+                <h1 class="dash-welcome__title">Welcome To HQ Promo</h1>
+                <p class="dash-welcome__text mb-0">
+                  Great to have you here! Explore our services and unlock smart,
+                  reliable solutions designed to help your business grow faster and
+                  achieve real results.
+                </p>
+              </div>
+
+              <div class="row g-3 g-lg-4 mt-1">
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="../../../assets/dashboard/neworder/icon-1.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">Total Orders</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">$0.00</p>
+                      <p class="dash-stat__hint mb-0">you have currently $0.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="../../../assets/dashboard/neworder/icon-2.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">My Balance</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">$0.00</p>
+                      <p class="dash-stat__hint mb-0">you have currently $0.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="../../../assets/dashboard/neworder/icon-3.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">Total Spents</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">$0.00</p>
+                      <p class="dash-stat__hint mb-0">you have currently $0.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3">
+              <div class="dash-hero-card h-100">
+                <img
+                  class="dash-hero-card__img"
+                  src="../../../assets/dashboard/neworder/top-right-image.png"
+                  alt="HQ Promo promotional visual"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Platform tabs -->
+          <div
+            class="platform-tabs dash-platform-tabs mb-4"
+            role="tablist"
+            aria-label="Promotion platforms"
+            data-dash-platform-tabs
+          >
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="facebook"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/facebook.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Facebook</span>
+            </button>
+            <button
+              class="platform-tab is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-platform="instagram"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/instagram.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Instagram</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="twitter"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/twitter-x.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">X (Twitter)</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="youtube"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/youtube.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">YouTube</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="tiktok"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/tiktok.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">TikTok</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="linkedin"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/linkedin.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">LinkedIn</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="telegram"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/telegram.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Telegram</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="discord"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/discord.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Discord</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="spotify"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/spotify.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Spotify</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="soundcloud"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/soundcloud.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">SoundCloud</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="snapchat"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/snapchat.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Snapchat</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="traffic"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="../../../assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="../../../assets/platforms/website-traffic.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Website Traffic</span>
+            </button>
+          </div>
+
+          <!-- Order form + service details -->
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="dash-panel card border-0 h-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div class="dash-panel__toolbar d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <h2 class="dash-panel__title mb-0">Place New Order</h2>
+                    <div
+                      class="dash-order-type"
+                      role="group"
+                      aria-label="Order type"
+                      data-order-type-toggle
+                    >
+                      <button
+                        class="dash-order-type__btn is-active"
+                        type="button"
+                        data-order-type="new"
+                      >
+                        New Order
+                      </button>
+                      <button
+                        class="dash-order-type__btn"
+                        type="button"
+                        data-order-type="mass"
+                      >
+                        Mass Order
+                      </button>
+                    </div>
+                  </div>
+
+                  <form class="dash-order-form d-flex flex-column gap-4" action="#" method="post">
+                    <div class="dash-search input-group">
+                      <span class="input-group-text border-0">
+                        <iconify-icon
+                          icon="iconoir:search"
+                          width="24"
+                          height="24"
+                        ></iconify-icon>
+                      </span>
+                      <input
+                        class="form-control border-0"
+                        type="search"
+                        name="search"
+                        placeholder="Search Services"
+                        aria-label="Search Services"
+                      />
+                    </div>
+
+                    <div>
+                      <label class="dash-field-label form-label" for="orderCategory"
+                        >Category</label
+                      >
+                      <div class="dash-select-wrap">
+                        <img
+                          class="dash-select-wrap__icon"
+                          src="../../../assets/platforms/instagram.png"
+                          alt=""
+                          width="32"
+                          height="32"
+                        />
+                        <select
+                          class="form-select dash-select"
+                          id="orderCategory"
+                          name="category"
+                        >
+                          <option selected>
+                            HQ Promo- Instagram Monthly Growth 🚀
+                          </option>
+                          <option>HQ Promo- Instagram Followers</option>
+                          <option>HQ Promo- Instagram Likes</option>
+                        </select>
+                        <iconify-icon
+                          class="dash-select-wrap__chevron"
+                          icon="mdi:chevron-down"
+                          width="24"
+                          height="24"
+                        ></iconify-icon>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="dash-field-label form-label" for="orderService"
+                        >Service</label
+                      >
+                      <div class="dash-select-wrap dash-select-wrap--service">
+                        <span class="dash-service-id">2197</span>
+                        <select
+                          class="form-select dash-select"
+                          id="orderService"
+                          name="service"
+                        >
+                          <option selected>
+                            2197 - HQ Promo - Instagram Ultimate Growth 🚀🎯 - $199.00
+                            per 1
+                          </option>
+                          <option>
+                            2198 - HQ Promo - Instagram Growth Pro - $99.00 per 1
+                          </option>
+                        </select>
+                        <iconify-icon
+                          class="dash-select-wrap__chevron"
+                          icon="mdi:chevron-down"
+                          width="24"
+                          height="24"
+                        ></iconify-icon>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="dash-field-label form-label" for="orderUrl"
+                        >Instagram Page URL</label
+                      >
+                      <input
+                        class="form-control dash-input"
+                        type="url"
+                        id="orderUrl"
+                        name="url"
+                        placeholder="https://instagram.com/yourpage"
+                      />
+                    </div>
+
+                    <div class="dash-charge d-flex align-items-center justify-content-between">
+                      <span class="dash-charge__label">CHARGE</span>
+                      <span class="dash-charge__value">$20.00</span>
+                    </div>
+
+                    <button class="dash-submit btn w-100" type="submit">
+                      Submit Now
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="dash-panel card border-0 h-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div class="dash-panel__toolbar dash-panel__toolbar--details">
+                    <span class="dash-details-badge">Service Details</span>
+                  </div>
+                  <div class="dash-details-body">
+                    <p class="dash-details-body__title mb-3">🚀 HQ Ultimate Growth</p>
+                    <p class="mb-3">
+                      The most powerful growth package for full account domination.
+                    </p>
+                    <p class="mb-1">Includes:</p>
+                    <ul class="dash-details-list list-unstyled mb-3">
+                      <li>• 1,000 Followers</li>
+                      <li>• 1,000 Likes</li>
+                      <li>• Views + Engagement Boost</li>
+                    </ul>
+                    <ul class="dash-details-checks list-unstyled mb-3">
+                      <li>
+                        <span class="dash-details-checks__mark" aria-hidden="true"
+                          >✔</span
+                        >
+                        Instant start
+                      </li>
+                      <li>
+                        <span class="dash-details-checks__mark" aria-hidden="true"
+                          >✔</span
+                        >
+                        Maximum exposure
+                      </li>
+                      <li>
+                        <span class="dash-details-checks__mark" aria-hidden="true"
+                          >✔</span
+                        >
+                        Premium non-drop quality
+                      </li>
+                      <li>
+                        <span class="dash-details-checks__mark" aria-hidden="true"
+                          >✔</span
+                        >
+                        Fast &amp; aggressive growth
+                      </li>
+                    </ul>
+                    <p class="mb-0">
+                      Built for users who want the highest level of growth possible.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="dash-sidebar-backdrop" data-dash-sidebar-backdrop hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/main.js"></script>
+  </body>
+</html>

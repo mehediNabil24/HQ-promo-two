@@ -9,17 +9,16 @@
   const form = document.getElementById("signin");
   const themeToggles = document.querySelectorAll("[data-theme-toggle]");
 
-  const POLYGON_LIGHT = "assets/icons/polygon.svg";
-  const POLYGON_DARK = "assets/icons/polygon-dark.svg";
-
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle("theme-dark", isDark);
 
-    const polygonSrc = isDark ? POLYGON_DARK : POLYGON_LIGHT;
     document.querySelectorAll(".platform-tab__polygon").forEach((img) => {
-      img.src = polygonSrc;
+      const current = img.getAttribute("src") || "";
+      const slash = current.lastIndexOf("/");
+      const dir = slash >= 0 ? current.slice(0, slash + 1) : "";
+      img.src = dir + (isDark ? "polygon-dark.svg" : "polygon.svg");
     });
 
     themeToggles.forEach((toggle) => {
@@ -1000,4 +999,56 @@
 
     renderDiffDeck();
   }
+
+  /* Dashboard: New Order page */
+  const dashPlatformTabs = document.querySelector("[data-dash-platform-tabs]");
+  if (dashPlatformTabs) {
+    dashPlatformTabs.addEventListener("click", (event) => {
+      const tab = event.target.closest(".platform-tab");
+      if (!tab || !dashPlatformTabs.contains(tab)) return;
+
+      dashPlatformTabs.querySelectorAll(".platform-tab").forEach((button) => {
+        const active = button === tab;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
+    });
+  }
+
+  const orderTypeToggle = document.querySelector("[data-order-type-toggle]");
+  if (orderTypeToggle) {
+    orderTypeToggle.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-order-type]");
+      if (!btn || !orderTypeToggle.contains(btn)) return;
+
+      orderTypeToggle.querySelectorAll("[data-order-type]").forEach((item) => {
+        item.classList.toggle("is-active", item === btn);
+      });
+    });
+  }
+
+  const dashSidebarToggle = document.querySelector("[data-dash-sidebar-toggle]");
+  const dashSidebarBackdrop = document.querySelector("[data-dash-sidebar-backdrop]");
+  const dashPage = document.querySelector(".dash-page");
+
+  const setDashSidebarOpen = (open) => {
+    if (!dashPage) return;
+    dashPage.classList.toggle("is-sidebar-open", open);
+    if (dashSidebarBackdrop) dashSidebarBackdrop.hidden = !open;
+    if (dashSidebarToggle) {
+      dashSidebarToggle.setAttribute("aria-expanded", String(open));
+    }
+  };
+
+  dashSidebarToggle?.addEventListener("click", () => {
+    setDashSidebarOpen(!dashPage?.classList.contains("is-sidebar-open"));
+  });
+
+  dashSidebarBackdrop?.addEventListener("click", () => setDashSidebarOpen(false));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && dashPage?.classList.contains("is-sidebar-open")) {
+      setDashSidebarOpen(false);
+    }
+  });
 })();
