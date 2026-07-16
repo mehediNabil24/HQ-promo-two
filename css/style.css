@@ -5401,9 +5401,9 @@ html[data-theme="dark"] .hero-instagram {
   }
 
   .about-hero__copy {
-    max-width: 580px;
-    margin-inline: auto;
-    text-align: center;
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
   }
 
   .about-hero__copy .hero-copy__title,
@@ -5413,7 +5413,8 @@ html[data-theme="dark"] .hero-instagram {
 
   .about-hero__actions {
     max-width: none;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
   }
 
   .about-hero__visual {
@@ -5442,11 +5443,16 @@ html[data-theme="dark"] .hero-instagram {
 
 @media (max-width: 767.98px) {
   .about-hero__actions {
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: nowrap;
   }
 
   .about-hero__cta {
-    flex: 1 1 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 6px 12px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 }
 
