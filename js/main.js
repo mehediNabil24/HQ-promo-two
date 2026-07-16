@@ -1245,4 +1245,47 @@
     processSteps.forEach((s) => s.classList.remove("process__step--active"));
     processSteps[0]?.classList.add("process__step--active");
   });
+
+  /* Dashboard: payment method tabs */
+  const dashPayTabs = document.querySelector("[data-dash-pay-tabs]");
+
+  dashPayTabs?.addEventListener("click", (event) => {
+    const tab = event.target.closest(".dash-pay-tab");
+    if (!tab || !dashPayTabs.contains(tab)) return;
+
+    dashPayTabs.querySelectorAll(".dash-pay-tab").forEach((button) => {
+      const isActive = button === tab;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+    });
+  });
+
+  /* Dashboard: history table select-all */
+  const dashHistoryTable = document.querySelector("[data-dash-history-table]");
+  const dashHistoryCheckAll = dashHistoryTable?.querySelector(
+    "[data-dash-history-check-all]"
+  );
+  const dashHistoryChecks = dashHistoryTable
+    ? Array.from(dashHistoryTable.querySelectorAll("[data-dash-history-check]"))
+    : [];
+
+  const syncHistoryCheckAll = () => {
+    if (!dashHistoryCheckAll || !dashHistoryChecks.length) return;
+
+    const checkedCount = dashHistoryChecks.filter((check) => check.checked).length;
+    dashHistoryCheckAll.checked = checkedCount === dashHistoryChecks.length;
+    dashHistoryCheckAll.indeterminate =
+      checkedCount > 0 && checkedCount < dashHistoryChecks.length;
+  };
+
+  dashHistoryCheckAll?.addEventListener("change", () => {
+    dashHistoryChecks.forEach((check) => {
+      check.checked = dashHistoryCheckAll.checked;
+    });
+    dashHistoryCheckAll.indeterminate = false;
+  });
+
+  dashHistoryChecks.forEach((check) => {
+    check.addEventListener("change", syncHistoryCheckAll);
+  });
 })();
