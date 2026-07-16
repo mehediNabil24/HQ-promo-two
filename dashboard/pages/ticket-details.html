@@ -24,18 +24,15 @@
         class="dash-sidebar flex-shrink-0"
         aria-label="Dashboard navigation"
       >
-        <a
-          class="dash-sidebar__logo d-inline-flex"
-          href="../../index.html"
-          aria-label="HQ Promo home"
-        >
-          <img
-            src="../../assets/images/logo.png"
-            alt="HQ Promo"
-            width="64"
-            height="64"
-          />
-        </a>
+        <div class="dash-sidebar__top">
+          <a class="dash-sidebar__logo d-inline-flex" href="../../index.html" aria-label="HQ Promo home">
+            <img src="../../assets/images/logo.png" alt="HQ Promo" width="64" height="64" />
+          </a>
+          <button class="dash-notify btn" type="button" aria-label="Notifications">
+            <img class="dash-notify__icon" src="../../assets/dashboard/notification-icon.png" alt="" width="24" height="24" />
+            <span class="dash-notify__dot" aria-hidden="true"></span>
+          </button>
+        </div>
 
         <div class="dash-profile gradient-border card border-0 w-100">
           <div
