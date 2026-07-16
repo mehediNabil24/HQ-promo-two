@@ -6784,29 +6784,104 @@ a.contact-card__value:hover {
   display: block;
 }
 
-html[data-theme="dark"] .contact-field__label,
-html[data-theme="dark"] .contact-card__title,
-html[data-theme="dark"] .contact-map__pin-label,
-html[data-theme="dark"] .contact-map__pin-address {
-  color: var(--color-black);
+html[data-theme="dark"] .contact-hero__lead {
+  color: #c1c4cc;
+}
+
+html[data-theme="dark"] .contact-panel {
+  border: 1px solid rgba(150, 71, 45, 0.5);
+  border-radius: 48px;
+  background: linear-gradient(90deg, #000000 0%, #000000 30%, #242424 100%);
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .contact-field__label {
+  color: #ffffff;
 }
 
 html[data-theme="dark"] .contact-field__input {
-  background: #2a2a2a;
-  border-color: var(--color-border);
-  color: var(--color-body);
+  background: #0d0d0d;
+  border-color: rgba(238, 238, 238, 0.12);
+  color: #dfe0e4;
+  box-shadow: 8.371px 2.21px 38.16px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .contact-field__input::placeholder {
+  color: #dfe0e4;
+  opacity: 1;
 }
 
 html[data-theme="dark"] .contact-field__input:focus {
-  background: #323232;
+  background: #121212;
+  border-color: rgba(244, 123, 32, 0.45);
+  box-shadow: 0 0 0 3px rgba(244, 123, 32, 0.15);
+}
+
+html[data-theme="dark"] .contact-panel__visual {
+  border-radius: 24px;
+  border: 1px solid #fbbd08;
+  background: linear-gradient(
+    180deg,
+    rgba(223, 104, 27, 0.8) -17.6%,
+    rgba(156, 13, 19, 0.8) 37.12%,
+    rgba(55, 9, 42, 0.8) 75.88%,
+    rgba(0, 0, 0, 0.8) 92.11%
+  );
+}
+
+html[data-theme="dark"] .contact-card {
+  border: 1px solid rgba(238, 238, 238, 0.12);
+  background: #0d0d0d;
+  box-shadow: 8.371px 2.21px 38.16px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .contact-card__icon {
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(90deg, #000000 0%, #000000 30%, #242424 100%);
+}
+
+html[data-theme="dark"] .contact-card__icon img {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="dark"] .contact-card__title {
+  color: #ffffff;
 }
 
 html[data-theme="dark"] .contact-card__value {
-  color: var(--color-body);
+  color: #ebecef;
+}
+
+html[data-theme="dark"] .contact-map {
+  border: 1px solid rgba(150, 71, 45, 0.5);
+  border-radius: 48px;
+  background: linear-gradient(90deg, #000000 0%, #000000 30%, #242424 100%);
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .contact-map__frame {
+  inset: 20px;
+  border: 0;
+  background: transparent;
+  border-radius: 28px;
+}
+
+html[data-theme="dark"] .contact-map__frame iframe {
+  border-radius: inherit;
+  filter: grayscale(0.35) brightness(0.75) contrast(1.05);
 }
 
 html[data-theme="dark"] .contact-map__pin {
-  background: rgba(40, 40, 40, 0.92);
+  background: rgba(24, 24, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .contact-map__pin-label {
+  color: #f3e7df;
+}
+
+html[data-theme="dark"] .contact-map__pin-address {
+  color: #ffffff;
 }
 
 @media (max-width: 1199.98px) {
