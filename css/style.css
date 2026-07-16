@@ -5900,19 +5900,19 @@ html[data-theme="dark"] .who-we-are__avatars img {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-
+  width: 100%;
 }
 
 .makes-different__visual {
-  flex: 0 1 520px;
-  max-width: 520px;
+  flex: 0 1 580px;
+  max-width: 580px;
   width: 100%;
 }
 
 .makes-different__image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -5930,10 +5930,10 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__deck {
   position: relative;
-  flex: 1 1 680px;
-  width: 100%;
-  max-width: 720px;
-  height: 420px;
+  flex: 0 0 650px;
+  width: 650px;
+  max-width: 100%;
+  height: 470px;
   margin-left: auto;
 }
 
@@ -5957,9 +5957,9 @@ html[data-theme="dark"] .makes-different__image--dark {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 272px;
-  height: 320px;
-  padding: 28px 18px;
+  width: 300px;
+  height: 352px;
+  padding: 30px 20px;
   overflow: hidden;
   border: 1px solid #d5a20f;
   border-radius: 16px;
@@ -5998,7 +5998,7 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card-title {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
@@ -6010,8 +6010,8 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card-text {
   margin: 0;
-  max-width: 236px;
-  font-size: 16px;
+  max-width: 260px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 1.5;
   color: #343e56;
@@ -6034,8 +6034,8 @@ html[data-theme="dark"] .makes-different__image--dark {
 .makes-different__card[data-stack="0"],
 .makes-different__card.is-front {
   z-index: 10;
-  width: 272px;
-  height: 320px;
+  width: 300px;
+  height: 352px;
   opacity: 1;
   border-color: transparent;
   background:
@@ -6051,11 +6051,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="1"] {
   z-index: 9;
-  width: 256px;
-  height: 290px;
-  padding: 26px 17px;
+  width: 282px;
+  height: 320px;
+  padding: 28px 18px;
   opacity: 0.9;
-  transform: translateY(calc(-50% - 10px)) translateX(98px) scale(1);
+  transform: translateY(calc(-50% - 10px)) translateX(108px) scale(1);
 }
 
 .makes-different__card[data-stack="1"] .makes-different__card-inner {
@@ -6064,11 +6064,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="2"] {
   z-index: 8;
-  width: 230px;
-  height: 260px;
-  padding: 24px 15px;
+  width: 254px;
+  height: 286px;
+  padding: 26px 16px;
   opacity: 0.78;
-  transform: translateY(calc(-50% - 20px)) translateX(186px) scale(1);
+  transform: translateY(calc(-50% - 20px)) translateX(205px) scale(1);
 }
 
 .makes-different__card[data-stack="2"] .makes-different__card-inner {
@@ -6077,11 +6077,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="3"] {
   z-index: 7;
-  width: 203px;
-  height: 230px;
-  padding: 21px 13px;
+  width: 224px;
+  height: 254px;
+  padding: 23px 14px;
   opacity: 0.64;
-  transform: translateY(calc(-50% - 30px)) translateX(266px) scale(1);
+  transform: translateY(calc(-50% - 30px)) translateX(293px) scale(1);
 }
 
 .makes-different__card[data-stack="3"] .makes-different__card-inner {
@@ -6090,11 +6090,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="4"] {
   z-index: 6;
-  width: 176px;
-  height: 200px;
-  padding: 18px 12px;
+  width: 194px;
+  height: 220px;
+  padding: 20px 13px;
   opacity: 0.5;
-  transform: translateY(calc(-50% - 40px)) translateX(336px) scale(1);
+  transform: translateY(calc(-50% - 40px)) translateX(370px) scale(1);
 }
 
 .makes-different__card[data-stack="4"] .makes-different__card-inner {
@@ -6103,11 +6103,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="5"] {
   z-index: 5;
-  width: 150px;
-  height: 170px;
-  padding: 15px 10px;
+  width: 165px;
+  height: 187px;
+  padding: 16px 11px;
   opacity: 0.38;
-  transform: translateY(calc(-50% - 48px)) translateX(400px) scale(1);
+  transform: translateY(calc(-50% - 48px)) translateX(440px) scale(1);
 }
 
 .makes-different__card[data-stack="5"] .makes-different__card-inner {
@@ -6116,11 +6116,11 @@ html[data-theme="dark"] .makes-different__image--dark {
 
 .makes-different__card[data-stack="6"] {
   z-index: 4;
-  width: 124px;
-  height: 140px;
-  padding: 12px 8px;
+  width: 136px;
+  height: 154px;
+  padding: 13px 9px;
   opacity: 0.28;
-  transform: translateY(calc(-50% - 56px)) translateX(455px) scale(1);
+  transform: translateY(calc(-50% - 56px)) translateX(500px) scale(1);
 }
 
 .makes-different__card[data-stack="6"] .makes-different__card-inner {
@@ -6172,13 +6172,13 @@ html[data-theme="dark"] .makes-different__image--dark {
 .makes-different__next {
   position: absolute;
   top: 50%;
-  left: 236px;
+  left: 264px;
   z-index: 12;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -6238,66 +6238,69 @@ html[data-theme="dark"] .makes-different__card-text {
   }
 
   .makes-different__visual {
-    flex: 0 1 440px;
-    max-width: 440px;
+    flex: 0 1 480px;
+    max-width: 480px;
   }
 
   .makes-different__deck {
-    max-width: 620px;
-    height: 380px;
+    flex: 0 0 460px;
+    width: 460px;
+    max-width: 100%;
+    height: 420px;
+    margin-left: auto;
   }
 
   .makes-different__card[data-stack="0"] {
-    width: 220px;
-    height: 270px;
+    width: 240px;
+    height: 290px;
   }
 
   .makes-different__card[data-stack="1"] {
-    width: 200px;
-    height: 242px;
-    transform: translateY(calc(-50% - 8px)) translateX(64px) scale(1);
+    width: 220px;
+    height: 260px;
+    transform: translateY(calc(-50% - 8px)) translateX(72px) scale(1);
   }
 
   .makes-different__card[data-stack="2"] {
-    width: 180px;
-    height: 216px;
-    transform: translateY(calc(-50% - 16px)) translateX(124px) scale(1);
+    width: 198px;
+    height: 232px;
+    transform: translateY(calc(-50% - 16px)) translateX(136px) scale(1);
   }
 
   .makes-different__card[data-stack="3"] {
-    width: 160px;
-    height: 190px;
-    transform: translateY(calc(-50% - 24px)) translateX(178px) scale(1);
+    width: 176px;
+    height: 205px;
+    transform: translateY(calc(-50% - 24px)) translateX(194px) scale(1);
   }
 
   .makes-different__card[data-stack="4"] {
-    width: 142px;
-    height: 168px;
-    transform: translateY(calc(-50% - 30px)) translateX(226px) scale(1);
+    width: 156px;
+    height: 182px;
+    transform: translateY(calc(-50% - 30px)) translateX(246px) scale(1);
   }
 
   .makes-different__card[data-stack="5"] {
-    width: 124px;
-    height: 148px;
-    transform: translateY(calc(-50% - 36px)) translateX(270px) scale(1);
+    width: 136px;
+    height: 160px;
+    transform: translateY(calc(-50% - 36px)) translateX(294px) scale(1);
   }
 
   .makes-different__card[data-stack="6"] {
-    width: 108px;
-    height: 130px;
-    transform: translateY(calc(-50% - 42px)) translateX(308px) scale(1);
+    width: 118px;
+    height: 140px;
+    transform: translateY(calc(-50% - 42px)) translateX(336px) scale(1);
   }
 
   .makes-different__next {
-    left: 188px;
+    left: 206px;
   }
 
   .makes-different__card-title {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .makes-different__card-text {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -6318,15 +6321,15 @@ html[data-theme="dark"] .makes-different__card-text {
 
   .makes-different__visual {
     flex: none;
-    max-width: 480px;
+    max-width: 520px;
     margin-inline: auto;
   }
 
   .makes-different__deck {
     flex: none;
-    max-width: 540px;
+    max-width: 580px;
     width: 100%;
-    height: 340px;
+    height: 360px;
     margin-inline: auto;
   }
 
@@ -6632,8 +6635,34 @@ html[data-theme="dark"] .makes-different__card-text {
   color: #c7c7c7;
 }
 
+html[data-theme="dark"] .grow-smarter__card {
+  border: none;
+}
+
 html[data-theme="dark"] .grow-smarter__card-title {
   color: #f0f0f0;
+}
+
+html[data-theme="dark"] .grow-smarter__media {
+  border: 1px solid #464646;
+  box-shadow: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.19) 0%,
+      rgba(2, 12, 7, 0.81) 71.79%,
+      rgba(156, 72, 27, 0.95) 94.24%
+    ),
+    url("../assets/about/grow-smarter-with-hq-promo.png") lightgray 50% / cover no-repeat;
+}
+
+html[data-theme="dark"] .grow-smarter__media-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 @media (max-width: 1199.98px) {
