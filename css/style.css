@@ -6990,8 +6990,40 @@ html[data-theme="dark"] .contact-map__pin-address {
   border-radius: 50%;
 }
 
+/* 1px gradient border (works with border-radius) */
+.gradient-border {
+  position: relative;
+  border: 0 !important;
+  isolation: isolate;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    #fbbd08 0%,
+    #f47b20 25%,
+    #c4272e 50%,
+    #8b1a4a 75%,
+    #3d1053 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 .dash-profile {
-  border: 1.5px solid #fbbd08 !important;
   border-radius: 12px;
   background: var(--color-white);
 }
@@ -7047,7 +7079,6 @@ html[data-theme="dark"] .contact-map__pin-address {
   width: 32px;
   min-height: 32px;
   border-radius: 50px;
-  border: 1px solid #fbbd08;
   background: #eee;
   color: var(--color-black);
 }
@@ -7091,14 +7122,14 @@ html[data-theme="dark"] .contact-map__pin-address {
   color: transparent;
 }
 
-.dash-nav__heading iconify-icon {
+.dash-nav__chevron {
   flex-shrink: 0;
   color: var(--color-primary);
   transition: transform 0.2s ease;
 }
 
-.dash-nav__heading.collapsed iconify-icon {
-  transform: rotate(180deg);
+.dash-nav__heading.collapsed .dash-nav__chevron {
+  transform: scaleY(-1);
 }
 
 .dash-nav__list {
@@ -7189,6 +7220,25 @@ html[data-theme="dark"] .contact-map__pin-address {
   border-radius: 20px;
   background: var(--color-white);
   color: var(--color-nav);
+  box-shadow: none;
+}
+
+.dash-wallet:hover,
+.dash-wallet:focus,
+.dash-wallet:active,
+.dash-wallet:focus-visible,
+.dash-notify:hover,
+.dash-notify:focus,
+.dash-notify:active,
+.dash-notify:focus-visible,
+.dash-user:hover,
+.dash-user:focus,
+.dash-user:active,
+.dash-user:focus-visible {
+  background: var(--color-white);
+  border-color: #dfe0e4;
+  color: var(--color-nav);
+  box-shadow: none;
 }
 
 .dash-wallet__icon {
@@ -7219,6 +7269,13 @@ html[data-theme="dark"] .contact-map__pin-address {
   color: var(--color-primary);
 }
 
+.dash-notify__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 .dash-notify__dot {
   position: absolute;
   top: 8px;
@@ -7238,6 +7295,33 @@ html[data-theme="dark"] .contact-map__pin-address {
 
 .dash-header .theme-toggle {
   flex-shrink: 0;
+}
+
+.dash-header .theme-toggle:hover,
+.dash-header .theme-toggle:focus,
+.dash-header .theme-toggle:active,
+.dash-header .theme-toggle:focus-visible {
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.dash-header .theme-toggle__track {
+  background: #fff8e7;
+  border: 1px solid #dfe0e4;
+  box-shadow: none;
+}
+
+.dash-header .theme-toggle:focus-visible .theme-toggle__track {
+  box-shadow: none;
+}
+
+.dash-header .theme-toggle__label {
+  background-image: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #424242;
+  color: #424242;
 }
 
 .dash-main {
@@ -7757,8 +7841,33 @@ html[data-theme="dark"] .dash-user {
   color: #ebecef;
 }
 
+html[data-theme="dark"] .dash-wallet:hover,
+html[data-theme="dark"] .dash-wallet:focus,
+html[data-theme="dark"] .dash-wallet:active,
+html[data-theme="dark"] .dash-notify:hover,
+html[data-theme="dark"] .dash-notify:focus,
+html[data-theme="dark"] .dash-notify:active,
+html[data-theme="dark"] .dash-user:hover,
+html[data-theme="dark"] .dash-user:focus,
+html[data-theme="dark"] .dash-user:active {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #ebecef;
+}
+
 html[data-theme="dark"] .dash-wallet__amount {
   color: #ebecef;
+}
+
+html[data-theme="dark"] .dash-header .theme-toggle__label {
+  -webkit-text-fill-color: #ebecef;
+  color: #ebecef;
+}
+
+html[data-theme="dark"] .dash-header .theme-toggle__track {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
 }
 
 html[data-theme="dark"] .dash-panel__toolbar,
