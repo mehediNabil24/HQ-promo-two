@@ -1156,4 +1156,33 @@
       button.setAttribute("aria-selected", String(isActive));
     });
   });
+
+  /* Dashboard: history table select-all */
+  const dashHistoryTable = document.querySelector("[data-dash-history-table]");
+  const dashHistoryCheckAll = dashHistoryTable?.querySelector(
+    "[data-dash-history-check-all]"
+  );
+  const dashHistoryChecks = dashHistoryTable
+    ? Array.from(dashHistoryTable.querySelectorAll("[data-dash-history-check]"))
+    : [];
+
+  const syncHistoryCheckAll = () => {
+    if (!dashHistoryCheckAll || !dashHistoryChecks.length) return;
+
+    const checkedCount = dashHistoryChecks.filter((check) => check.checked).length;
+    dashHistoryCheckAll.checked = checkedCount === dashHistoryChecks.length;
+    dashHistoryCheckAll.indeterminate =
+      checkedCount > 0 && checkedCount < dashHistoryChecks.length;
+  };
+
+  dashHistoryCheckAll?.addEventListener("change", () => {
+    dashHistoryChecks.forEach((check) => {
+      check.checked = dashHistoryCheckAll.checked;
+    });
+    dashHistoryCheckAll.indeterminate = false;
+  });
+
+  dashHistoryChecks.forEach((check) => {
+    check.addEventListener("change", syncHistoryCheckAll);
+  });
 })();

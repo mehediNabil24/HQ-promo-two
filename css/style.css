@@ -8245,25 +8245,48 @@ html[data-theme='dark'] .contact-map__pin-address {
   background: transparent;
 }
 
-.dash-history__th-cell {
-  display: table-cell;
-}
-
-.dash-history__th-check {
-  display: inline-block;
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  border: 1px solid #fbb70b;
-  border-radius: 4px;
-  vertical-align: middle;
-}
-
 .dash-history__table tbody td {
   padding: 15px 28px;
   vertical-align: middle;
   color: var(--color-black);
+}
+
+.dash-history__check-cell {
+  width: 48px;
+  padding-inline: 16px !important;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dash-history__check-cell .dash-history__check {
+  display: block;
+  float: none;
+  margin: 0 auto;
+}
+
+.dash-history__check {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid #fbb70b;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.dash-history__check:checked {
+  background-color: #00a6ff;
+  border-color: #00a6ff;
+}
+
+.dash-history__check:focus {
+  border-color: #fbb70b;
+  box-shadow: 0 0 0 0.15rem rgba(251, 183, 11, 0.25);
+}
+
+.dash-history__check:checked:focus {
+  border-color: #00a6ff;
+  box-shadow: 0 0 0 0.15rem rgba(0, 166, 255, 0.25);
 }
 
 .dash-history__th {
@@ -8276,17 +8299,6 @@ html[data-theme='dark'] .contact-map__pin-address {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2;
-}
-
-.dash-history__id {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.dash-history__id iconify-icon {
-  flex-shrink: 0;
-  color: #00a6ff;
 }
 
 .dash-sidebar-backdrop {
