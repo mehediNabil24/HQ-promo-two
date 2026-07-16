@@ -5297,9 +5297,11 @@ html[data-theme="dark"] .api-php-btn:hover {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid #d5a20f;
+  border: 1px solid transparent;
   border-radius: 16px;
-  background: transparent;
+  background:
+    linear-gradient(var(--color-white), var(--color-white)) padding-box,
+    var(--gradient-text) border-box;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -5307,7 +5309,7 @@ html[data-theme="dark"] .api-php-btn:hover {
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn-outline-gradient span {
@@ -5319,13 +5321,27 @@ html[data-theme="dark"] .api-php-btn:hover {
 
 .btn-outline-gradient:hover {
   transform: translateY(-1px);
-  border-color: var(--color-primary);
+  filter: brightness(1.05);
   box-shadow: 0 6px 16px rgba(244, 123, 32, 0.12);
   color: inherit;
 }
 
 .btn-outline-gradient:active {
   transform: translateY(0);
+}
+
+html[data-theme="dark"] .btn-outline-gradient {
+  background:
+    linear-gradient(#121212, #121212) padding-box,
+    var(--gradient-text) border-box;
+}
+
+html[data-theme="dark"] .btn-outline-gradient span {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
 }
 
 .about-hero__visual {
@@ -7535,16 +7551,12 @@ html[data-theme="dark"] .contact-map__pin-address {
   --si-label: #343e56;
   --si-card: #ffffff;
   --si-field-bg: #ffffff;
-  --si-field-border: #d5a20f;
-  --si-field-focus: #d5a20f;
   --si-placeholder: #4f586d;
   --si-checkbox-border: #a1a1a1;
   --si-checkbox-text: #343e56;
   --si-tab-idle: #343e56;
-  --si-tabs-border: #d5a20f;
-  --si-tabs-bg: transparent;
+  --si-tabs-fill: #fff9f3;
   --si-tabs-shadow: 0 2.315px 4.63px rgba(0, 0, 0, 0.12);
-  --si-google-border: #d5a20f;
   --si-google-text: transparent;
   --si-create: #343e56;
   --si-icon-filter: none;
@@ -7567,18 +7579,14 @@ html[data-theme="dark"] .sign-in-page {
   --si-label: #ffffff;
   --si-card: #0d0c10;
   --si-field-bg: #0d0c10;
-  --si-field-border: #575757;
-  --si-field-focus: #d5a20f;
   --si-placeholder: rgba(255, 255, 255, 0.8);
   --si-checkbox-border: #a1a1a1;
   --si-checkbox-text: #dfe0e4;
   --si-tab-idle: #ffffff;
-  --si-tabs-border: transparent;
-  --si-tabs-bg: #0d0c10;
+  --si-tabs-fill: #0d0c10;
   --si-tabs-shadow:
     0 2.315px 2.315px rgba(0, 0, 0, 0.12),
     inset 2.315px 2.315px 9.259px 0 rgba(255, 52, 93, 0.1);
-  --si-google-border: transparent;
   --si-google-text: #ffffff;
   --si-create: rgba(255, 255, 255, 0.8);
   --si-icon-filter: none;
@@ -7633,9 +7641,13 @@ html[data-theme="dark"] .sign-in-page {
   aspect-ratio: 1;
   max-height: 64px;
   box-sizing: border-box;
-  border: 1.157px solid var(--si-field-border);
+  border: 1px solid transparent;
   border-radius: 9px;
-  background: var(--si-field-bg);
+  background:
+    linear-gradient(var(--si-field-bg), var(--si-field-bg)) padding-box,
+    var(--gradient-brand) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   color: var(--si-text);
   font-family: "Inter", sans-serif;
   font-size: 22px;
@@ -7643,12 +7655,14 @@ html[data-theme="dark"] .sign-in-page {
   line-height: 1;
   text-align: center;
   outline: none;
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: background 0.25s ease, border-color 0.25s ease;
   caret-color: var(--si-text);
 }
 
-.sign-in-otp__input:focus {
-  border-color: var(--si-field-focus);
+html[data-theme="dark"] .sign-in-otp__input {
+  border-color: #575757;
+  background: var(--si-field-bg);
+  background-clip: border-box;
 }
 
 @media (max-width: 575.98px) {
@@ -7746,23 +7760,19 @@ html[data-theme="dark"] .si-icon--dark {
   display: block !important;
 }
 
-/* Tabs */
+/* Tabs — gradient border (light + dark) */
 .sign-in-tabs {
   display: flex;
   width: 100%;
-  border: 1.157px solid var(--si-tabs-border);
+  border: 1px solid transparent;
   border-radius: 14px;
   padding: 5px;
-  background: var(--si-tabs-bg);
-  box-shadow: var(--si-tabs-shadow);
-}
-
-html[data-theme="dark"] .sign-in-tabs {
-  border-color: transparent;
   background:
-    linear-gradient(var(--si-card), var(--si-card)) padding-box,
+    linear-gradient(var(--si-tabs-fill), var(--si-tabs-fill)) padding-box,
     var(--gradient-brand) border-box;
-  border: 1.5px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: var(--si-tabs-shadow);
 }
 
 .sign-in-tab {
@@ -7907,14 +7917,20 @@ html[data-theme="dark"] .sign-in-tab:not(.sign-in-tab--active) .sign-in-tab__lab
   gap: 9px;
   padding: 0 19px;
   height: 51px;
-  background: var(--si-field-bg);
-  border: 1.157px solid var(--si-field-border);
+  border: 1px solid transparent;
   border-radius: 9px;
-  transition: border-color 0.25s ease, background 0.25s ease;
+  background:
+    linear-gradient(var(--si-field-bg), var(--si-field-bg)) padding-box,
+    var(--gradient-brand) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-.sign-in-field__input-wrap:focus-within {
-  border-color: var(--si-field-focus);
+html[data-theme="dark"] .sign-in-field__input-wrap {
+  border-color: #575757;
+  background: var(--si-field-bg);
+  background-clip: border-box;
 }
 
 .sign-in-field__icon {
@@ -8096,40 +8112,21 @@ html[data-theme="dark"] .sign-in-tab:not(.sign-in-tab--active) .sign-in-tab__lab
 }
 
 .sign-in-btn--google {
-  position: relative;
-  isolation: isolate;
-  border: 1.5px solid var(--si-google-border);
+  border: 1px solid transparent;
   border-radius: 14px;
-  background-color: var(--si-card);
-  background-image: none;
+  background:
+    linear-gradient(var(--si-card), var(--si-card)) padding-box,
+    var(--gradient-brand) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   color: var(--si-google-text);
   gap: 12px;
-  overflow: visible;
 }
 
-/* Dark mode: gradient border via pseudo, solid fill — avoids clipping the Google icon */
 html[data-theme="dark"] .sign-in-btn--google {
-  border-color: transparent;
-  background-color: #0d0c10;
-}
-
-html[data-theme="dark"] .sign-in-btn--google::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: var(--gradient-brand);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  border-color: #575757;
+  background: var(--si-card);
+  background-clip: border-box;
 }
 
 .sign-in-btn--google .sign-in-btn__label {
