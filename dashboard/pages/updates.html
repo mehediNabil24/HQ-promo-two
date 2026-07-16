@@ -147,10 +147,20 @@
         </nav>
       </aside>
 
+      <button
+        class="dash-sidebar-edge-toggle d-none d-lg-inline-flex"
+        type="button"
+        data-dash-sidebar-edge-toggle
+        aria-label="Toggle sidebar"
+        aria-expanded="true"
+      >
+        <iconify-icon icon="mdi:chevron-left" width="16" height="16" aria-hidden="true"></iconify-icon>
+      </button>
+
       <div class="dash-content flex-grow-1 min-w-0 d-flex flex-column">
         <header class="dash-header d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center gap-3">
-            <button class="dash-sidebar-toggle btn d-xl-none p-0" type="button" data-dash-sidebar-toggle aria-label="Toggle sidebar">
+            <button class="dash-sidebar-toggle btn d-lg-none p-0" type="button" data-dash-sidebar-toggle aria-label="Toggle sidebar">
               <iconify-icon icon="mdi:menu" width="24" height="24"></iconify-icon>
             </button>
             <div class="dash-header__title d-flex align-items-center gap-2">

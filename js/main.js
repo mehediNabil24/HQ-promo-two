@@ -1123,8 +1123,10 @@
   }
 
   const dashSidebarToggle = document.querySelector("[data-dash-sidebar-toggle]");
+  const dashSidebarEdgeToggle = document.querySelector("[data-dash-sidebar-edge-toggle]");
   const dashSidebarBackdrop = document.querySelector("[data-dash-sidebar-backdrop]");
   const dashPage = document.querySelector(".dash-page");
+  const desktopSidebarMq = window.matchMedia("(min-width: 992px)");
 
   const setDashSidebarOpen = (open) => {
     if (!dashPage) return;
@@ -1135,8 +1137,47 @@
     }
   };
 
+  const setDashSidebarCollapsed = (collapsed) => {
+    if (!dashPage) return;
+    dashPage.classList.toggle("is-sidebar-collapsed", collapsed);
+    dashSidebarEdgeToggle?.setAttribute("aria-expanded", String(!collapsed));
+    try {
+      localStorage.setItem("dash-sidebar-collapsed", collapsed ? "1" : "0");
+    } catch (_) {
+      /* ignore storage errors */
+    }
+  };
+
   dashSidebarToggle?.addEventListener("click", () => {
     setDashSidebarOpen(!dashPage?.classList.contains("is-sidebar-open"));
+  });
+
+  dashSidebarEdgeToggle?.addEventListener("click", () => {
+    if (!desktopSidebarMq.matches) return;
+    setDashSidebarCollapsed(!dashPage?.classList.contains("is-sidebar-collapsed"));
+  });
+
+  if (dashPage && desktopSidebarMq.matches) {
+    try {
+      if (localStorage.getItem("dash-sidebar-collapsed") === "1") {
+        setDashSidebarCollapsed(true);
+      }
+    } catch (_) {
+      /* ignore storage errors */
+    }
+  }
+
+  desktopSidebarMq.addEventListener("change", (event) => {
+    if (!dashPage) return;
+    if (!event.matches) {
+      dashPage.classList.remove("is-sidebar-collapsed");
+      return;
+    }
+    try {
+      setDashSidebarCollapsed(localStorage.getItem("dash-sidebar-collapsed") === "1");
+    } catch (_) {
+      /* ignore storage errors */
+    }
   });
 
   dashSidebarBackdrop?.addEventListener("click", () => setDashSidebarOpen(false));
