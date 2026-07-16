@@ -7577,7 +7577,6 @@ html[data-theme="dark"] .contact-map__pin-address {
   align-items: center;
   gap: 8px;
   padding: 8px;
-  border: 0.4px solid #fbbd08;
   border-radius: 12px;
   background-image: linear-gradient(
     90deg,
@@ -7968,6 +7967,12 @@ html[data-theme="dark"] .contact-map__pin-address {
   color: var(--color-body);
 }
 
+.dash-details-divider {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-top: 0.4px dashed rgba(0, 0, 0, 0.16);
+}
+
 .dash-details-body__title {
   font-weight: 500;
   color: var(--color-black);
@@ -8124,8 +8129,6 @@ html[data-theme="dark"] .contact-map__pin-address {
 
 html[data-theme="dark"] .dash-sidebar,
 html[data-theme="dark"] .dash-header,
-html[data-theme="dark"] .dash-stat,
-html[data-theme="dark"] .dash-panel,
 html[data-theme="dark"] .dash-profile {
   background: #1a1a1a;
 }
@@ -8214,8 +8217,16 @@ html[data-theme="dark"] .dash-search .form-control,
 html[data-theme="dark"] .dash-select-wrap,
 html[data-theme="dark"] .dash-input,
 html[data-theme="dark"] .dash-details-body {
-  background: #2a2a2a;
+  background: #1b1b1b;
   color: var(--color-body);
+}
+
+html[data-theme="dark"] .dash-details-divider {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+html[data-theme="dark"] .dash-order-type {
+  background: #000000;
 }
 
 html[data-theme="dark"] .select2-container--default .select2-dropdown,
@@ -8241,10 +8252,17 @@ html[data-theme="dark"] .dash-profile__add {
   color: #fff;
 }
 
+html[data-theme="dark"] .dash-welcome,
 html[data-theme="dark"] .dash-stat {
-  border-color: rgba(255, 255, 255, 0.14) !important;
+  background: linear-gradient(90deg, #000000 30%, #242424 100%);
+  border: 1px solid #424242 !important;
+}
+
+html[data-theme="dark"] .dash-welcome__brand {
+  color: #f47b20;
 }
 
 html[data-theme="dark"] .dash-panel {
+  background: #000000;
   border-color: rgba(255, 255, 255, 0.14) !important;
 }
