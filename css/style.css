@@ -1,5 +1,9 @@
+html {
+  transition: background-color 0.35s ease;
+  background-color: var(--color-page);
+}
+
 :root {
-  --color-black: #181818;
   --color-body: #494949;
   --color-primary: #f47b20;
   --color-forgot: #f94346;
@@ -39,6 +43,7 @@
 }
 
 html[data-theme="dark"] {
+  color-scheme: dark;
   --color-black: #f7f2f2;
   --color-body: #c8c4c0;
   --color-nav: #ebecef;
@@ -265,7 +270,7 @@ html[data-theme="dark"] .process__step:not(.process__step--active):hover .proces
   border: none;
 }
 
-html[data-theme="dark"] .process__step:not(.process__step--active) .process__icon-bg--idle {
+html[data-theme="dark"] .process__icon-bg--idle {
   filter: brightness(0.13);
 }
 
@@ -414,6 +419,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-black);
   background: var(--color-page);
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 /* Minimal scrollbars (page + overflow sections) */
@@ -2602,16 +2608,19 @@ body.is-nav-open::before {
 
 .process__icon-bg--idle {
   opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .process__icon-bg--active {
   opacity: 0;
+  transform: translate(-50%, -50%) scale(1.03);
+  transition: opacity 0.3s ease;
 }
 
-.process__step--active .process__icon-bg--idle,
+/* .process__step--active .process__icon-bg--idle,
 .process__step:not(.process__step--active):hover .process__icon-bg--idle {
   opacity: 0;
-}
+} */
 
 .process__step--active .process__icon-bg--active,
 .process__step:not(.process__step--active):hover .process__icon-bg--active {
@@ -2630,10 +2639,11 @@ body.is-nav-open::before {
 .process__icon-glyph--light {
   width: 27px;
   height: 20px;
+  filter: brightness(0);
 }
 
-.process__step:not(.process__step--active):hover
-  .process__icon-glyph:not(.process__icon-glyph--light) {
+.process__step--active .process__icon-glyph,
+.process__step:not(.process__step--active):hover .process__icon-glyph {
   filter: brightness(0) invert(1);
 }
 
@@ -6879,9 +6889,13 @@ html[data-theme="dark"] .grow-smarter__media-image {
   align-items: center;
   gap: 10px;
   padding: 6px 12px;
-  border: 0.6px solid #d5a20f;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background: var(--color-white);
+  background:
+    linear-gradient(var(--color-white), var(--color-white)) padding-box,
+    var(--gradient-brand) border-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   color: #222e48;
   font-size: 14px;
   font-weight: 500;
