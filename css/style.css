@@ -845,16 +845,7 @@ a {
 }
 
 .mobile-nav__link::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  opacity: 0.35;
-  transform: rotate(-45deg);
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+  display: none;
 }
 
 .mobile-nav__link:hover,
@@ -866,8 +857,7 @@ a {
 
 .mobile-nav__link:hover::after,
 .mobile-nav__link:focus-visible::after {
-  opacity: 0.7;
-  transform: rotate(-45deg) translate(1px, 1px);
+  display: none;
 }
 
 .mobile-nav__link.is-active {
@@ -881,7 +871,7 @@ a {
 }
 
 .mobile-nav__link.is-active::after {
-  opacity: 0.8;
+  display: none;
 }
 
 .mobile-nav__footer {

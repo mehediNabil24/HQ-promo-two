@@ -513,6 +513,12 @@
       panel.classList.toggle("is-active", match);
       panel.hidden = !match;
     });
+
+    tab.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
   };
 
   if (faqTabs) {
