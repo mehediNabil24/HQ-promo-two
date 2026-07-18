@@ -11149,11 +11149,20 @@ html[data-theme='dark'] .dash-panel {
 .dash-ticket-filters {
   display: flex;
   align-items: center;
-  gap: 2px;
   min-height: 55px;
   padding: 3px;
   border-radius: 8px;
+}
+
+.dash-ticket-filters__inner {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--color-white);
+  border-radius: 6px;
 }
 
 .dash-ticket-filters__btn {
@@ -11324,7 +11333,7 @@ html[data-theme="dark"] a.dash-ticket-row:hover {
   background: #242424;
 }
 
-html[data-theme="dark"] .dash-ticket-filters {
+html[data-theme="dark"] .dash-ticket-filters__inner {
   background: #000;
 }
 
