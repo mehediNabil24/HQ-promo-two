@@ -1,0 +1,392 @@
+{# Hide guest layout navbar on auth pages so the designed signup stays full-bleed #}
+<style>
+  body > nav.navbar {
+    display: none !important;
+  }
+</style>
+
+<div class="sign-in-page">
+  <div class="sign-in-layout">
+    <div class="sign-in-form-side">
+      <div class="sign-in-form-wrapper">
+        <div class="sign-in-header">
+          {% if site['logo'] %}
+            <img
+              src="{{ site['logo'] }}"
+              alt="{{ site['name'] }}"
+              width="79"
+              height="79"
+              class="sign-in-logo"
+            />
+          {% else %}
+            <img
+              src="assets/sign-in/logo-light.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--light"
+            />
+            <img
+              src="assets/sign-in/logo.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--dark"
+            />
+          {% endif %}
+          <div class="sign-in-header__text">
+            <h1 class="sign-in-header__title">{{ page['title']|default('Create an Account') }}</h1>
+            <p class="sign-in-header__subtitle">
+              Welcome back! Please enter your details.
+            </p>
+          </div>
+        </div>
+
+        <div class="sign-in-tabs">
+          <a href="{{ page_url('signin') }}" class="sign-in-tab">
+            <img
+              class="si-icon--light"
+              src="assets/sign-in/lock-idle-light.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <img
+              class="si-icon--dark"
+              src="assets/sign-in/lock.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <span class="sign-in-tab__label">{{ lang('signin.title') }}</span>
+          </a>
+          <a href="{{ page_url('signup') }}" class="sign-in-tab sign-in-tab--active">
+            <img
+              class="si-icon--light"
+              src="assets/sign-in/user.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <img
+              class="si-icon--dark"
+              src="assets/sign-in/user.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <span class="sign-in-tab__label">{{ lang('signup.button') }}</span>
+          </a>
+        </div>
+
+        <form
+          class="sign-in-form{% if site['rtl'] %} rtl-form{% endif %}"
+          action=""
+          method="post"
+          autocomplete="off"
+        >
+          {% if error %}
+            <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ errorMessage }}
+            </div>
+          {% endif %}
+          {% if success %}
+            <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ successText }}
+            </div>
+          {% endif %}
+
+          <div class="sign-in-form__fields">
+            {# Non-password fields first (username, email, custom, …) — skip name fields #}
+            {% for field in fields %}
+              {% if field.type != 'password' and field.code != 'first_name' and field.code != 'last_name' and field.code != 'firstname' and field.code != 'lastname' %}
+                <div class="sign-in-field">
+                  <label class="sign-in-field__label" for="{{ field.code }}">
+                    {{ lang(field.label) }}
+                  </label>
+                  <div class="sign-in-field__input-wrap">
+                    {% if field.code == 'email' or field.type == 'email' %}
+                      <img
+                        class="sign-in-field__icon si-icon--light"
+                        src="assets/sign-in/email-light.svg"
+                        alt=""
+                        width="19"
+                        height="19"
+                      />
+                      <img
+                        class="sign-in-field__icon si-icon--dark"
+                        src="assets/sign-in/email.svg"
+                        alt=""
+                        width="19"
+                        height="19"
+                      />
+                    {% else %}
+                      <img
+                        class="sign-in-field__icon si-icon--light"
+                        src="assets/sign-in/user-field-light.svg"
+                        alt=""
+                        width="19"
+                        height="19"
+                      />
+                      <img
+                        class="sign-in-field__icon si-icon--dark"
+                        src="assets/sign-in/user-field.svg"
+                        alt=""
+                        width="19"
+                        height="19"
+                      />
+                    {% endif %}
+                    <input
+                      class="sign-in-field__input"
+                      type="{{ field.type }}"
+                      id="{{ field.code }}"
+                      name="RegistrationForm[{{ field.code }}]"
+                      value="{{ field.value }}"
+                      placeholder="{{ lang(field.label)|lower }}"
+                      {% if field.code == 'email' or field.type == 'email' %}
+                        autocomplete="email"
+                      {% elseif field.code == 'username' %}
+                        autocomplete="username"
+                      {% endif %}
+                      {% if field.required %}required{% endif %}
+                    />
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {# Password fields stay side-by-side like the design #}
+            <div class="sign-in-field-row">
+              {% for field in fields %}
+                {% if field.type == 'password' %}
+                  <div class="sign-in-field">
+                    <label class="sign-in-field__label" for="{{ field.code }}">
+                      {{ lang(field.label) }}
+                    </label>
+                    <div class="sign-in-field__input-wrap">
+                      <img
+                        class="sign-in-field__icon si-icon--light"
+                        src="assets/sign-in/password-light.svg"
+                        alt=""
+                        width="21"
+                        height="21"
+                      />
+                      <img
+                        class="sign-in-field__icon si-icon--dark"
+                        src="assets/sign-in/password.svg"
+                        alt=""
+                        width="21"
+                        height="21"
+                      />
+                      <input
+                        class="sign-in-field__input"
+                        type="password"
+                        id="{{ field.code }}"
+                        name="RegistrationForm[{{ field.code }}]"
+                        value="{{ field.value }}"
+                        placeholder="{{ lang(field.label)|lower }}"
+                        autocomplete="new-password"
+                        {% if field.required %}required{% endif %}
+                      />
+                      <button
+                        type="button"
+                        class="sign-in-field__toggle"
+                        aria-label="Toggle password visibility"
+                        data-password-toggle
+                      >
+                        <img
+                          class="si-icon--light"
+                          src="assets/sign-in/eye-off-light.svg"
+                          alt=""
+                          width="21"
+                          height="21"
+                          data-eye-icon
+                        />
+                        <img
+                          class="si-icon--dark"
+                          src="assets/sign-in/eye-off.svg"
+                          alt=""
+                          width="21"
+                          height="21"
+                          data-eye-icon
+                        />
+                      </button>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            {% if site['captcha'] %}
+              <div class="sign-in-field">
+                {{ captchaCode }}
+              </div>
+            {% endif %}
+
+            {% if check_agreement %}
+              <div class="sign-in-agreement">
+                <label class="sign-in-checkbox">
+                  <input
+                    type="checkbox"
+                    class="sign-in-checkbox__input terms-accept-checkbox"
+                    name="RegistrationForm[termsofservice]"
+                  />
+                  <span class="sign-in-checkbox__box"></span>
+                  <span class="sign-in-checkbox__text">
+                    {{ lang('signup.accept_terms_text') }}
+                    <a
+                      href="{{ page_url('terms') }}"
+                      class="sign-in-agreement__link"
+                      target="_blank"
+                      >{{ lang('terms.signup_checkbox') }}</a
+                    >
+                  </span>
+                </label>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="sign-in-form__footer">
+            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+            <div class="sign-in-actions">
+              <button type="submit" class="sign-in-btn sign-in-btn--primary">
+                <img
+                  class="si-icon--light"
+                  src="assets/sign-in/lock-light.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                <img
+                  class="si-icon--dark"
+                  src="assets/sign-in/lock.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                {{ lang('signup.button') }}
+              </button>
+
+              {% if googleSignIn %}
+                <div
+                  hidden
+                  data-google-config
+                  data-client_id="{{ googleClientId }}"
+                  data-login_uri="{{ googleSignInRedirectUrl }}"
+                  data-_csrf="{{ csrftoken }}"
+                ></div>
+                <div
+                  class="sign-in-btn sign-in-btn--google sign-in-google"
+                  data-google-signin
+                  role="button"
+                  tabindex="0"
+                  aria-label="{{ lang('signup.button') }}"
+                >
+                  <div class="sign-in-google__face" aria-hidden="true">
+                    <img
+                      src="assets/sign-in/google.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                      class="sign-in-btn__google-icon"
+                    />
+                    <span class="sign-in-btn__label">{{ lang('signup.button') }}</span>
+                  </div>
+                  <div class="sign-in-google__hit" data-google-btn-slot></div>
+                </div>
+                <script src="https://accounts.google.com/gsi/client" async defer></script>
+              {% else %}
+                <button type="button" class="sign-in-btn sign-in-btn--google">
+                  <img
+                    src="assets/sign-in/google.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    class="sign-in-btn__google-icon"
+                  />
+                  <span class="sign-in-btn__label">{{ lang('signup.button') }}</span>
+                </button>
+              {% endif %}
+            </div>
+
+            <p class="sign-in-create">
+              {{ lang('signup.text') }}
+              <a href="{{ page_url('signin') }}" class="sign-in-create__link"
+                >{{ lang('signin.title') }}</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="sign-in-image-side">
+      <div class="sign-in-hero">
+        <img
+          src="assets/sign-in/subtract.svg"
+          alt=""
+          class="sign-in-hero__bg"
+        />
+        <img
+          src="assets/sign-in/hero-image.png"
+          alt="Sign up"
+          class="sign-in-hero__img"
+        />
+        <a href="{{ page_url('index') }}" class="sign-in-back">
+          <span class="sign-in-back__icon" aria-hidden="true">
+            <img
+              class="sign-in-back__icon-img--light"
+              src="assets/sign-in/arrow-back-light.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+            <img
+              class="sign-in-back__icon-img--dark"
+              src="assets/sign-in/arrow-back.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+          </span>
+          <span class="sign-in-back__label">Back</span>
+        </a>
+        <div class="sign-in-trust">
+          <div class="sign-in-trust__avatars">
+            <img
+              src="assets/images/avatar-1.png"
+              alt=""
+              width="24"
+              height="24"
+              class="sign-in-trust__avatar"
+            />
+            <img
+              src="assets/images/avatar-2.png"
+              alt=""
+              width="24"
+              height="24"
+              class="sign-in-trust__avatar"
+            />
+            <img
+              src="assets/images/avatar-3.png"
+              alt=""
+              width="24"
+              height="24"
+              class="sign-in-trust__avatar"
+            />
+            <img
+              src="assets/images/avatar-4.png"
+              alt=""
+              width="24"
+              height="24"
+              class="sign-in-trust__avatar"
+            />
+          </div>
+          <p class="sign-in-trust__text">Satisfied Clients in HQ Promo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

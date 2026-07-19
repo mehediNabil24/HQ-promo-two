@@ -1,0 +1,245 @@
+{# Keep the designed authentication page full-bleed inside the guest layout. #}
+<style>
+  body > nav.navbar {
+    display: none !important;
+  }
+</style>
+
+<div class="sign-in-page">
+  <div class="sign-in-layout">
+    <div class="sign-in-form-side">
+      <div class="sign-in-form-wrapper sign-in-form-wrapper--reset">
+        <div class="sign-in-header">
+          {% if site['logo'] %}
+            <img
+              src="{{ site['logo'] }}"
+              alt="{{ site['name'] }}"
+              width="79"
+              height="79"
+              class="sign-in-logo"
+            />
+          {% else %}
+            <img
+              src="assets/sign-in/logo-light.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--light"
+            />
+            <img
+              src="assets/sign-in/logo.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--dark"
+            />
+          {% endif %}
+          <div class="sign-in-header__text">
+            <h1 class="sign-in-header__title">Two Factor Authentication</h1>
+          </div>
+        </div>
+
+        <form
+          class="sign-in-form{% if site['rtl'] %} rtl-form{% endif %}"
+          id="twoFactorForm"
+          method="post"
+          action="{{ page['url'] }}"
+          autocomplete="off"
+        >
+          {% if error %}
+            <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ errorMessage }}
+            </div>
+          {% endif %}
+
+          <div class="sign-in-form__fields">
+            <p class="sign-in-header__subtitle mb-0">
+              A verification code has been sent to your email address.
+            </p>
+            <div class="sign-in-field">
+              <label class="sign-in-field__label" for="otp-0">Code</label>
+              <div class="sign-in-otp" data-otp-group>
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  id="otp-0"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 1"
+                  required
+                />
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 2"
+                  required
+                />
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 3"
+                  required
+                />
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 4"
+                  required
+                />
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 5"
+                  required
+                />
+                <input
+                  class="sign-in-otp__input"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  pattern="[0-9]*"
+                  aria-label="Digit 6"
+                  required
+                />
+              </div>
+              {# Perfect Panel expects a single `code` field #}
+              <input type="hidden" name="code" id="twoFactorCode" value="" />
+            </div>
+          </div>
+
+          <div class="sign-in-form__footer">
+            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+            <button
+              type="submit"
+              class="sign-in-btn sign-in-btn--primary sign-in-btn--full"
+            >
+              Submit Now
+            </button>
+
+            <p class="sign-in-create">
+              Back to
+              <a href="{{ page_url('signin') }}" class="sign-in-create__link">Sign In</a>
+              or
+              <a href="{{ page_url('signup') }}" class="sign-in-create__link">Sign Up</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="sign-in-image-side">
+      <div class="sign-in-hero">
+        <img
+          src="assets/sign-in/subtract.svg"
+          alt=""
+          class="sign-in-hero__bg"
+        />
+        <img
+          src="assets/sign-in/hero-image.png"
+          alt="Two factor authentication"
+          class="sign-in-hero__img"
+        />
+        <a href="{{ page_url('signin') }}" class="sign-in-back">
+          <span class="sign-in-back__icon" aria-hidden="true">
+            <img
+              class="sign-in-back__icon-img--light"
+              src="assets/sign-in/arrow-back-light.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+            <img
+              class="sign-in-back__icon-img--dark"
+              src="assets/sign-in/arrow-back.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+          </span>
+          <span class="sign-in-back__label">Back</span>
+        </a>
+        <div class="sign-in-trust">
+          <div class="sign-in-trust__avatars">
+            <img src="assets/images/avatar-1.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-2.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-3.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-4.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+          </div>
+          <p class="sign-in-trust__text">Satisfied Clients in HQ Promo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var form = document.getElementById("twoFactorForm");
+    var group = document.querySelector("[data-otp-group]");
+    var codeInput = document.getElementById("twoFactorCode");
+    if (!form || !group || !codeInput) return;
+
+    var inputs = Array.prototype.slice.call(
+      group.querySelectorAll(".sign-in-otp__input")
+    );
+
+    var syncCode = function () {
+      codeInput.value = inputs
+        .map(function (input) {
+          return input.value || "";
+        })
+        .join("");
+    };
+
+    inputs.forEach(function (input, index) {
+      input.addEventListener("input", function () {
+        var value = input.value.replace(/\D/g, "");
+        input.value = value.slice(0, 1);
+        syncCode();
+        if (input.value && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Backspace" && !input.value && index > 0) {
+          inputs[index - 1].focus();
+        }
+      });
+
+      input.addEventListener("paste", function (event) {
+        event.preventDefault();
+        var pasted = (event.clipboardData || window.clipboardData)
+          .getData("text")
+          .replace(/\D/g, "")
+          .slice(0, inputs.length);
+        pasted.split("").forEach(function (digit, i) {
+          if (inputs[index + i]) {
+            inputs[index + i].value = digit;
+          }
+        });
+        syncCode();
+        var focusIndex = Math.min(index + pasted.length, inputs.length - 1);
+        inputs[focusIndex].focus();
+      });
+    });
+
+    form.addEventListener("submit", function () {
+      syncCode();
+    });
+  })();
+</script>

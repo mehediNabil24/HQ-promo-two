@@ -1,0 +1,138 @@
+<div class="dash-api-page">
+  <div class="dash-welcome dash-welcome--services mb-4">
+    <h1 class="dash-welcome__title">API</h1>
+    <p class="dash-welcome__text mb-0">
+      Grow your business with our secure API, built for fast integration and
+      effortless service management.
+    </p>
+  </div>
+
+  <div class="api-docs">
+    <section class="api-panel api-panel--overview" aria-labelledby="api-docs-title">
+      <header class="api-panel__header">
+        <h2 class="api-panel__title" id="api-docs-title">API DOCS</h2>
+      </header>
+      <div class="api-panel__body">
+        <div class="api-kv" role="list">
+          <div class="api-kv__row" role="listitem">
+            <span class="api-kv__key">HTTP Method</span>
+            <span class="api-kv__value">POST</span>
+          </div>
+          <div class="api-kv__row" role="listitem">
+            <span class="api-kv__key">API URL</span>
+            <span class="api-kv__value">{{ site['protocol'] }}://{{ site['domain'] }}/api/v2</span>
+          </div>
+          {% if user['auth'] %}
+            <div class="api-kv__row" role="listitem">
+              <span class="api-kv__key">API Key</span>
+              <span class="api-kv__value">
+                Get an API key on the
+                <a href="{{ site['protocol'] }}://{{ site['domain'] }}/account">Account</a>
+                page
+              </span>
+            </div>
+          {% endif %}
+          <div class="api-kv__row" role="listitem">
+            <span class="api-kv__key">Response format</span>
+            <span class="api-kv__value">JSON</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% for method, methodDetails in methods %}
+      <section class="api-card" aria-labelledby="api-method-{{ method }}">
+        <header class="api-card__header">
+          <h2 class="api-card__title" id="api-method-{{ method }}">
+            {{ methodDetails['title'] }}
+          </h2>
+        </header>
+
+        {% if method == 'add' %}
+          {% if methodDetails['types']|length > 1 %}
+            <div class="api-service-type">
+              <span class="api-service-type__label">Service type</span>
+              <div class="api-service-type__control">
+                <select
+                  class="api-service-type__select"
+                  id="service_type"
+                  aria-label="Service type"
+                >
+                  {% for type, label in methodDetails['types'] %}
+                    <option value="{{ type }}">{{ label }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          {% endif %}
+
+          {% for type, parameters in methodDetails['parameters'] %}
+            <div id="type_{{ type }}" data-api-service-type="{{ type }}" style="display: none;">
+              <div class="api-kv" role="list">
+                <div class="api-kv__row api-kv__row--head" role="presentation">
+                  <span class="api-kv__key">Parameters</span>
+                  <span class="api-kv__value">Description</span>
+                </div>
+                {% for parameter, label in parameters %}
+                  <div class="api-kv__row" role="listitem">
+                    <span class="api-kv__key">{{ parameter }}</span>
+                    <span class="api-kv__value">{{ label }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="api-kv" role="list">
+            <div class="api-kv__row api-kv__row--head" role="presentation">
+              <span class="api-kv__key">Parameters</span>
+              <span class="api-kv__value">Description</span>
+            </div>
+            {% for parameter, label in methodDetails['parameters'] %}
+              <div class="api-kv__row" role="listitem">
+                <span class="api-kv__key">{{ parameter }}</span>
+                <span class="api-kv__value">{{ label }}</span>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="api-example">
+          <h3 class="api-example__title">Example response</h3>
+          <pre class="api-example__code" tabindex="0"><code>{{ methodDetails['examples'] }}</code></pre>
+        </div>
+      </section>
+    {% endfor %}
+
+    <a href="/example.txt" class="api-php-btn" target="_blank">
+      Example of PHP code
+    </a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var select = document.getElementById("service_type");
+    var groups = Array.prototype.slice.call(
+      document.querySelectorAll("[data-api-service-type]")
+    );
+
+    if (!groups.length) return;
+
+    var showType = function (type) {
+      groups.forEach(function (group) {
+        group.style.display =
+          group.getAttribute("data-api-service-type") === type ? "" : "none";
+      });
+    };
+
+    if (select) {
+      showType(select.value);
+      select.addEventListener("change", function () {
+        showType(select.value);
+      });
+    } else {
+      groups[0].style.display = "";
+    }
+  })();
+</script>

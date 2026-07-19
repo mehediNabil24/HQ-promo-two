@@ -789,4 +789,101 @@
   dashHistoryChecks.forEach((check) => {
     check.addEventListener("change", syncHistoryCheckAll);
   });
+
+  /*
+    Custom Google Sign-Up button:
+    Official GIS renderButton sits in a near-transparent hit layer over the
+    branded face. Credential is POSTed to Perfect Panel login_uri with csrf.
+  */
+  const googleConfigEl = document.querySelector("[data-google-config]");
+  const googleRoot = document.querySelector("[data-google-signin]");
+  const googleSlot = googleRoot?.querySelector("[data-google-btn-slot]");
+
+  if (googleConfigEl && googleRoot && googleSlot) {
+    const clientId = googleConfigEl.getAttribute("data-client_id") || "";
+    const loginUri = googleConfigEl.getAttribute("data-login_uri") || "";
+    const csrfToken = googleConfigEl.getAttribute("data-_csrf") || "";
+    let googleReady = false;
+
+    const postGoogleCredential = (credential) => {
+      if (!credential || !loginUri) return;
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = loginUri;
+      form.style.display = "none";
+
+      const credentialInput = document.createElement("input");
+      credentialInput.type = "hidden";
+      credentialInput.name = "credential";
+      credentialInput.value = credential;
+      form.appendChild(credentialInput);
+
+      if (csrfToken) {
+        const csrfInput = document.createElement("input");
+        csrfInput.type = "hidden";
+        csrfInput.name = "_csrf";
+        csrfInput.value = csrfToken;
+        form.appendChild(csrfInput);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    const renderGoogleButton = () => {
+      if (!window.google?.accounts?.id || !clientId) return false;
+
+      const width = Math.max(
+        Math.floor(googleRoot.getBoundingClientRect().width) || 280,
+        200
+      );
+
+      if (!googleReady) {
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: (response) => {
+            if (response?.credential) postGoogleCredential(response.credential);
+          },
+          auto_select: false,
+          cancel_on_tap_outside: true,
+        });
+        googleReady = true;
+      }
+
+      googleSlot.innerHTML = "";
+      window.google.accounts.id.renderButton(googleSlot, {
+        type: "standard",
+        theme: "outline",
+        size: "large",
+        text: "signup_with",
+        shape: "pill",
+        logo_alignment: "left",
+        width,
+      });
+
+      return true;
+    };
+
+    const whenGoogleReady = () => {
+      if (renderGoogleButton()) return;
+
+      let tries = 0;
+      const timer = window.setInterval(() => {
+        tries += 1;
+        if (renderGoogleButton() || tries >= 40) {
+          window.clearInterval(timer);
+        }
+      }, 150);
+    };
+
+    whenGoogleReady();
+    window.addEventListener(
+      "resize",
+      () => {
+        if (googleReady) renderGoogleButton();
+      },
+      { passive: true }
+    );
+  }
 })();

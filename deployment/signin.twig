@@ -1,0 +1,330 @@
+{# Keep the designed authentication page full-bleed inside the guest layout. #}
+<style>
+  body > nav.navbar {
+    display: none !important;
+  }
+</style>
+
+<div class="sign-in-page">
+  <div class="sign-in-layout">
+    <div class="sign-in-form-side">
+      <div class="sign-in-form-wrapper">
+        <div class="sign-in-header">
+          {% if site['logo'] %}
+            <img
+              src="{{ site['logo'] }}"
+              alt="{{ site['name'] }}"
+              width="79"
+              height="79"
+              class="sign-in-logo"
+            />
+          {% else %}
+            <img
+              src="assets/sign-in/logo-light.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--light"
+            />
+            <img
+              src="assets/sign-in/logo.png"
+              alt="{{ site['name']|default('HqPromo') }}"
+              width="79"
+              height="79"
+              class="sign-in-logo sign-in-logo--dark"
+            />
+          {% endif %}
+          <div class="sign-in-header__text">
+            <h1 class="sign-in-header__title">Sign in your Account</h1>
+            <p class="sign-in-header__subtitle">
+              Welcome back! Please enter your details.
+            </p>
+          </div>
+        </div>
+
+        <div class="sign-in-tabs">
+          <a href="{{ page_url('signin') }}" class="sign-in-tab sign-in-tab--active">
+            <img
+              class="si-icon--light"
+              src="assets/sign-in/lock-light.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <img
+              class="si-icon--dark"
+              src="assets/sign-in/lock.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <span class="sign-in-tab__label">{{ lang('signin.title') }}</span>
+          </a>
+          <a href="{{ page_url('signup') }}" class="sign-in-tab">
+            <img
+              class="si-icon--light"
+              src="assets/sign-in/user-light.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <img
+              class="si-icon--dark"
+              src="assets/sign-in/user.svg"
+              alt=""
+              width="19"
+              height="19"
+            />
+            <span class="sign-in-tab__label">{{ lang('signup.button') }}</span>
+          </a>
+        </div>
+
+        <form
+          class="sign-in-form{% if site['rtl'] %} rtl-form{% endif %}"
+          action=""
+          method="post"
+          autocomplete="off"
+        >
+          {% if error %}
+            <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ errorMessage }}
+            </div>
+          {% endif %}
+
+          {% if success %}
+            <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ successText }}
+            </div>
+          {% endif %}
+
+          <div class="sign-in-form__fields">
+            <div class="sign-in-field">
+              <label class="sign-in-field__label" for="username">
+                User Name
+              </label>
+              <div class="sign-in-field__input-wrap">
+                <img
+                  class="sign-in-field__icon si-icon--light"
+                  src="assets/sign-in/user-field-light.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                <img
+                  class="sign-in-field__icon si-icon--dark"
+                  src="assets/sign-in/user-field.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                <input
+                  class="sign-in-field__input"
+                  type="text"
+                  id="username"
+                  name="LoginForm[username]"
+                  value="{{ data['username'] }}"
+                  placeholder="user name"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="sign-in-field">
+              <label class="sign-in-field__label" for="password">
+                Password
+              </label>
+              <div class="sign-in-field__input-wrap">
+                <img
+                  class="sign-in-field__icon si-icon--light"
+                  src="assets/sign-in/password-light.svg"
+                  alt=""
+                  width="21"
+                  height="21"
+                />
+                <img
+                  class="sign-in-field__icon si-icon--dark"
+                  src="assets/sign-in/password.svg"
+                  alt=""
+                  width="21"
+                  height="21"
+                />
+                <input
+                  class="sign-in-field__input"
+                  type="password"
+                  id="password"
+                  name="LoginForm[password]"
+                  placeholder="password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="sign-in-field__toggle"
+                  aria-label="Toggle password visibility"
+                  data-password-toggle
+                >
+                  <img
+                    class="si-icon--light"
+                    src="assets/sign-in/eye-off-light.svg"
+                    alt=""
+                    width="21"
+                    height="21"
+                    data-eye-icon
+                  />
+                  <img
+                    class="si-icon--dark"
+                    src="assets/sign-in/eye-off.svg"
+                    alt=""
+                    width="21"
+                    height="21"
+                    data-eye-icon
+                  />
+                </button>
+              </div>
+            </div>
+
+            {% if site['captcha'] %}
+              <div class="sign-in-field">
+                {{ captchaCode }}
+              </div>
+            {% endif %}
+
+            <div class="sign-in-options">
+              <label class="sign-in-checkbox">
+                <input
+                  type="checkbox"
+                  class="sign-in-checkbox__input"
+                  name="LoginForm[remember]"
+                  value="1"
+                  {% if data['remember'] %}checked{% endif %}
+                />
+                <span class="sign-in-checkbox__box"></span>
+                <span class="sign-in-checkbox__text">Remember me</span>
+              </label>
+              <a href="{{ page_url('resetpassword') }}" class="sign-in-forgot">
+                Forgot Password
+              </a>
+            </div>
+          </div>
+
+          <div class="sign-in-form__footer">
+            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+            <div class="sign-in-actions">
+              <button type="submit" class="sign-in-btn sign-in-btn--primary">
+                <img
+                  class="si-icon--light"
+                  src="assets/sign-in/lock-light.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                <img
+                  class="si-icon--dark"
+                  src="assets/sign-in/lock.svg"
+                  alt=""
+                  width="19"
+                  height="19"
+                />
+                {{ lang('signin.button') }}
+              </button>
+
+              {% if googleSignIn %}
+                <div
+                  hidden
+                  data-google-config
+                  data-client_id="{{ googleClientId }}"
+                  data-login_uri="{{ googleSignInRedirectUrl }}"
+                  data-_csrf="{{ csrftoken }}"
+                ></div>
+                <div
+                  class="sign-in-btn sign-in-btn--google sign-in-google"
+                  data-google-signin
+                  role="button"
+                  tabindex="0"
+                  aria-label="{{ lang('signin.button') }}"
+                >
+                  <div class="sign-in-google__face" aria-hidden="true">
+                    <img
+                      src="assets/sign-in/google.svg"
+                      alt=""
+                      width="24"
+                      height="24"
+                      class="sign-in-btn__google-icon"
+                    />
+                    <span class="sign-in-btn__label">{{ lang('signin.button') }}</span>
+                  </div>
+                  <div class="sign-in-google__hit" data-google-btn-slot></div>
+                </div>
+                <script src="https://accounts.google.com/gsi/client" async defer></script>
+              {% else %}
+                <button type="button" class="sign-in-btn sign-in-btn--google">
+                  <img
+                    src="assets/sign-in/google.svg"
+                    alt=""
+                    width="24"
+                    height="24"
+                    class="sign-in-btn__google-icon"
+                  />
+                  <span class="sign-in-btn__label">{{ lang('signin.button') }}</span>
+                </button>
+              {% endif %}
+            </div>
+
+            <p class="sign-in-create">
+              Don't have an account?
+              <a href="{{ page_url('signup') }}" class="sign-in-create__link"
+                >Create Account</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="sign-in-image-side">
+      <div class="sign-in-hero">
+        <img
+          src="assets/sign-in/subtract.svg"
+          alt=""
+          class="sign-in-hero__bg"
+        />
+        <img
+          src="assets/sign-in/hero-image.png"
+          alt="Sign in"
+          class="sign-in-hero__img"
+        />
+        <a href="{{ page_url('index') }}" class="sign-in-back">
+          <span class="sign-in-back__icon" aria-hidden="true">
+            <img
+              class="sign-in-back__icon-img--light"
+              src="assets/sign-in/arrow-back-light.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+            <img
+              class="sign-in-back__icon-img--dark"
+              src="assets/sign-in/arrow-back.svg"
+              alt=""
+              width="28"
+              height="28"
+            />
+          </span>
+          <span class="sign-in-back__label">Back</span>
+        </a>
+        <div class="sign-in-trust">
+          <div class="sign-in-trust__avatars">
+            <img src="assets/images/avatar-1.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-2.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-3.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+            <img src="assets/images/avatar-4.png" alt="" width="24" height="24" class="sign-in-trust__avatar" />
+          </div>
+          <p class="sign-in-trust__text">Satisfied Clients in HQ Promo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
