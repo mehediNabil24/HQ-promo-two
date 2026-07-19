@@ -8580,16 +8580,12 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
   }
 
   .sign-in-image-side {
-    order: -1;
-    justify-content: center;
-  }
-
-  .sign-in-hero {
-    width: min(100%, 520px, calc((100vh - 100px) * 640 / 800));
+    display: none;
   }
 
   .sign-in-form-wrapper {
     max-width: 603px;
+    margin-inline: auto;
   }
 }
 
@@ -8637,19 +8633,6 @@ html[data-theme="dark"] .sign-in-back__icon-img--dark {
     height: 22px;
     min-width: 22px;
     min-height: 22px;
-  }
-
-  .sign-in-hero {
-    width: min(100%, 360px, calc((100vh - 80px) * 640 / 800));
-  }
-
-  .sign-in-trust {
-    bottom: 3%;
-    padding: 12px 14px;
-  }
-
-  .sign-in-trust__text {
-    font-size: 13px;
   }
 }
 
