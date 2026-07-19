@@ -12880,3 +12880,115 @@ html[data-theme="dark"] .dash-notify-switch__track {
   background: #3a3a3a;
 }
 
+/* ===== Dashboard / Confirm Email ===== */
+.dash-confirm-email {
+  display: flex;
+  justify-content: center;
+}
+
+.dash-confirm-email__card {
+  width: 100%;
+  max-width: 720px;
+  overflow: hidden;
+  border: 0.5px solid rgba(132, 132, 132, 0.35);
+  border-radius: 18px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.dash-confirm-email__header {
+  padding: 28px 32px;
+  background-image: var(--gradient-brand);
+}
+
+.dash-confirm-email__title {
+  font-family: "Outfit", var(--font-sans);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+  text-align: center;
+}
+
+.dash-confirm-email__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 32px 32px;
+}
+
+.dash-confirm-email__copy {
+  text-align: center;
+}
+
+.dash-confirm-email__text {
+  color: var(--color-body);
+  font-family: "Outfit", var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.dash-confirm-email__email {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--color-black);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.dash-confirm-email__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash-confirm-email__change {
+  min-height: 56px;
+  padding: 8px 24px;
+  border: 0.5px solid rgba(132, 132, 132, 0.4);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-black);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.dash-confirm-email__change:hover,
+.dash-confirm-email__change:focus-visible {
+  color: var(--color-black);
+  opacity: 0.9;
+}
+
+@media (max-width: 767.98px) {
+  .dash-confirm-email__header,
+  .dash-confirm-email__body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+html[data-theme="dark"] .dash-confirm-email__card {
+  background: #121212;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .dash-confirm-email__text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+html[data-theme="dark"] .dash-confirm-email__email {
+  color: #fff;
+}
+
+html[data-theme="dark"] .dash-confirm-email__change {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+html[data-theme="dark"] .dash-confirm-email__change:hover,
+html[data-theme="dark"] .dash-confirm-email__change:focus-visible {
+  color: #fff;
+}
+

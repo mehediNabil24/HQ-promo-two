@@ -1,0 +1,208 @@
+          <section class="dash-confirm-email">
+            <div class="dash-confirm-email__card">
+              <div class="dash-confirm-email__header">
+                <h1 class="dash-confirm-email__title mb-0">
+                  {{ lang('confirmemail.message.title') }}
+                </h1>
+              </div>
+
+              <form
+                class="dash-confirm-email__body{% if site['rtl'] %} rtl-form{% endif %}"
+                method="post"
+                action=""
+              >
+                {% if successResend %}
+                  <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ successResendMessage }}
+                  </div>
+                {% endif %}
+
+                {% if errorResend %}
+                  <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ errorResendMessage }}
+                  </div>
+                {% endif %}
+
+                <div class="dash-confirm-email__copy">
+                  {% if isSelfChangeEmail %}
+                    <p class="dash-confirm-email__text mb-2">
+                      {{ lang('confirmemail.message.sent') }}
+                      <span class="dash-confirm-email__email">{{ user['email'] }}</span>
+                    </p>
+                    <p class="dash-confirm-email__text mb-0">
+                      {{ lang('confirmemail.message.description') }}
+                    </p>
+                  {% else %}
+                    <p class="dash-confirm-email__text mb-0">
+                      {{ lang('confirmemail.message.description') }}
+                    </p>
+                  {% endif %}
+                </div>
+
+                <div class="dash-confirm-email__actions">
+                  <button
+                    class="dash-submit btn w-100"
+                    type="submit"
+                    id="resendEmailLink"
+                  >
+                    {{ lang('confirmemail.button.resend') }}
+                  </button>
+
+                  {% if can_change_email == 1 %}
+                    <button
+                      class="dash-confirm-email__change btn w-100"
+                      type="button"
+                      id="changeEmailLink"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changeEmailModal"
+                      data-toggle="modal"
+                      data-target="#changeEmailModal"
+                    >
+                      {{ lang('confirmemail.button.change') }}
+                    </button>
+                  {% endif %}
+                </div>
+
+                <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+              </form>
+            </div>
+          </section>
+
+{% if can_change_email == 1 %}
+  <div
+    class="modal fade dash-account-modal"
+    id="changeEmailModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="changeEmailModalLabel"
+    aria-hidden="true"
+    data-backdrop="static"
+    data-bs-backdrop="static"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <form
+        id="changeEmailForm"
+        class="modal-content position-relative{% if site['rtl'] %} rtl-form{% endif %}"
+        method="post"
+        action=""
+      >
+        <button
+          class="dash-account-modal__close btn"
+          type="button"
+          data-dismiss="modal"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <iconify-icon icon="basil:cross-outline" width="28" height="28"></iconify-icon>
+        </button>
+
+        <div class="modal-body d-flex flex-column">
+          <div class="dash-ticket-panel__header" style="min-height: 70px">
+            <h2
+              class="mb-0"
+              id="changeEmailModalLabel"
+              style="
+                font-family: var(--font-sans);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1.5;
+                color: var(--color-body);
+              "
+            >
+              {{ lang('confirmemail.change_email.title') }}
+            </h2>
+          </div>
+
+          <div
+            id="changeEmailError"
+            class="error-summary alert alert-dismissible alert-danger hidden{% if site['rtl'] %} rtl-alert{% endif %}"
+          ></div>
+
+          <div class="d-flex flex-column gap-4">
+            <div class="d-flex flex-column">
+              <label class="form-label mb-3" for="current-email">
+                {{ lang('confirmemail.change_email.current_email') }}
+              </label>
+              <input
+                class="dash-input"
+                type="email"
+                id="current-email"
+                value="{{ current_email }}"
+                readonly
+                disabled
+              >
+            </div>
+
+            <div class="d-flex flex-column">
+              <label class="form-label mb-3" for="new-email">
+                {{ lang('confirmemail.change_email.new_email') }}
+              </label>
+              <input
+                class="dash-input"
+                type="email"
+                id="new-email"
+                name="ChangeConfirmationEmailForm[email]"
+              >
+            </div>
+
+            <div class="d-flex flex-column">
+              <label class="form-label mb-3" for="current-password">
+                {{ lang('confirmemail.change_email.current_password') }}
+              </label>
+              <div class="auth-input dash-account-password">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="current-password"
+                  name="ChangeConfirmationEmailForm[password]"
+                >
+                <button
+                  class="auth-input__toggle dash-account-password__toggle"
+                  type="button"
+                  data-password-toggle
+                  aria-pressed="false"
+                  aria-label="Show password"
+                >
+                  <iconify-icon
+                    class="dash-account-password__icon dash-account-password__icon--off"
+                    icon="mdi:eye-off-outline"
+                    width="20"
+                    height="20"
+                  ></iconify-icon>
+                  <iconify-icon
+                    class="dash-account-password__icon dash-account-password__icon--on"
+                    icon="mdi:eye-outline"
+                    width="20"
+                    height="20"
+                  ></iconify-icon>
+                </button>
+              </div>
+            </div>
+
+            <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+
+            <div class="d-flex flex-column flex-sm-row gap-3">
+              <button
+                class="dash-confirm-email__change btn flex-fill"
+                type="button"
+                data-dismiss="modal"
+                data-bs-dismiss="modal"
+              >
+                {{ lang('confirmemail.change_email.close') }}
+              </button>
+              <button
+                class="dash-account-submit flex-fill"
+                type="submit"
+                id="changeEmailSubmitBtn"
+              >
+                {{ lang('confirmemail.change_email.submit') }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endif %}
