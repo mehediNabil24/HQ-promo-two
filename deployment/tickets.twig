@@ -1,0 +1,336 @@
+          <div class="dash-welcome dash-welcome--services mb-4">
+            <h1 class="dash-welcome__title">Tickets</h1>
+            <p class="dash-welcome__text mb-0">
+              Need help? Open a ticket with our support team. We're here to
+              assist you with any questions.
+            </p>
+          </div>
+
+          <div class="row g-4 align-items-stretch dash-tickets-row">
+            <!-- Create Ticket -->
+            <div class="col-lg-6 d-flex">
+              <div class="dash-panel dash-ticket-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">Create Ticket</h2>
+                  </div>
+
+                  <form
+                    id="ticketsend"
+                    class="dash-ticket-form d-flex flex-column{% if site['rtl'] %} rtl-form{% endif %}"
+                    action=""
+                    method="post"
+                  >
+                    <div
+                      class="alert alert-dismissible alert-danger ticket-danger{% if site['rtl'] %} rtl-alert{% endif %}"
+                      style="display: none"
+                    >
+                      <button type="button" class="close">&times;</button>
+                      <div></div>
+                    </div>
+
+                    {% if additionalFieldsEnabled %}
+                      <div>
+                        <label
+                          class="dash-field-label form-label"
+                          for="ticket-category-field"
+                        >{{ lang('tickets.category') }}</label>
+                        <div class="dash-ticket-select">
+                          <select
+                            id="ticket-category-field"
+                            name="TicketForm[category]"
+                            class="form-select"
+                          >
+                            {% for categoryField in additionalFields %}
+                              <option value="{{ categoryField.id }}">{{ categoryField.name }}</option>
+                            {% endfor %}
+                          </select>
+                          <iconify-icon
+                            class="dash-ticket-select__chevron"
+                            icon="mdi:chevron-down"
+                            width="24"
+                            height="24"
+                            aria-hidden="true"
+                          ></iconify-icon>
+                        </div>
+                      </div>
+                      <div id="ticket-fields" data-ticket-fields="true"></div>
+                    {% else %}
+                      <div>
+                        <label
+                          class="dash-field-label form-label"
+                          for="subject"
+                        >{{ lang('tickets.subject') }}</label>
+                        <input
+                          type="text"
+                          class="form-control dash-input"
+                          id="subject"
+                          name="TicketForm[subject]"
+                        >
+                      </div>
+                    {% endif %}
+
+                    <div>
+                      <label
+                        class="dash-field-label form-label"
+                        for="message"
+                      >{{ lang('tickets.message') }}</label>
+                      <textarea
+                        class="form-control dash-ticket-textarea"
+                        rows="5"
+                        id="message"
+                        name="TicketForm[message]"
+                        placeholder="Describe your issue..."
+                      ></textarea>
+                    </div>
+
+                    <div
+                      class="tickets-uploader dash-ticket-attach"
+                      data-rtl="{% if site['rtl'] %}true{% else %}false{% endif %}"
+                      data-lang-button-attach="{{ lang('tickets.button.attach') }}"
+                      data-lang-file-format-incorrect="{{ lang('tickets.error.file_format.incorrect') }}"
+                      data-lang-file-size-incorrect="{{ lang('tickets.error.file_size.incorrect') }}"
+                    ></div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-submit btn w-100" type="submit">
+                      {{ lang('tickets.button') }}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ticket History -->
+            <div class="col-lg-6 d-flex">
+              <div
+                class="dash-panel dash-ticket-panel dash-ticket-panel--history card border-0 w-100"
+              >
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      Ticket History
+                    </h2>
+                  </div>
+
+                  <div class="dash-ticket-history d-flex flex-column">
+                    {% if ticketList or search %}
+                      <form
+                        class="dash-ticket-search gradient-border{% if site['rtl'] %} rtl-search{% endif %}"
+                        action="{{ page['url'] }}"
+                        method="get"
+                        id="history-search"
+                      >
+                        <iconify-icon
+                          icon="iconoir:search"
+                          width="20"
+                          height="20"
+                          aria-hidden="true"
+                        ></iconify-icon>
+                        <input
+                          class="form-control border-0"
+                          type="search"
+                          value="{{ search }}"
+                          name="search"
+                          placeholder="{{ lang('general.search.placeholder') }}"
+                          aria-label="Search tickets"
+                        >
+                      </form>
+                    {% endif %}
+
+                    {% if ticketList %}
+                      <div
+                        class="dash-ticket-filters gradient-border"
+                        role="group"
+                        aria-label="Filter tickets"
+                        data-ticket-filter-toggle
+                      >
+                        <div class="dash-ticket-filters__inner">
+                          <button
+                            class="dash-ticket-filters__btn is-active"
+                            type="button"
+                            data-ticket-filter="all"
+                          >All</button>
+                          <button
+                            class="dash-ticket-filters__btn"
+                            type="button"
+                            data-ticket-filter="pending"
+                          >Pending</button>
+                          <button
+                            class="dash-ticket-filters__btn"
+                            type="button"
+                            data-ticket-filter="answered"
+                          >Answered</button>
+                        </div>
+                      </div>
+
+                      <div class="dash-ticket-list-wrap">
+                        <ul
+                          class="dash-ticket-list list-unstyled mb-0{% if site['rtl'] %} rtl-table{% endif %}"
+                          data-ticket-list
+                        >
+                          {% for ticket in ticketList %}
+                            <li data-ticket-status="{{ ticket['status']|lower }}">
+                              <a
+                                class="dash-ticket-row"
+                                href="{{ page_url('viewticket') }}/{{ ticket['id'] }}"
+                              >
+                                <div class="dash-ticket-row__col">
+                                  <span class="dash-ticket-row__label">{{ lang('tickets.subject') }}</span>
+                                  <span class="dash-ticket-row__value is-accent">
+                                    {% if ticket['new'] == 1 %}
+                                      <strong>{{ ticket['theme'] }}</strong>
+                                    {% else %}
+                                      {{ ticket['theme'] }}
+                                    {% endif %}
+                                  </span>
+                                </div>
+                                <div class="dash-ticket-row__col is-center">
+                                  <span class="dash-ticket-row__label">{{ lang('tickets.status') }}</span>
+                                  <span class="dash-ticket-row__value">{{ ticket['status'] }}</span>
+                                </div>
+                                <div class="dash-ticket-row__col is-end">
+                                  <span class="dash-ticket-row__label">#ID{{ ticket['id'] }}</span>
+                                  <span class="dash-ticket-row__value">{{ ticket['time'] }}</span>
+                                </div>
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+
+                    {% if pagination['count'] > 50 %}
+                      <nav
+                        class="dash-ticket-pagination{% if site['rtl'] %} rtl-pagination{% endif %}"
+                        aria-label="Ticket history pagination"
+                      >
+                        {% if pagination['current'] != 1 %}
+                          <a
+                            class="dash-ticket-pagination__btn"
+                            href="{{ page['url'] }}/{{ pagination['last'] }}"
+                            aria-label="Previous page"
+                          >
+                            <iconify-icon
+                              icon="mdi:chevron-left"
+                              width="20"
+                              height="20"
+                              aria-hidden="true"
+                            ></iconify-icon>
+                          </a>
+                        {% endif %}
+
+                        {% set r, l = 3, 3 %}
+                        {% if pagination['current'] == 1 %}
+                          {% set r = 6 %}
+                        {% endif %}
+                        {% if pagination['current'] == 2 %}
+                          {% set r = 5 %}
+                        {% endif %}
+                        {% if pagination['current'] >= pagination['pages'] %}
+                          {% set l = 5 %}
+                        {% endif %}
+
+                        {% for i in 1..ceil(pagination['pages']) %}
+                          {% if i >= (pagination['current']-l) and i <= (pagination['current']+r) %}
+                            <a
+                              class="dash-ticket-pagination__btn{% if i == pagination['current'] %} is-active{% endif %}"
+                              href="{{ page['url'] }}/{{ i }}"
+                              {% if i == pagination['current'] %}aria-current="page"{% endif %}
+                            >{{ i }}</a>
+                          {% endif %}
+                        {% endfor %}
+
+                        {% if pagination['current'] < pagination['pages'] %}
+                          <a
+                            class="dash-ticket-pagination__btn"
+                            href="{{ page['url'] }}/{{ pagination['next'] }}"
+                            aria-label="Next page"
+                          >
+                            <iconify-icon
+                              icon="mdi:chevron-right"
+                              width="20"
+                              height="20"
+                              aria-hidden="true"
+                            ></iconify-icon>
+                          </a>
+                        {% endif %}
+                      </nav>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% if ticketsText %}
+            <div class="dash-panel card border-0 mt-4{% if site['rtl'] %} rtl-content{% endif %}">
+              <div class="card-body">
+                {{ ticketsText }}
+              </div>
+            </div>
+          {% endif %}
+
+<script>
+  (function () {
+    var fieldsRoot = document.getElementById("ticket-fields");
+    var filters = document.querySelector("[data-ticket-filter-toggle]");
+    var ticketList = document.querySelector("[data-ticket-list]");
+
+    var styleDynamicFields = function () {
+      if (!fieldsRoot) return;
+
+      fieldsRoot.querySelectorAll("label").forEach(function (label) {
+        label.classList.add("dash-field-label", "form-label");
+      });
+
+      fieldsRoot.querySelectorAll("select").forEach(function (select) {
+        select.classList.add("form-select");
+        if (select.closest(".dash-ticket-select")) return;
+
+        var wrapper = document.createElement("div");
+        wrapper.className = "dash-ticket-select";
+        select.parentNode.insertBefore(wrapper, select);
+        wrapper.appendChild(select);
+
+        var chevron = document.createElement("iconify-icon");
+        chevron.className = "dash-ticket-select__chevron";
+        chevron.setAttribute("icon", "mdi:chevron-down");
+        chevron.setAttribute("width", "24");
+        chevron.setAttribute("height", "24");
+        chevron.setAttribute("aria-hidden", "true");
+        wrapper.appendChild(chevron);
+      });
+
+      fieldsRoot
+        .querySelectorAll("input:not([type='hidden']):not([type='checkbox']):not([type='radio'])")
+        .forEach(function (input) {
+          input.classList.add("dash-ticket-dynamic-input");
+        });
+    };
+
+    if (fieldsRoot) {
+      styleDynamicFields();
+      new MutationObserver(styleDynamicFields).observe(fieldsRoot, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    if (filters && ticketList) {
+      filters.addEventListener("click", function (event) {
+        var button = event.target.closest("[data-ticket-filter]");
+        if (!button) return;
+
+        var selectedStatus = button.getAttribute("data-ticket-filter");
+        ticketList.querySelectorAll("[data-ticket-status]").forEach(function (ticket) {
+          var ticketStatus = ticket.getAttribute("data-ticket-status") || "";
+          ticket.style.display =
+            selectedStatus === "all" || ticketStatus.indexOf(selectedStatus) !== -1
+              ? ""
+              : "none";
+        });
+      });
+    }
+  })();
+</script>

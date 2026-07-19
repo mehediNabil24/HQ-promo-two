@@ -1,0 +1,609 @@
+          <div class="dash-welcome dash-welcome--services mb-4">
+            <h1 class="dash-welcome__title">Account Settings</h1>
+            <p class="dash-welcome__text mb-0">
+              Manage your profile, security, and preferences to tailor your
+              experience.
+            </p>
+          </div>
+
+          {% if success %}
+            <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ successText }}
+            </div>
+          {% endif %}
+          {% if twofactorauth.success %}
+            <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close">&times;</button>
+              {{ twofactorauth.success }}
+            </div>
+          {% endif %}
+          {% if successChangeEmail %}
+            <div class="alert alert-dismissible alert-success{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ successChangeEmailMessage }}
+            </div>
+          {% endif %}
+          {% if errorChangeEmail %}
+            <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{ errorChangeEmailMessage }}
+            </div>
+          {% endif %}
+
+          <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6 d-flex">
+              <div class="dash-panel dash-account-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      Account Details
+                    </h2>
+                  </div>
+
+                  <form
+                    class="d-flex flex-column gap-4"
+                  >
+                    <div class="d-flex flex-column">
+                      <label
+                        class="dash-field-label form-label"
+                        for="accountUserName"
+                        >User Name</label
+                      >
+                      <input
+                        class="dash-input"
+                        type="text"
+                        id="accountUserName"
+                        value="{{ user['username'] }}"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="d-flex flex-column">
+                      <label
+                        class="dash-field-label form-label"
+                        for="accountEmail"
+                        >E-mail</label
+                      >
+                      <input
+                        class="dash-input"
+                        type="email"
+                        id="accountEmail"
+                        value="{{ user['email'] }}"
+                        readonly
+                      />
+                    </div>
+
+                    <button
+                      id="changeEmailLink"
+                      class="dash-account-submit w-100"
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changeEmailModal"
+                    >
+                      Change E-mail
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 d-flex">
+                <div class="dash-panel dash-account-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      Change Password
+                    </h2>
+                  </div>
+
+                  <form
+                    class="d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
+                    action=""
+                    method="post"
+                  >
+                    {% if error %}
+                      <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                        <button type="button" class="close">&times;</button>
+                        {{ errorText }}
+                      </div>
+                    {% endif %}
+                    <div class="d-flex flex-column">
+                      <label
+                        class="dash-field-label form-label"
+                        for="currentPassword"
+                        >Current Password</label
+                      >
+                      <div class="auth-input dash-account-password">
+                        <input
+                          class="form-control"
+                          type="password"
+                          id="currentPassword"
+                          name="SettingsFrom[current_password]"
+                        />
+                        <button
+                          class="auth-input__toggle dash-account-password__toggle"
+                          type="button"
+                          data-password-toggle
+                          aria-pressed="false"
+                          aria-label="Show password"
+                        >
+                          <iconify-icon
+                            class="dash-account-password__icon dash-account-password__icon--off"
+                            icon="mdi:eye-off-outline"
+                            width="20"
+                            height="20"
+                          ></iconify-icon>
+                          <iconify-icon
+                            class="dash-account-password__icon dash-account-password__icon--on"
+                            icon="mdi:eye-outline"
+                            width="20"
+                            height="20"
+                          ></iconify-icon>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="d-flex flex-column">
+                          <label
+                            class="dash-field-label form-label"
+                            for="newPassword"
+                            >New Password</label
+                          >
+                          <div class="auth-input dash-account-password">
+                            <input
+                              class="form-control"
+                              type="password"
+                              id="newPassword"
+                              name="SettingsFrom[password]"
+                            />
+                            <button
+                              class="auth-input__toggle dash-account-password__toggle"
+                              type="button"
+                              data-password-toggle
+                              aria-pressed="false"
+                              aria-label="Show password"
+                            >
+                              <iconify-icon
+                                class="dash-account-password__icon dash-account-password__icon--off"
+                                icon="mdi:eye-off-outline"
+                                width="20"
+                                height="20"
+                              ></iconify-icon>
+                              <iconify-icon
+                                class="dash-account-password__icon dash-account-password__icon--on"
+                                icon="mdi:eye-outline"
+                                width="20"
+                                height="20"
+                              ></iconify-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="d-flex flex-column">
+                          <label
+                            class="dash-field-label form-label"
+                            for="confirmPassword"
+                            >Confirm Password</label
+                          >
+                          <div class="auth-input dash-account-password">
+                            <input
+                              class="form-control"
+                              type="password"
+                              id="confirmPassword"
+                              name="SettingsFrom[confirm_password]"
+                            />
+                            <button
+                              class="auth-input__toggle dash-account-password__toggle"
+                              type="button"
+                              data-password-toggle
+                              aria-pressed="false"
+                              aria-label="Show password"
+                            >
+                              <iconify-icon
+                                class="dash-account-password__icon dash-account-password__icon--off"
+                                icon="mdi:eye-off-outline"
+                                width="20"
+                                height="20"
+                              ></iconify-icon>
+                              <iconify-icon
+                                class="dash-account-password__icon dash-account-password__icon--on"
+                                icon="mdi:eye-outline"
+                                width="20"
+                                height="20"
+                              ></iconify-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-account-submit w-100" type="submit">
+                      Change Password
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 align-items-stretch mt-2">
+            <div class="col-12 d-flex">
+              <div class="dash-panel dash-account-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      Two-Factor Authentication
+                    </h2>
+                  </div>
+
+                  <div class="dash-account-info">
+                    <div class="d-flex flex-column gap-2">
+                      <p
+                        class="dash-gradient-text mb-0"
+                        style="font-size: 16px; font-weight: 600; line-height: 1.5"
+                      >
+                        Two-Factor Authentication
+                      </p>
+                      <p class="mb-0">
+                        Email-based option to add an extra layer of protection
+                        to your account. When signing in you'll need to enter a
+                        code that will be sent to your email address.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    id="2fa-approve-error-block"
+                    style="{% if twofactorauth.error %}display: block;{% else %}display: none;{% endif %}"
+                    class="alert alert-dismissible alert-danger mt-4{% if site['rtl'] %} rtl-alert{% endif %}"
+                  >
+                    <button type="button" class="close">&times;</button>
+                    <span id="2fa-error-text">{{ twofactorauth.error }}</span>
+                  </div>
+
+                  <form
+                    id="2fa-generate-form"
+                    method="post"
+                    action="{{ twofactorauth.url.generate }}"
+                    class="{% if twofactorauth.active_code %}d-none{% endif %}{% if site['rtl'] %} rtl-form{% endif %}"
+                  >
+                    <input type="hidden" name="enabled" value="{{ twofactorauth.activated }}">
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button id="2fa-generate" class="dash-account-submit w-100 mt-4" type="submit">
+                      {% if twofactorauth.activated %}
+                        Enable Two-Factor Authentication
+                      {% else %}
+                        Disable Two-Factor Authentication
+                      {% endif %}
+                    </button>
+                  </form>
+
+                  <form
+                    id="2fa-approve-form"
+                    method="post"
+                    action="{{ twofactorauth.url.approve }}"
+                    class="{% if twofactorauth.active_code %}d-flex{% else %}d-none{% endif %} flex-column gap-4 mt-4{% if site['rtl'] %} rtl-form{% endif %}"
+                  >
+                    <p class="dash-2fa-verification-text mb-0">A verification code has been sent to your email address.</p>
+                    <input class="dash-input" type="text" id="code" name="code" placeholder="Enter code">
+                    <input type="hidden" name="enabled" value="{{ twofactorauth.activated }}">
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button id="2fa-approve" class="dash-account-submit w-100" type="submit">
+                      {% if twofactorauth.activated %}
+                        Enable Two-Factor Authentication
+                      {% else %}
+                        Disable Two-Factor Authentication
+                      {% endif %}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 align-items-stretch mt-2">
+            <div class="col-lg-6 d-flex">
+                <div class="dash-panel dash-account-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      API Key{% if user['is_generated_apikey'] %} (Created: {{ user['apikey_created'] }}){% endif %}
+                    </h2>
+                  </div>
+
+                  <form
+                    class="d-flex flex-column gap-4"
+                    action="{{ page['url'] }}/newkey"
+                    method="post"
+                  >
+                    {% if apiKey.errorMessage %}
+                      <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                        <button type="button" class="close">&times;</button>
+                        <span>{{ apiKey.errorMessage }}</span>
+                      </div>
+                    {% endif %}
+                    <input
+                      class="dash-input"
+                      type="text"
+                      id="api_key"
+                      value="{% if user['is_generated_apikey'] %}{{ user['apikey'] }}{% endif %}"
+                      readonly
+                      aria-label="API Key"
+                    />
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-account-submit w-100" type="submit">
+                      Generate New API Key
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 d-flex">
+                <div class="dash-panel dash-account-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">
+                      Time Zone
+                    </h2>
+                  </div>
+
+                  <form
+                    class="d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
+                    action=""
+                    method="post"
+                  >
+                    <div class="dash-ticket-select">
+                      <select
+                        class="form-select"
+                        id="accountTimeZone"
+                        name="SettingsFrom[timezone]"
+                      >
+                        {% for timezone, label in timezones %}
+                          <option
+                            value="{{ timezone }}"
+                            {% if timezone == user['timezone'] %}selected{% endif %}
+                          >{{ label }}</option>
+                        {% endfor %}
+                      </select>
+                      <iconify-icon
+                        class="dash-ticket-select__chevron"
+                        icon="mdi:chevron-down"
+                        width="24"
+                        height="24"
+                        aria-hidden="true"
+                      ></iconify-icon>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-account-submit w-100" type="submit">
+                      Save
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    <div
+      class="modal fade dash-account-modal"
+      id="changeEmailModal"
+      tabindex="-1"
+      aria-labelledby="changeEmailModalLabel"
+      aria-hidden="true"
+      data-backdrop="static"
+      data-bs-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <form
+          id="changeEmailForm"
+          class="modal-content position-relative{% if site['rtl'] %} rtl-form{% endif %}"
+          action=""
+          method="post"
+        >
+          <button
+            class="dash-account-modal__close btn"
+            type="button"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <iconify-icon icon="basil:cross-outline" width="28" height="28"></iconify-icon>
+          </button>
+
+          <div class="modal-body d-flex flex-column">
+            <div class="dash-ticket-panel__header" style="min-height: 70px">
+              <h2
+                class="mb-0"
+                id="changeEmailModalLabel"
+                style="
+                  font-family: var(--font-sans);
+                  font-size: 16px;
+                  font-weight: 400;
+                  line-height: 1.5;
+                  color: var(--color-body);
+                "
+              >
+                Change E-mail
+              </h2>
+            </div>
+
+            <div
+              id="changeEmailError"
+              class="error-summary alert alert-dismissible alert-danger d-none{% if site['rtl'] %} rtl-alert{% endif %}"
+              style="display: none;"
+            ></div>
+
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex flex-column">
+                <label class="form-label mb-3" for="current-email"
+                  >Current email</label
+                >
+                <input
+                  class="dash-input"
+                  type="email"
+                  id="current-email"
+                  value="{{ user['email'] }}"
+                  readonly
+                />
+              </div>
+
+              <div class="d-flex flex-column">
+                <label class="form-label mb-3" for="new-email"
+                  >New email</label
+                >
+                <input
+                  class="dash-input"
+                  type="email"
+                  id="new-email"
+                  name="ChangeEmailForm[email]"
+                  required
+                />
+              </div>
+
+              <div class="d-flex flex-column">
+                <label class="form-label mb-3" for="current-password"
+                  >Current password</label
+                >
+                <div class="auth-input dash-account-password">
+                  <input
+                    class="form-control"
+                    type="password"
+                    id="current-password"
+                    name="ChangeEmailForm[password]"
+                    required
+                  />
+                  <button
+                    class="auth-input__toggle dash-account-password__toggle"
+                    type="button"
+                    data-password-toggle
+                    aria-pressed="false"
+                    aria-label="Show password"
+                  >
+                    <iconify-icon
+                      class="dash-account-password__icon dash-account-password__icon--off"
+                      icon="mdi:eye-off-outline"
+                      width="20"
+                      height="20"
+                    ></iconify-icon>
+                    <iconify-icon
+                      class="dash-account-password__icon dash-account-password__icon--on"
+                      icon="mdi:eye-outline"
+                      width="20"
+                      height="20"
+                    ></iconify-icon>
+                  </button>
+                </div>
+              </div>
+
+              <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+              <button
+                id="changeEmailSubmitBtn"
+                class="dash-account-submit w-100"
+                type="submit"
+              >
+                Change E-mail
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+<script>
+  (function () {
+    var generateForm = document.getElementById("2fa-generate-form");
+    var approveForm = document.getElementById("2fa-approve-form");
+    var errorBlock = document.getElementById("2fa-approve-error-block");
+    var errorText = document.getElementById("2fa-error-text");
+
+    if (!generateForm || !approveForm) return;
+
+    var showError = function (message) {
+      if (!errorBlock) return;
+      if (errorText) errorText.textContent = message || "Something went wrong.";
+      errorBlock.style.display = "block";
+      errorBlock.classList.remove("d-none");
+    };
+
+    var hideError = function () {
+      if (!errorBlock) return;
+      errorBlock.style.display = "none";
+      errorBlock.classList.add("d-none");
+    };
+
+    var showApproveForm = function () {
+      generateForm.classList.add("d-none");
+      generateForm.style.display = "none";
+      approveForm.classList.remove("d-none");
+      approveForm.classList.add("d-flex");
+      approveForm.style.display = "flex";
+      var codeInput = document.getElementById("code");
+      if (codeInput) codeInput.focus();
+    };
+
+    generateForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      hideError();
+
+      var submitBtn = document.getElementById("2fa-generate");
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(generateForm.getAttribute("action"), {
+        method: "POST",
+        body: new FormData(generateForm),
+        credentials: "same-origin",
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          Accept: "application/json",
+        },
+      })
+        .then(function (response) {
+          var contentType = response.headers.get("content-type") || "";
+          if (contentType.indexOf("application/json") !== -1) {
+            return response.json().then(function (data) {
+              return { ok: response.ok, data: data };
+            });
+          }
+          return response.text().then(function () {
+            return { ok: response.ok, data: null };
+          });
+        })
+        .then(function (result) {
+          if (submitBtn) submitBtn.disabled = false;
+
+          var data = result.data || {};
+          if (data.error) {
+            showError(data.error);
+            return;
+          }
+
+          if (
+            result.ok ||
+            data.status === "success" ||
+            data.status === "ok" ||
+            data.success === true ||
+            data.result === "success"
+          ) {
+            showApproveForm();
+            return;
+          }
+
+          showError(
+            data.message || data.errorMessage || "Unable to send verification code."
+          );
+        })
+        .catch(function () {
+          if (submitBtn) submitBtn.disabled = false;
+          showError("Unable to send verification code.");
+        });
+    });
+  })();
+</script>
+

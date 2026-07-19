@@ -1,0 +1,192 @@
+          <div class="dash-welcome dash-welcome--services mb-4">
+            <h1 class="dash-welcome__title">Chat with Support</h1>
+            <p class="dash-welcome__text mb-0">
+              Need help? Open a ticket with our support team. We're here to
+              assist you with any questions.
+            </p>
+          </div>
+
+          <div class="row g-4 align-items-stretch dash-ticket-details-row">
+            <div class="col-lg-7 d-flex">
+              <div class="dash-panel dash-ticket-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">{{ ticket['thema'] }}</h2>
+                  </div>
+
+                  <div class="dash-ticket-chat{% if site['rtl'] %} rtl-content{% endif %}" aria-live="polite">
+                    {% if messageList %}
+                      {% for message in messageList %}
+                        {% if message['support'] == 0 %}
+                          <article class="dash-ticket-chat__message is-customer">
+                            <div class="dash-ticket-chat__content">
+                              <div class="dash-ticket-chat__meta">
+                                <time class="dash-ticket-chat__time">{{ message['time'] }}</time>
+                                <span class="dash-ticket-chat__name dash-gradient-text">
+                                  {{ message['author'] }}
+                                </span>
+                              </div>
+                              <div
+                                class="dash-ticket-chat__bubble dash-ticket-chat__bubble--customer gradient-border"
+                              >
+                                <div class="dash-ticket-chat__text">{{ message['message'] }}</div>
+                                {% if message['files'] %}
+                                  <div class="dash-ticket-chat__files mt-3">
+                                    {% for file in message['files'] %}
+                                      <a
+                                        href="{{ file['url'] }}"
+                                        title="{{ file['name'] }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer nofollow"
+                                      >{{ sliceUrl(file['name']) }}</a>
+                                    {% endfor %}
+                                  </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                            <img
+                              class="dash-ticket-chat__avatar dash-ticket-chat__avatar--customer"
+                              src="{% if user['avatar'] %}{{ user['avatar'] }}{% else %}assets/dashboard/profile-pic.jpg{% endif %}"
+                              alt="{{ message['author'] }}"
+                              width="56"
+                              height="56"
+                            >
+                          </article>
+                        {% else %}
+                          <article class="dash-ticket-chat__message is-support">
+                            <img
+                              class="dash-ticket-chat__avatar gradient-border"
+                              src="assets/dashboard/tickets/support-avatar.png"
+                              alt="{{ message['author'] }}"
+                              width="56"
+                              height="56"
+                            >
+                            <div class="dash-ticket-chat__content">
+                              <div class="dash-ticket-chat__meta">
+                                <span class="dash-ticket-chat__name dash-gradient-text">
+                                  {{ message['author'] }}
+                                </span>
+                                <time class="dash-ticket-chat__time">{{ message['time'] }}</time>
+                              </div>
+                              <div class="dash-ticket-chat__bubble">
+                                <div class="dash-ticket-chat__text">{{ message['message'] }}</div>
+                                {% if message['files'] %}
+                                  <div class="dash-ticket-chat__files mt-3">
+                                    {% for file in message['files'] %}
+                                      <a
+                                        href="{{ file['url'] }}"
+                                        title="{{ file['name'] }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer nofollow"
+                                      >{{ sliceUrl(file['name']) }}</a>
+                                    {% endfor %}
+                                  </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                          </article>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+
+                  {% if canAddMessage %}
+                    <form
+                      class="dash-ticket-details-form d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
+                      action=""
+                      method="post"
+                    >
+                      {% if error %}
+                        <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          {{ errorMessage }}
+                        </div>
+                      {% endif %}
+
+                      <div class="dash-ticket-compose gradient-border">
+                        <textarea
+                          class="form-control border-0 dash-ticket-compose__input"
+                          id="message"
+                          name="TicketMessageForm[message]"
+                          rows="5"
+                          placeholder="Write your message..."
+                        ></textarea>
+                        <div
+                          class="tickets-uploader dash-ticket-attach mb-0"
+                          data-rtl="{% if site['rtl'] %}true{% else %}false{% endif %}"
+                          data-lang-button-attach="{{ lang('tickets.button.attach') }}"
+                          data-lang-file-format-incorrect="{{ lang('tickets.error.file_format.incorrect') }}"
+                          data-lang-file-size-incorrect="{{ lang('tickets.error.file_size.incorrect') }}"
+                        ></div>
+                      </div>
+
+                      <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                      <button class="dash-submit btn w-100" type="submit">
+                        {{ lang('tickets.button.reply') }}
+                      </button>
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 d-flex">
+              <div class="dash-panel dash-ticket-panel card border-0 w-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div class="dash-ticket-panel__header">
+                    <h2 class="dash-ticket-panel__title mb-0">Ticket Information</h2>
+                  </div>
+
+                  <p class="dash-welcome__text mb-0">
+                    See your support ticket details below.
+                  </p>
+
+                  <ul class="dash-ticket-list list-unstyled mb-0">
+                    {% if ticket['id'] %}
+                      <li class="dash-ticket-row dash-ticket-info-row">
+                        <span class="dash-ticket-row__label">Ticket ID</span>
+                        <span class="dash-ticket-row__value is-accent">#{{ ticket['id'] }}</span>
+                      </li>
+                    {% endif %}
+                    <li class="dash-ticket-row dash-ticket-info-row">
+                      <span class="dash-ticket-row__label">Subject</span>
+                      <span class="dash-ticket-row__value is-accent">{{ ticket['thema'] }}</span>
+                    </li>
+                    {% if ticket['status'] %}
+                      <li class="dash-ticket-row dash-ticket-info-row">
+                        <span class="dash-ticket-row__label">Status</span>
+                        <span class="dash-ticket-row__value">{{ ticket['status'] }}</span>
+                      </li>
+                    {% endif %}
+                    <li class="dash-ticket-row dash-ticket-info-row">
+                      <span class="dash-ticket-row__label">Priority</span>
+                      <span class="dash-ticket-row__value">High</span>
+                    </li>
+                    <li class="dash-ticket-row dash-ticket-info-row">
+                      <span class="dash-ticket-row__label">Department</span>
+                      <span class="dash-ticket-row__value">Support</span>
+                    </li>
+                    <li class="dash-ticket-row dash-ticket-info-row">
+                      <span class="dash-ticket-row__label">Response time</span>
+                      <span class="dash-ticket-row__value">0-2h</span>
+                    </li>
+                  </ul>
+
+                  <div class="dash-account-info">
+                    <div class="d-flex flex-column gap-2">
+                      <p
+                        class="dash-gradient-text mb-0"
+                        style="font-size: 16px; font-weight: 600; line-height: 1.5"
+                      >
+                        Support note
+                      </p>
+                      <p class="mb-0">
+                        Sometimes it can take up to 6 hours for us to respond,
+                        depending on ticket volume.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
