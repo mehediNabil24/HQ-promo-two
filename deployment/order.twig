@@ -1,0 +1,415 @@
+          <section class="dash-orders-page">
+            <div class="dash-orders-intro">
+              <h1 class="dash-orders-intro__title">My Orders</h1>
+              <p class="dash-orders-intro__text">
+                Securely manage your account using our trusted order tools.
+                Fast processing, safe transactions, and instant balance updates
+                keep your services running without interruption.
+              </p>
+            </div>
+
+            <div class="dash-orders-toolbar">
+              <div
+                class="dash-orders-filters"
+                role="group"
+                aria-label="Order filters"
+              >
+                <a
+                  class="dash-orders-filter{% if status == 'all' %} is-active{% endif %}"
+                  href="{{ page['url'] }}"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="stash:filter-duotone" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.all') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'pending' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/pending"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="lets-icons:progress" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.pending') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'inprogress' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/inprogress"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="tabler:progress-check" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.inprogress') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'completed' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/completed"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="lets-icons:done-ring-round" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.completed') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'partial' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/partial"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="material-symbols:avg-time-outline-rounded" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.partial') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'processing' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/processing"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="mdi:progress-pencil" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.processing') }}</span>
+                </a>
+                <a
+                  class="dash-orders-filter{% if status == 'canceled' %} is-active{% endif %}"
+                  href="{{ page['url'] }}/canceled"
+                >
+                  <span class="dash-orders-filter__icon" aria-hidden="true">
+                    <iconify-icon icon="material-symbols:cancel-outline-rounded" width="24" height="24"></iconify-icon>
+                  </span>
+                  <span>{{ lang('orders.status.canceled') }}</span>
+                </a>
+              </div>
+
+              <form
+                class="dash-orders-search"
+                action="{{ page['url'] }}"
+                method="get"
+                id="history-search"
+                aria-label="Search orders"
+              >
+                <iconify-icon
+                  class="dash-orders-search__icon"
+                  icon="ic:round-search"
+                  width="20"
+                  height="20"
+                ></iconify-icon>
+                <input
+                  class="form-control"
+                  type="search"
+                  name="search"
+                  value="{{ search }}"
+                  placeholder="{{ lang('general.search.placeholder') }}"
+                >
+              </form>
+            </div>
+
+            <div class="dash-orders-card card border-0">
+              <div class="dash-orders-table-wrap">
+                <table
+                  class="dash-orders-table{% if site['rtl'] %} rtl-table{% endif %}"
+                  data-dash-history-table
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <div class="dash-orders-select">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            aria-label="Select all orders"
+                            data-dash-history-check-all
+                          >
+                          <span>{{ lang('orders.id') }}</span>
+                          <button
+                            class="dash-orders-copy-btn"
+                            type="button"
+                            aria-label="Copy selected order IDs"
+                            data-copy-order-ids
+                          >
+                            <iconify-icon
+                              icon="mdi:content-copy"
+                              width="12"
+                              height="12"
+                            ></iconify-icon>
+                          </button>
+                        </div>
+                      </th>
+                      <th scope="col">{{ lang('orders.date') }}</th>
+                      <th scope="col" class="dash-orders-col-link">{{ lang('orders.link') }}</th>
+                      <th scope="col">{{ lang('orders.charge') }}</th>
+                      <th scope="col">{{ lang('orders.startcount') }}</th>
+                      <th scope="col">{{ lang('orders.quantity') }}</th>
+                      <th scope="col" class="dash-orders-col-service">{{ lang('orders.service') }}</th>
+                      <th scope="col">{{ lang('orders.remains') }}</th>
+                      <th scope="col">{{ lang('orders.status') }}</th>
+                      <th scope="col" class="text-center">Order</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for order in orderList %}
+                      {% set orderStatus = order['status']|lower %}
+                      {% set orderStatusClass = 'processing' %}
+                      {% if 'complete' in orderStatus %}
+                        {% set orderStatusClass = 'completed' %}
+                      {% elseif 'pending' in orderStatus %}
+                        {% set orderStatusClass = 'pending' %}
+                      {% elseif 'progress' in orderStatus %}
+                        {% set orderStatusClass = 'in-progress' %}
+                      {% elseif 'partial' in orderStatus %}
+                        {% set orderStatusClass = 'partial' %}
+                      {% elseif 'cancel' in orderStatus %}
+                        {% set orderStatusClass = 'cancelled' %}
+                      {% endif %}
+                      <tr>
+                        <td>
+                          <div class="dash-orders-select">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="{{ order['id'] }}"
+                              aria-label="Select order {{ order['id'] }}"
+                              data-dash-history-check
+                            >
+                            <span data-order-id>{{ order['id'] }}</span>
+                          </div>
+                        </td>
+                        <td class="dash-orders-date">{{ order['date'] }}</td>
+                        <td class="dash-orders-col-link">
+                          <span class="dash-orders-link" title="{{ order['link'] }}">{{ order['link'] }}</span>
+                          {% if order['orderDetails'] %}
+                            {% for orderDetails in order['orderDetails'] %}
+                              {% set detailsGroupIndex = loop.index %}
+                              <button
+                                class="dash-orders-copy-btn"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#order-details-{{ order['id'] }}-{{ loop.index }}"
+                                data-toggle="modal"
+                                data-target="#order-details-{{ order['id'] }}-{{ loop.index }}"
+                                aria-label="{{ orderDetails.label }}"
+                              >
+                                <i class="far fa-file-alt"></i>
+                              </button>
+
+                              <div
+                                class="modal fade{% if site['rtl'] %} modal-rtl{% endif %}"
+                                tabindex="-1"
+                                id="order-details-{{ order['id'] }}-{{ loop.index }}"
+                                aria-hidden="true"
+                              >
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">{{ orderDetails.label }}</h4>
+                                      <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        data-dismiss="modal"
+                                        aria-label="Close"
+                                      ></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      {% for orderDetail in orderDetails['details'] %}
+                                        <div class="mb-3">
+                                          <label
+                                            class="form-label"
+                                            for="details-{{ order['id'] }}-{{ detailsGroupIndex }}-{{ loop.index }}"
+                                          >{{ orderDetail.label }}</label>
+                                          {% if orderDetail.type == 'textarea' %}
+                                            <textarea
+                                              id="details-{{ order['id'] }}-{{ detailsGroupIndex }}-{{ loop.index }}"
+                                              class="form-control"
+                                              rows="7"
+                                              disabled
+                                            >{{ orderDetail.value }}</textarea>
+                                          {% elseif orderDetail.type == 'input' %}
+                                            <input
+                                              id="details-{{ order['id'] }}-{{ detailsGroupIndex }}-{{ loop.index }}"
+                                              class="form-control"
+                                              value="{{ orderDetail.value }}"
+                                              disabled
+                                            >
+                                          {% endif %}
+                                        </div>
+                                      {% endfor %}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        </td>
+                        <td>{{ order['charge'] }}</td>
+                        <td>{{ order['start_count'] }}</td>
+                        <td>{{ order['quantity'] }}</td>
+                        <td class="dash-orders-col-service">{{ order['service'] }}</td>
+                        <td>{{ order['remains'] }}</td>
+                        <td>
+                          <span class="dash-orders-status dash-orders-status--{{ orderStatusClass }}">
+                            {{ order['status'] }}
+                          </span>
+                          {% if order['cancelReason'] %}
+                            <i
+                              class="fas fa-comment-alt-lines"
+                              title="{{ order['cancelReason'] }}"
+                            ></i>
+                          {% endif %}
+                        </td>
+                        <td class="text-center">
+                          <div class="order-actions">
+                            {% if task == 1 %}
+                              {% if order['refilling'] == 1 %}
+                                <span class="dash-orders-action is-disabled">{{ lang('orders.refilling') }}</span>
+                              {% else %}
+                                {% if order['refill'] == 1 %}
+                                  <a
+                                    href="{{ page['url'] }}/{{ order['id'] }}/refill"
+                                    class="dash-orders-action"
+                                  >{{ lang('orders.button.refill') }}</a>
+                                {% endif %}
+                                {% if order['refillAvailableTime'] %}
+                                  <span
+                                    class="dash-orders-action is-disabled"
+                                    title="{{ order['refillAvailableTime'] }}"
+                                  >{{ lang('orders.button.refill') }}</span>
+                                {% endif %}
+                              {% endif %}
+                              {% if order['cancel'] == 1 %}
+                                <a
+                                  href="{{ page['url'] }}/{{ order['id'] }}/cancel"
+                                  class="dash-orders-action dash-orders-action--cancel"
+                                >{{ lang('orders.button.cancel') }}</a>
+                              {% elseif order['hasCancelTask'] == 1 %}
+                                <span class="dash-orders-action dash-orders-action--requested is-disabled">
+                                  {{ lang('orders.cancel_requested') }}
+                                </span>
+                              {% else %}
+                                <a
+                                  href="{{ page_url('index') }}{% if order['service_id'] %}?service={{ order['service_id'] }}{% endif %}"
+                                  class="dash-orders-action dash-orders-action--reorder"
+                                >Reorder</a>
+                              {% endif %}
+                            {% else %}
+                              <a
+                                href="{{ page_url('index') }}{% if order['service_id'] %}?service={{ order['service_id'] }}{% endif %}"
+                                class="dash-orders-action dash-orders-action--reorder"
+                              >Reorder</a>
+                            {% endif %}
+                          </div>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {% if pagination['count'] > 100 %}
+              {% set params = '' %}
+              {% if searchList %}
+                {% set params = {} %}
+                {% for searchItem in searchList %}
+                  {% set params = params | merge([searchItem['name'] ~ '=' ~ searchItem['value']]) %}
+                {% endfor %}
+                {% set params = '?' ~ params|join('&') %}
+              {% endif %}
+
+              <nav
+                class="dash-orders-pagination{% if site['rtl'] %} rtl-pagination{% endif %}"
+                aria-label="My orders pagination"
+              >
+                {% if pagination['current'] != 1 %}
+                  <a
+                    class="dash-orders-pagination__btn dash-orders-pagination__btn--nav"
+                    href="{{ page['url'] }}/{{ status }}/{{ pagination['last'] }}{{ params }}"
+                  >
+                    <iconify-icon icon="mdi:triangle-small-left" width="10" height="10"></iconify-icon>
+                    <span>Back</span>
+                  </a>
+                {% endif %}
+
+                {% set r, l = 3, 3 %}
+                {% if pagination['current'] == 1 %}
+                  {% set r = 6 %}
+                {% endif %}
+                {% if pagination['current'] == 2 %}
+                  {% set r = 5 %}
+                {% endif %}
+                {% if pagination['current'] >= pagination['pages'] %}
+                  {% set l = 5 %}
+                {% endif %}
+
+                {% for i in 1..ceil(pagination['pages']) %}
+                  {% if i >= (pagination['current']-l) and i <= (pagination['current']+r) %}
+                    <a
+                      class="dash-orders-pagination__btn{% if i == pagination['current'] %} is-active{% endif %}"
+                      href="{{ page['url'] }}/{{ status }}/{{ i }}{{ params }}"
+                      {% if i == pagination['current'] %}aria-current="page"{% endif %}
+                    >{{ i }}</a>
+                  {% endif %}
+                {% endfor %}
+
+                {% if pagination['current'] < pagination['pages'] %}
+                  <a
+                    class="dash-orders-pagination__btn dash-orders-pagination__btn--nav is-active"
+                    href="{{ page['url'] }}/{{ status }}/{{ pagination['next'] }}{{ params }}"
+                  >
+                    <span>Next</span>
+                    <iconify-icon icon="mdi:triangle-small-right" width="10" height="10"></iconify-icon>
+                  </a>
+                {% endif %}
+              </nav>
+            {% endif %}
+          </section>
+
+<script>
+  (function () {
+    var copyButton = document.querySelector("[data-copy-order-ids]");
+    var tooltipTimer;
+    if (!copyButton) return;
+
+    var showCopiedTooltip = function () {
+      copyButton.setAttribute("data-copy-tooltip", "Copied!");
+      copyButton.classList.add("is-copied");
+      clearTimeout(tooltipTimer);
+      tooltipTimer = setTimeout(function () {
+        copyButton.classList.remove("is-copied");
+      }, 1800);
+    };
+
+    var copyText = function (text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showCopiedTooltip);
+        return;
+      }
+
+      var textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      if (document.execCommand("copy")) showCopiedTooltip();
+      textarea.remove();
+    };
+
+    copyButton.addEventListener("click", function () {
+      var selected = Array.prototype.slice
+        .call(document.querySelectorAll("[data-dash-history-check]:checked"))
+        .map(function (checkbox) {
+          return checkbox.value;
+        });
+
+      if (!selected.length) {
+        selected = Array.prototype.slice
+          .call(document.querySelectorAll("[data-order-id]"))
+          .map(function (item) {
+            return item.textContent.trim();
+          });
+      }
+
+      if (!selected.length) return;
+      copyText(selected.join(", "));
+    });
+  })();
+</script>

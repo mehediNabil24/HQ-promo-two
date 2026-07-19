@@ -263,6 +263,20 @@
   const serviceAccordion = document.querySelector("[data-service-accordion]");
   const filterDropdown = document.querySelector("[data-filter-dropdown]");
   const servicesSearch = document.querySelector("[data-services-search]");
+  const servicePlatforms = [
+    { key: "facebook", label: "Facebook", icon: "facebook.png" },
+    { key: "instagram", label: "Instagram", icon: "instagram.png" },
+    { key: "twitter", label: "X (Twitter)", icon: "twitter-x.png" },
+    { key: "youtube", label: "YouTube", icon: "youtube.png" },
+    { key: "tiktok", label: "TikTok", icon: "tiktok.png" },
+    { key: "linkedin", label: "LinkedIn", icon: "linkedin.png" },
+    { key: "telegram", label: "Telegram", icon: "telegram.png" },
+    { key: "discord", label: "Discord", icon: "discord.png" },
+    { key: "spotify", label: "Spotify", icon: "spotify.png" },
+    { key: "soundcloud", label: "SoundCloud", icon: "soundcloud.png" },
+    { key: "snapchat", label: "Snapchat", icon: "snapchat.png" },
+    { key: "traffic", label: "Website Traffic", icon: "website-traffic.png" },
+  ];
 
   const setServiceGroupOpen = (group, open) => {
     if (!group) return;
@@ -270,6 +284,87 @@
     group.classList.toggle("is-open", open);
     header?.setAttribute("aria-expanded", String(open));
   };
+
+  const filterServiceGroups = (platform) => {
+    serviceAccordion
+      ?.querySelectorAll("[data-service-group]")
+      .forEach((group) => {
+        const match =
+          platform === "all" || group.dataset.platform === platform;
+        group.classList.toggle("is-filtered-out", !match);
+        if (match && platform !== "all") setServiceGroupOpen(group, true);
+      });
+  };
+
+  if (servicesPlatformTabs && serviceAccordion) {
+    const availablePlatforms = new Set(
+      Array.from(
+        serviceAccordion.querySelectorAll("[data-service-group]"),
+        (group) => group.dataset.platform
+      )
+    );
+    const visiblePlatforms = servicePlatforms.filter((platform) =>
+      availablePlatforms.has(platform.key)
+    );
+    const tabPlatforms = [
+      { key: "all", label: "All Services", icon: "" },
+      ...visiblePlatforms,
+    ];
+
+    tabPlatforms.forEach((platform, index) => {
+      const button = document.createElement("button");
+      button.className = `platform-tab${index === 0 ? " is-active" : ""}`;
+      button.type = "button";
+      button.setAttribute("role", "tab");
+      button.setAttribute("aria-selected", String(index === 0));
+      button.dataset.platform = platform.key;
+
+      const iconWrap = document.createElement("span");
+      iconWrap.className = "platform-tab__icon";
+
+      const polygon = document.createElement("img");
+      polygon.className = "platform-tab__polygon";
+      polygon.src = "assets/icons/polygon.svg";
+      polygon.alt = "";
+      polygon.width = 38;
+      polygon.height = 38;
+      iconWrap.appendChild(polygon);
+
+      if (platform.icon) {
+        const logo = document.createElement("img");
+        logo.className = "platform-tab__logo";
+        logo.src = `assets/platforms/${platform.icon}`;
+        logo.alt = "";
+        logo.width = 20;
+        logo.height = 20;
+        iconWrap.appendChild(logo);
+      } else {
+        const logo = document.createElement("iconify-icon");
+        logo.className = "platform-tab__logo";
+        logo.setAttribute("icon", "mdi:view-grid-outline");
+        logo.setAttribute("width", "20");
+        logo.setAttribute("height", "20");
+        iconWrap.appendChild(logo);
+      }
+
+      const label = document.createElement("span");
+      label.className = "platform-tab__label";
+      label.textContent = platform.label;
+
+      button.append(iconWrap, label);
+      servicesPlatformTabs.appendChild(button);
+    });
+
+    const filterMenu = filterDropdown?.querySelector("[data-filter-menu]");
+    visiblePlatforms.forEach((platform) => {
+      const option = document.createElement("li");
+      option.setAttribute("role", "option");
+      option.tabIndex = 0;
+      option.dataset.filter = platform.key;
+      option.textContent = platform.label;
+      filterMenu?.appendChild(option);
+    });
+  }
 
   serviceAccordion
     ?.querySelectorAll("[data-service-group]")
@@ -285,11 +380,14 @@
     if (!tab || !servicesPlatformTabs.contains(tab)) return;
 
     setActiveTab(servicesPlatformTabs, tab);
-
-    const targetGroup = document.getElementById(tab.dataset.target || "");
-    if (!targetGroup) return;
-    setServiceGroupOpen(targetGroup, true);
-    targetGroup.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (servicesSearch) servicesSearch.value = "";
+    serviceAccordion
+      ?.querySelectorAll("[data-service-card]")
+      .forEach((card) => {
+        card.hidden = false;
+      });
+    filterServiceGroups(tab.dataset.platform || "all");
+    serviceAccordion?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   if (filterDropdown) {
@@ -323,14 +421,13 @@
           filter === "all" ? "Filter Categories" : option.textContent.trim();
       }
 
+      if (servicesSearch) servicesSearch.value = "";
       serviceAccordion
-        ?.querySelectorAll("[data-service-group]")
-        .forEach((group) => {
-          const match =
-            filter === "all" || group.dataset.platform === filter;
-          group.classList.toggle("is-filtered-out", !match);
-          if (match && filter !== "all") setServiceGroupOpen(group, true);
+        ?.querySelectorAll("[data-service-card]")
+        .forEach((card) => {
+          card.hidden = false;
         });
+      filterServiceGroups(filter);
 
       servicesPlatformTabs?.querySelectorAll(".platform-tab").forEach((button) => {
         const active =
@@ -358,13 +455,139 @@
         .forEach((group) => {
           const title =
             group.querySelector(".service-group__title")?.textContent || "";
+          const titleMatches = title.toLowerCase().includes(query);
+          const cards = group.querySelectorAll("[data-service-card]");
+          let hasVisibleCard = false;
+
+          cards.forEach((card) => {
+            const cardMatches =
+              !query ||
+              titleMatches ||
+              card.textContent.toLowerCase().includes(query);
+            card.hidden = !cardMatches;
+            if (cardMatches) hasVisibleCard = true;
+          });
+
           group.classList.toggle(
             "is-filtered-out",
-            Boolean(query) && !title.toLowerCase().includes(query)
+            Boolean(query) && !titleMatches && !hasVisibleCard
           );
+
+          if (query && (titleMatches || hasVisibleCard)) {
+            setServiceGroupOpen(group, true);
+          }
         });
     });
   }
+
+  const resolveNewOrderUrl = () => {
+    const menuLinks = document.querySelectorAll(".dash-nav__link");
+    for (const link of menuLinks) {
+      const label = link.textContent.replace(/\s+/g, " ").trim().toLowerCase();
+      if (label === "new order" || label === "order") {
+        return link.getAttribute("href") || "/";
+      }
+    }
+
+    const indexLink =
+      document.querySelector('.dash-sidebar__logo[href]') ||
+      document.querySelector('.dash-profile-menu__link[href*="/"]');
+    return indexLink?.getAttribute("href") || "/";
+  };
+
+  serviceAccordion?.querySelectorAll("[data-order-service]").forEach((orderLink) => {
+    orderLink.addEventListener("click", (event) => {
+      const serviceId = orderLink.getAttribute("data-order-service");
+      if (!serviceId) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const orderBase = resolveNewOrderUrl();
+      const separator = orderBase.includes("?") ? "&" : "?";
+      window.location.assign(
+        `${orderBase}${separator}service=${encodeURIComponent(serviceId)}`
+      );
+    });
+  });
+
+  serviceAccordion
+    ?.querySelectorAll("[data-favorite-service-id]")
+    .forEach((favoriteButton) => {
+      const favoriteIcon = favoriteButton.querySelector("[data-favorite-icon]");
+      let loadingTimer;
+
+      const isFavorite = () =>
+        favoriteButton.classList.contains("favorite-active") ||
+        favoriteIcon?.classList.contains("fas");
+
+      const syncFavoriteState = (forcedFavorite) => {
+        const favorite =
+          typeof forcedFavorite === "boolean" ? forcedFavorite : isFavorite();
+        favoriteButton.classList.toggle("favorite-active", favorite);
+        favoriteIcon?.classList.toggle("fas", favorite);
+        favoriteIcon?.classList.toggle("far", !favorite);
+        favoriteButton.setAttribute("aria-pressed", String(favorite));
+        favoriteButton.setAttribute(
+          "aria-label",
+          favorite ? "Remove from favorites" : "Add to favorites"
+        );
+        favoriteButton.dataset.previousFavorite = String(favorite);
+        favoriteButton.classList.remove("is-loading");
+        clearTimeout(loadingTimer);
+      };
+
+      if (favoriteIcon) {
+        new MutationObserver(() => {
+          const previousFavorite =
+            favoriteButton.dataset.previousFavorite === "true";
+          const iconFavorite = favoriteIcon.classList.contains("fas");
+          if (iconFavorite !== previousFavorite) {
+            syncFavoriteState(iconFavorite);
+          }
+        }).observe(favoriteIcon, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+
+      new MutationObserver(() => {
+        const previousFavorite =
+          favoriteButton.dataset.previousFavorite === "true";
+        const active =
+          favoriteButton.classList.contains("favorite-active");
+
+        if (active !== previousFavorite) {
+          syncFavoriteState(active);
+        }
+      }).observe(favoriteButton, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      favoriteButton.addEventListener("click", (event) => {
+        if (favoriteButton.classList.contains("is-loading")) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        favoriteButton.dataset.previousFavorite = String(isFavorite());
+        favoriteButton.classList.add("is-loading");
+        loadingTimer = window.setTimeout(() => {
+          favoriteButton.classList.remove("is-loading");
+        }, 8000);
+      });
+
+      favoriteButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          favoriteButton.click();
+        }
+      });
+
+      syncFavoriteState();
+    });
 
   /* Client reviews → shorts modal */
   const shortsModal = document.getElementById("shortsModal");

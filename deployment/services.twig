@@ -1,0 +1,243 @@
+          <!-- Services hero banner -->
+          <div class="dash-welcome dash-welcome--services mb-4">
+            <h1 class="dash-welcome__title">
+              Browse <span class="dash-welcome__brand">Our Services</span>
+            </h1>
+            <p class="dash-welcome__text mb-0">
+              Explore our full range of social media marketing services. Choose
+              a platform, pick a plan, and grow your presence fast.
+            </p>
+          </div>
+
+          {% if serviceCategoryList is not empty %}
+            <div
+              class="platform-tabs dash-platform-tabs mb-4"
+              role="tablist"
+              aria-label="Service platforms"
+              data-services-platform-tabs
+            ></div>
+          {% endif %}
+
+          <div class="services-toolbar">
+            <div class="services-toolbar__filter-wrap" data-filter-dropdown>
+              <button
+                class="services-toolbar__filter"
+                type="button"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-controls="servicesFilterMenu"
+                data-filter-toggle
+              >
+                <span class="services-toolbar__filter-icon" aria-hidden="true">
+                  <iconify-icon icon="stash:filter-duotone" width="24" height="24"></iconify-icon>
+                </span>
+                <span data-filter-label>Filter Categories</span>
+              </button>
+              <ul
+                class="services-toolbar__menu"
+                id="servicesFilterMenu"
+                role="listbox"
+                hidden
+                data-filter-menu
+              >
+                <li role="option" tabindex="0" data-filter="all" class="is-active">
+                  {{ lang('services.all') }}
+                </li>
+              </ul>
+            </div>
+
+            <label class="services-toolbar__search">
+              <span class="visually-hidden">Search services</span>
+              <iconify-icon
+                class="services-toolbar__search-icon"
+                icon="ic:round-search"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              ></iconify-icon>
+              <input
+                type="search"
+                placeholder="{{ lang('general.search.placeholder') }}"
+                data-services-search
+              >
+            </label>
+          </div>
+
+          <div class="service-accordion{% if site['rtl'] %} rtl-content{% endif %}" data-service-accordion>
+            {% for category in serviceCategoryList %}
+              {% if category['name'] %}
+                {% set categoryName = category['name']|lower %}
+                {% set servicePlatform = 'other' %}
+                {% if 'facebook' in categoryName %}
+                  {% set servicePlatform = 'facebook' %}
+                {% elseif 'instagram' in categoryName %}
+                  {% set servicePlatform = 'instagram' %}
+                {% elseif 'twitter' in categoryName or 'x /' in categoryName %}
+                  {% set servicePlatform = 'twitter' %}
+                {% elseif 'youtube' in categoryName %}
+                  {% set servicePlatform = 'youtube' %}
+                {% elseif 'tiktok' in categoryName or 'tik tok' in categoryName %}
+                  {% set servicePlatform = 'tiktok' %}
+                {% elseif 'linkedin' in categoryName %}
+                  {% set servicePlatform = 'linkedin' %}
+                {% elseif 'telegram' in categoryName %}
+                  {% set servicePlatform = 'telegram' %}
+                {% elseif 'discord' in categoryName %}
+                  {% set servicePlatform = 'discord' %}
+                {% elseif 'spotify' in categoryName %}
+                  {% set servicePlatform = 'spotify' %}
+                {% elseif 'soundcloud' in categoryName %}
+                  {% set servicePlatform = 'soundcloud' %}
+                {% elseif 'snapchat' in categoryName %}
+                  {% set servicePlatform = 'snapchat' %}
+                {% elseif 'traffic' in categoryName or 'website' in categoryName %}
+                  {% set servicePlatform = 'traffic' %}
+                {% endif %}
+                <section
+                  class="service-group{% if loop.first %} is-open{% endif %}"
+                  id="category-{{ category.id }}-services"
+                  data-service-group
+                  data-platform="{{ servicePlatform }}"
+                  data-filter-table-category-id="{{ category.id }}"
+                >
+                  <button
+                    class="service-group__header"
+                    type="button"
+                    aria-expanded="{% if loop.first %}true{% else %}false{% endif %}"
+                    aria-controls="category-{{ category.id }}-services-panel"
+                  >
+                    <span class="service-group__title-wrap">
+                      {% if category['icon'] %}
+                        {% set categoryIcon = category['icon'] %}
+                        {% if categoryIcon['icon_type'] == 'icon' %}
+                          <span class="service-group__icon {{ categoryIcon['icon'] }}"></span>
+                        {% elseif categoryIcon['icon_type'] == 'emoji' %}
+                          <span class="service-group__icon service-category-emoji">{{ categoryIcon['icon'] }}</span>
+                        {% elseif categoryIcon['icon_type'] == 'image' %}
+                          <img
+                            class="service-group__icon"
+                            src="{{ categoryIcon['url'] }}"
+                            alt=""
+                            width="32"
+                            height="32"
+                          >
+                        {% endif %}
+                      {% else %}
+                        <iconify-icon
+                          class="service-group__icon"
+                          icon="mdi:layers-outline"
+                          width="32"
+                          height="32"
+                        ></iconify-icon>
+                      {% endif %}
+                      <span class="service-group__title">{{ category['name'] }}</span>
+                    </span>
+                    <iconify-icon
+                      class="service-group__chevron"
+                      icon="weui:arrow-outlined"
+                      width="24"
+                      height="12"
+                      aria-hidden="true"
+                    ></iconify-icon>
+                  </button>
+
+                  <div
+                    class="service-group__panel"
+                    id="category-{{ category.id }}-services-panel"
+                  >
+                    <div class="service-group__panel-inner">
+                      <div class="service-group__grid">
+                        {% for service in category['services'] %}
+                          <article
+                            class="plan-card"
+                            data-service-card
+                            data-filter-table-category-id="{{ category.id }}"
+                            data-filter-table-service-id="{{ service.id }}"
+                            data-filter-table-service-name="{{ service['name'] }}"
+                          >
+                            <div class="plan-card__noise" aria-hidden="true"></div>
+                            <div class="plan-card__body">
+                              <div class="plan-card__brand">
+                                {% if category['icon'] and categoryIcon['icon_type'] == 'image' %}
+                                  <img
+                                    class="plan-card__logo"
+                                    src="{{ categoryIcon['url'] }}"
+                                    alt=""
+                                    width="48"
+                                    height="48"
+                                  >
+                                {% elseif category['icon'] and categoryIcon['icon_type'] == 'emoji' %}
+                                  <span class="plan-card__logo service-card-emoji">{{ categoryIcon['icon'] }}</span>
+                                {% elseif category['icon'] and categoryIcon['icon_type'] == 'icon' %}
+                                  <span class="plan-card__logo service-card-font-icon {{ categoryIcon['icon'] }}"></span>
+                                {% else %}
+                                  <iconify-icon
+                                    class="plan-card__logo"
+                                    icon="mdi:layers-outline"
+                                    width="48"
+                                    height="48"
+                                  ></iconify-icon>
+                                {% endif %}
+                                <h3 class="plan-card__name">{{ service['name'] }}</h3>
+                              </div>
+
+                              <div class="plan-card__meta">
+                                <div class="plan-card__rating">
+                                  {% if user.favorite_services %}
+                                    <span
+                                      role="button"
+                                      tabindex="0"
+                                      class="service-favorite{% if service.favorite %} favorite-active{% endif %}"
+                                      aria-label="{% if service.favorite %}Remove from favorites{% else %}Add to favorites{% endif %}"
+                                      aria-pressed="{% if service.favorite %}true{% else %}false{% endif %}"
+                                      data-favorite-service-id="{{ service.id }}"
+                                    >
+                                      <span
+                                        data-favorite-icon
+                                        class="{% if service.favorite %}fas fa-star{% else %}far fa-star{% endif %}"
+                                      ></span>
+                                    </span>
+                                  {% endif %}
+                                  <span>#{{ service.id }}</span>
+                                </div>
+                                <p class="plan-card__price">
+                                  {% if converted %}
+                                    <span title="{{ service.original_rate }}">{{ service.rate }}</span>
+                                  {% else %}
+                                    {{ service.rate }}
+                                  {% endif %}
+                                  / 1000
+                                </p>
+                              </div>
+
+                              <ul class="plan-card__features">
+                                <li>{{ lang('services.min') }}: {{ service['min'] }}</li>
+                                <li>{{ lang('services.max') }}: {{ service['max'] }}</li>
+                                {% if site['average_time'] %}
+                                  <li>{{ lang('services.average_time') }}: {{ service['average_time'] }}</li>
+                                {% endif %}
+                              </ul>
+                            </div>
+
+                            <a
+                              class="plan-card__cta"
+                              href="{{ page_url('index') }}?service={{ service.id }}"
+                              data-order-service="{{ service.id }}"
+                            >Buy now</a>
+                          </article>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if servicesText %}
+            <div class="dash-panel card border-0 mt-4{% if site['rtl'] %} rtl-content{% endif %}">
+              <div class="card-body">
+                {{ servicesText }}
+              </div>
+            </div>
+          {% endif %}

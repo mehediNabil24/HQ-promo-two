@@ -95,6 +95,7 @@
                       class="dash-ticket-details-form d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
                       action=""
                       method="post"
+                      data-ticket-reply-form
                     >
                       {% if error %}
                         <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
@@ -121,7 +122,7 @@
                       </div>
 
                       <input type="hidden" name="_csrf" value="{{ csrftoken }}">
-                      <button class="dash-submit btn w-100" type="submit">
+                      <button class="dash-submit btn w-100" type="submit" data-ticket-reply-submit>
                         {{ lang('tickets.button.reply') }}
                       </button>
                     </form>
@@ -190,3 +191,26 @@
               </div>
             </div>
           </div>
+
+<script>
+  (function () {
+    var chat = document.querySelector(".dash-ticket-chat");
+    var replyForm = document.querySelector("[data-ticket-reply-form]");
+
+    if (chat) {
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    if (replyForm) {
+      replyForm.addEventListener("submit", function () {
+        var submitButton = replyForm.querySelector("[data-ticket-reply-submit]");
+        if (!submitButton || submitButton.disabled) return;
+
+        submitButton.disabled = true;
+        submitButton.classList.add("is-loading");
+        submitButton.setAttribute("aria-busy", "true");
+        submitButton.textContent = "Submitting...";
+      });
+    }
+  })();
+</script>

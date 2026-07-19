@@ -1,0 +1,150 @@
+          <section class="dash-notify-page">
+      
+
+            {% if confirmEmail.available %}
+              <div class="dash-notify-card dash-notify-card--aside">
+                <div class="dash-notify-card__header">
+                  <h2 class="dash-notify-card__title mb-0">
+                    {{ lang('notifications.email_confirmation.title') }}
+                  </h2>
+                  <p class="dash-notify-card__subtitle mb-0">
+                    {{ lang('notifications.email_confirmation.description') }}
+                  </p>
+                </div>
+                <div class="dash-notify-aside__body">
+                  <div
+                    id="confirmEmailSuccess"
+                    class="alert alert-dismissible alert-success hidden{% if site['rtl'] %} rtl-alert{% endif %}"
+                  >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  </div>
+                  <div
+                    id="confirmEmailError"
+                    class="alert alert-dismissible alert-danger hidden{% if site['rtl'] %} rtl-alert{% endif %}"
+                  >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  </div>
+                  <form action="{{ confirmEmail.url }}" method="post"{% if site['rtl'] %} class="rtl-form"{% endif %}>
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-submit btn w-100" type="submit">
+                      {{ lang('notifications.email_confirmation.confirm') }}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if connectTelegram.available %}
+              <div class="dash-notify-card dash-notify-card--aside">
+                <div class="dash-notify-card__header">
+                  <h2 class="dash-notify-card__title mb-0">
+                    {{ lang('notifications.telegram.title') }}
+                  </h2>
+                </div>
+                <div class="dash-notify-aside__body">
+                  <form action="{{ connectTelegram.url }}" method="post"{% if site['rtl'] %} class="rtl-form"{% endif %}>
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-submit btn w-100" type="submit">
+                      {{ lang('notifications.telegram.button') }}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if userNotifications['notifications']|length > 0 %}
+              <div class="dash-notify-card">
+                <div class="dash-notify-card__header">
+                  <h2 class="dash-notify-card__title mb-0">
+                    {{ lang('notifications.title') }}
+                  </h2>
+                  <p class="dash-notify-card__subtitle mb-0">
+                    Enable the notification types you want to receive.
+                  </p>
+                </div>
+
+                <form
+                  class="dash-notify-form{% if site['rtl'] %} rtl-form{% endif %}"
+                  method="post"
+                  action=""
+                >
+                  {% if error %}
+                    <div class="alert alert-dismissible alert-danger m-3 mb-0{% if site['rtl'] %} rtl-alert{% endif %}">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      {{ errorMessage }}
+                    </div>
+                  {% endif %}
+
+                  {% if success %}
+                    <div class="alert alert-dismissible alert-success m-3 mb-0{% if site['rtl'] %} rtl-alert{% endif %}">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      {{ successText }}
+                    </div>
+                  {% endif %}
+
+                  <div class="dash-notify-table-wrap">
+                    <div
+                      class="dash-notify-table__head"
+                      style="--notify-sender-count: {{ userNotifications['senders']|length }};"
+                    >
+                      <span>{{ lang('notifications.title') }}</span>
+                      {% for sender in userNotifications['senders'] %}
+                        <span class="dash-notify-table__sender">{{ sender.name }}</span>
+                      {% endfor %}
+                    </div>
+
+                    <ul class="dash-notify-list list-unstyled mb-0">
+                      {% for notification in userNotifications['notifications'] %}
+                        <li
+                          class="dash-notify-row"
+                          style="--notify-sender-count: {{ userNotifications['senders']|length }};"
+                        >
+                          <span class="dash-notify-row__label">{{ notification['name'] }}</span>
+                          {% for sender in userNotifications['senders'] %}
+                            <span
+                              class="dash-notify-switch-wrap"
+                              {% if sender['disabled'] %}
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="{{ sender['tooltip'] }}"
+                              {% endif %}
+                            >
+                              <input
+                                type="hidden"
+                                name="NotificationsForm[notifications][{{ sender['code'] }}][{{ notification['id'] }}]"
+                                value="0"
+                              >
+                              <label class="dash-notify-switch{% if sender['disabled'] %} is-disabled{% endif %}">
+                                <input
+                                  type="checkbox"
+                                  name="NotificationsForm[notifications][{{ sender['code'] }}][{{ notification['id'] }}]"
+                                  value="1"
+                                  {% if notification['statuses'][sender['code']] %}checked="checked"{% endif %}
+                                  {% if sender['disabled'] %}disabled{% endif %}
+                                >
+                                <span class="dash-notify-switch__track" aria-hidden="true">
+                                  <span class="dash-notify-switch__thumb"></span>
+                                </span>
+                                <span class="visually-hidden">
+                                  {{ notification['name'] }} — {{ sender.name }}
+                                </span>
+                              </label>
+                            </span>
+                          {% endfor %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                  <div class="dash-notify-form__footer">
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    {% if saveButtonAvailable %}
+                      <button class="dash-submit btn w-100" type="submit">
+                        {{ lang('notifications.save') }}
+                      </button>
+                    {% endif %}
+                  </div>
+                </form>
+              </div>
+            {% endif %}
+          </section>

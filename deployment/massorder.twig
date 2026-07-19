@@ -1,0 +1,160 @@
+          <div class="dash-mass-order-layout">
+            <div class="dash-mass-order-layout__form">
+              <div class="dash-panel card border-0 h-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div
+                    class="dash-panel__toolbar d-flex flex-nowrap align-items-center justify-content-between gap-2 gap-sm-3"
+                  >
+                    <h2 class="dash-panel__title mb-0">Place Mass Order</h2>
+                    <div
+                      class="dash-order-type gradient-border flex-shrink-0"
+                      role="group"
+                      aria-label="Order type"
+                    >
+                      <a
+                        class="dash-order-type__btn"
+                        href="{{ page_url('index') }}"
+                      >
+                        New Order
+                      </a>
+                      <button
+                        class="dash-order-type__btn is-active"
+                        type="button"
+                        aria-current="page"
+                      >
+                        Mass Order
+                      </button>
+                    </div>
+                  </div>
+
+                  <form
+                    class="dash-mass-order-form d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
+                    action="{{ page['url'] }}"
+                    method="post"
+                    data-mass-order-form
+                  >
+                    {% if 1 == success %}
+                      <div class="alert alert-success alert-dismissible{% if site['rtl'] %} rtl-alert{% endif %}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4>{{ lang('massorder.message.success') }}</h4>
+                        {{ lang('massorder.orders') }}: {{ order['success'] }}<br>
+                        {{ lang('massorder.errors') }}: {{ order['error'] }}<br>
+                        <a href="{{ order['link'] }}" target="_blank" rel="noopener noreferrer">
+                          {{ lang('massorder.button.details') }}
+                        </a>
+                      </div>
+                    {% endif %}
+
+                    {% if error %}
+                      <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {% if order['link'] %}
+                          <h4>{{ errorText }}</h4>
+                          {{ lang('massorder.orders') }}: {{ order['success'] }}<br>
+                          {{ lang('massorder.errors') }}: {{ order['error'] }}<br>
+                          <a href="{{ order['link'] }}" target="_blank" rel="noopener noreferrer">
+                            {{ lang('massorder.button.details') }}
+                          </a>
+                        {% else %}
+                          {{ errorText }}
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    <div>
+                      <label
+                        class="dash-field-label form-label"
+                        for="links"
+                      >{{ lang('massorder.label') }}</label>
+                      <textarea
+                        class="form-control dash-mass-order-textarea"
+                        id="links"
+                        name="MassOrderForm[orders]"
+                        rows="13"
+                        placeholder="{{ lang('massorder.placeholder') }}"
+                      ></textarea>
+                    </div>
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button
+                      class="dash-submit btn w-100"
+                      type="submit"
+                      data-mass-order-submit
+                    >
+                      {{ lang('massorder.button') }}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-mass-order-layout__guide">
+              <div class="dash-panel card border-0 h-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div class="dash-mass-guide__header">
+                    <h2 class="dash-mass-guide__title mb-0">
+                      How Mass Order works?
+                    </h2>
+                    <img
+                      class="dash-mass-guide__icon"
+                      src="assets/dashboard/massorder/document-report-icon.png"
+                      alt=""
+                      width="25"
+                      height="28"
+                    >
+                  </div>
+
+                  <div class="dash-details-divider" aria-hidden="true"></div>
+
+                  <div class="dash-mass-guide__body">
+                    <p class="mb-0">
+                      You put the service ID followed by | followed by the link
+                      followed by | followed by quantity on each line. To get the
+                      service ID of a service, please check here:
+                    </p>
+                    <p class="mb-0">&nbsp;</p>
+                    <p class="mb-0">
+                      <a
+                        class="dash-mass-guide__link"
+                        href="{{ page_url('services') }}"
+                      >{{ page_url('services') }}</a>
+                    </p>
+                    <p class="mb-0">&nbsp;</p>
+                    <p class="mb-0">
+                      Let’s say you want to use Mass Order to add Instagram
+                      Followers to multiple accounts. If the service ID is 3740,
+                      enter one order on each line.
+                    </p>
+                    <p class="mb-0">&nbsp;</p>
+                    <p class="mb-0">
+                      The required format is ID|Link|Quantity. For example:
+                    </p>
+                    <ul class="dash-mass-guide__list">
+                      <li>3740|https://instagram.com/account1|1000</li>
+                      <li>3740|https://instagram.com/account2|1000</li>
+                      <li>3740|https://instagram.com/account3|1000</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<script>
+  (function () {
+    var form = document.querySelector("[data-mass-order-form]");
+    if (!form) return;
+
+    form.addEventListener("submit", function () {
+      var button = form.querySelector("[data-mass-order-submit]");
+      if (!button || button.disabled) return;
+
+      button.disabled = true;
+      button.classList.add("is-loading");
+      button.setAttribute("aria-busy", "true");
+      button.textContent = "Submitting...";
+    });
+  })();
+</script>
