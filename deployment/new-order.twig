@@ -1,0 +1,933 @@
+          <!-- Welcome + stats + hero -->
+          <div class="row g-4 align-items-stretch mb-4">
+            <div class="col-xl-9">
+              <div class="dash-welcome">
+                <h1 class="dash-welcome__title">
+                  Welcome To <span class="dash-welcome__brand">{{ site['name']|default('HQ Promo') }}</span>
+                </h1>
+                <p class="dash-welcome__text mb-0">
+                  Great to have you here! Explore our services and unlock smart,
+                  reliable solutions designed to help your business grow faster
+                  and achieve real results.
+                </p>
+              </div>
+
+              <div class="row g-3 g-lg-4 mt-1">
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="assets/dashboard/neworder/icon-1.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">Total Orders</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">{{ user['orders_count']|default('0') }}</p>
+                      <p class="dash-stat__hint mb-0">Orders placed on your account.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="assets/dashboard/neworder/icon-2.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">My Balance</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">{{ user.balance_formatted|default(user['balance']) }}</p>
+                      <p class="dash-stat__hint mb-0">Available balance for new orders.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dash-stat card h-100 border-0">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center gap-3 mb-2">
+                        <span class="dash-stat__icon">
+                          <img
+                            src="assets/dashboard/neworder/icon-3.png"
+                            alt=""
+                            width="24"
+                            height="24"
+                          />
+                        </span>
+                        <span class="dash-stat__label">Total Spents</span>
+                      </div>
+                      <p class="dash-stat__value mb-1">{{ user['spent_formatted']|default(user['spent']|default('$0.00')) }}</p>
+                      <p class="dash-stat__hint mb-0">Total amount spent on services.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 d-none d-xl-block">
+              <div class="dash-hero-card h-100">
+                <img
+                  class="dash-hero-card__img"
+                  src="assets/dashboard/neworder/top-right-image.png"
+                  alt="{{ site['name']|default('HQ Promo') }} promotional visual"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Platform tabs -->
+          <div
+            class="platform-tabs dash-platform-tabs mb-4"
+            role="tablist"
+            aria-label="Promotion platforms"
+            data-dash-platform-tabs
+            data-order-platform-script
+          >
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="facebook"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/facebook.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Facebook</span>
+            </button>
+            <button
+              class="platform-tab is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-platform="instagram"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/instagram.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Instagram</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="twitter"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/twitter-x.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">X (Twitter)</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="youtube"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/youtube.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">YouTube</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="tiktok"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/tiktok.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">TikTok</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="linkedin"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/linkedin.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">LinkedIn</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="telegram"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/telegram.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Telegram</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="discord"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/discord.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Discord</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="spotify"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/spotify.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Spotify</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="soundcloud"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/soundcloud.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">SoundCloud</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="snapchat"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/snapchat.png"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Snapchat</span>
+            </button>
+            <button
+              class="platform-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-platform="traffic"
+            >
+              <span class="platform-tab__icon">
+                <img
+                  class="platform-tab__polygon"
+                  src="assets/icons/polygon.svg"
+                  alt=""
+                  width="38"
+                  height="38"
+                />
+                <img
+                  class="platform-tab__logo"
+                  src="assets/platforms/website-traffic.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+              <span class="platform-tab__label">Website Traffic</span>
+            </button>
+          </div>
+
+
+          <!-- Order form + service details -->
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="dash-panel card border-0 h-100">
+                <div class="card-body d-flex flex-column gap-4">
+                  <div
+                    class="dash-panel__toolbar d-flex flex-nowrap align-items-center justify-content-between gap-2 gap-sm-3"
+                  >
+                    <h2 class="dash-panel__title mb-0">Place New Order</h2>
+                    <div
+                      class="dash-order-type gradient-border flex-shrink-0"
+                      role="group"
+                      aria-label="Order type"
+                    >
+                      <button
+                        class="dash-order-type__btn is-active"
+                        type="button"
+                        aria-current="page"
+                      >
+                        New Order
+                      </button>
+                      <a
+                        class="dash-order-type__btn"
+                        href="{{ page_url('massorder') }}"
+                      >
+                        Mass Order
+                      </a>
+                    </div>
+                  </div>
+
+                  <form
+                    class="dash-order-form d-flex flex-column gap-4{% if site['rtl'] %} rtl-form{% endif %}"
+                    action="{{ page['url'] }}"
+                    method="post"
+                    id="order-form"
+                  >
+                    {% if error %}
+                      <div class="alert alert-dismissible alert-danger{% if site['rtl'] %} rtl-alert{% endif %}">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ errorMessage }}
+                      </div>
+                    {% endif %}
+
+                    {% if 1 == success %}
+                      <div class="alert alert-success alert-dismissible{% if site['rtl'] %} rtl-alert{% endif %}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4>{{ lang('neworder.message.success') }}</h4>
+                        {{ lang('neworder.id') }}: {{ order['id'] }}<br>
+                        {{ lang('neworder.service') }}: {{ order['service'] }}<br>
+                        {{ lang('neworder.link') }}: {{ order['link'] }}<br>
+                        {{ lang('neworder.quantity') }}: {{ order['quantity'] }}<br>
+                        {{ lang('neworder.charge') }}:
+                        {% if order.converted %}
+                          <span data-toggle="tooltip" data-placement="top" title="{{ order.original_charge }}">{{ order['charge'] }}</span>
+                        {% else %}
+                          {{ order['charge'] }}
+                        {% endif %}<br>
+                        {{ lang('neworder.balance') }}:
+                        {% if order.converted %}
+                          <span data-toggle="tooltip" data-placement="top" title="{{ order.original_balance }}">{{ order['balance'] }}</span>
+                        {% else %}
+                          {{ order['balance'] }}
+                        {% endif %}<br>
+                      </div>
+                    {% endif %}
+
+                    {% if 2 == success %}
+                      <div class="alert alert-success alert-dismissible{% if site['rtl'] %} rtl-alert{% endif %}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4>{{ lang('neworder.message.success') }}</h4>
+                        {{ lang('neworder.subscription_id') }}: {{ order['id'] }}<br>
+                        {{ lang('neworder.service') }}: {{ order['service'] }}<br>
+                        {{ lang('neworder.username') }}: {{ order['link'] }}<br>
+                        {{ lang('neworder.quantity') }}:
+                        {% if order['quantity_min'] == order['quantity_max'] %}
+                          {{ order['quantity_max'] }}
+                        {% else %}
+                          {{ order['quantity_min'] }}-{{ order['quantity_max'] }}
+                        {% endif %}<br>
+                        {{ lang('neworder.new_posts') }}: {{ order['posts'] }}<br>
+                        {{ lang('neworder.old_posts') }}: {{ order['old_posts'] }}<br>
+                        {{ lang('neworder.delay') }}: {{ order['delay'] }}<br>
+                      </div>
+                    {% endif %}
+
+                    {% if categories %}
+                      {% if services_search %}
+                        <div class="form-group mb-0">
+                          <div
+                            class="dash-search search-dropdown"
+                            id="new-order-search"
+                            style="position: relative;"
+                            data-lang-placeholder="{{ lang('general.search.placeholder') }}"
+                            {% if site['rtl'] %} data-dir="rtl"{% endif %}
+                          >
+                            <div class="input-wrapper" style="position: relative;">
+                              <button
+                                type="button"
+                                class="dash-search__btn"
+                                tabindex="-1"
+                                aria-hidden="true"
+                                style="position: absolute; top: 50%; transform: translateY(-50%); padding: 0 2px; background: none; border: none; {% if site['rtl'] %}right: 12px; left: auto;{% else %}left: 12px;{% endif %}"
+                              >
+                                <span class="fas fa-search"></span>
+                              </button>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="template-input"
+                                value=""
+                                placeholder="{{ lang('general.search.placeholder') }}"
+                                aria-label="{{ lang('general.search.placeholder') }}"
+                                autocomplete="off"
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+
+                      <div class="form-group mb-0">
+                        <label
+                          class="dash-field-label form-label control-label"
+                          for="orderform-category"
+                        >{{ lang('neworder.category') }}</label>
+                        <div class="dash-select-wrap">
+                          <select
+                            class="form-control dash-input"
+                            id="orderform-category"
+                            name="OrderForm[category]"
+                            data-select="true"
+                            data-select-search="true"
+                            data-select-search-placeholder="{{ lang('general.search.placeholder') }}"
+                            {% if site['rtl'] %} data-select-dir="rtl"{% endif %}
+                          >
+                            {% for category in extended_categories %}
+                              {% set categoryName = category.name|lower %}
+                              {% set servicePlatform = 'other' %}
+                              {% if 'facebook' in categoryName %}
+                                {% set servicePlatform = 'facebook' %}
+                              {% elseif 'instagram' in categoryName %}
+                                {% set servicePlatform = 'instagram' %}
+                              {% elseif 'twitter' in categoryName or 'x /' in categoryName or categoryName == 'x' %}
+                                {% set servicePlatform = 'twitter' %}
+                              {% elseif 'youtube' in categoryName %}
+                                {% set servicePlatform = 'youtube' %}
+                              {% elseif 'tiktok' in categoryName or 'tik tok' in categoryName %}
+                                {% set servicePlatform = 'tiktok' %}
+                              {% elseif 'linkedin' in categoryName %}
+                                {% set servicePlatform = 'linkedin' %}
+                              {% elseif 'telegram' in categoryName %}
+                                {% set servicePlatform = 'telegram' %}
+                              {% elseif 'discord' in categoryName %}
+                                {% set servicePlatform = 'discord' %}
+                              {% elseif 'spotify' in categoryName %}
+                                {% set servicePlatform = 'spotify' %}
+                              {% elseif 'soundcloud' in categoryName %}
+                                {% set servicePlatform = 'soundcloud' %}
+                              {% elseif 'snapchat' in categoryName %}
+                                {% set servicePlatform = 'snapchat' %}
+                              {% elseif 'traffic' in categoryName or 'website' in categoryName %}
+                                {% set servicePlatform = 'traffic' %}
+                              {% endif %}
+                              <option
+                                value="{{ category.id }}"
+                                data-platform="{{ servicePlatform }}"
+                                {% if category.icon %}
+                                  data-icon="{% if category.icon['icon_type'] == 'icon' %}<span class='{{ category.icon['icon'] }}'></span>{% elseif category.icon['icon_type'] == 'emoji' %}<span>{{ category.icon['icon'] }}</span>{% elseif category.icon['icon_type'] == 'image' %}<img src='{{ category.icon['url'] }}' alt='{{ category.name }}' class='img-responsive btn-group-vertical'>{% endif %}"
+                                {% endif %}
+                                {% if category.id == data['category'] %} selected{% endif %}
+                              >{{ category.name }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    <div class="form-group mb-0">
+                      <label
+                        class="dash-field-label form-label control-label"
+                        for="orderform-service"
+                      >{{ lang('neworder.service') }}</label>
+                      <div class="dash-select-wrap dash-select-wrap--service">
+                        <select
+                          class="form-control dash-input"
+                          id="orderform-service"
+                          name="OrderForm[service]"
+                          data-select="true"
+                          data-select-search="true"
+                          data-select-search-placeholder="{{ lang('general.search.placeholder') }}"
+                          {% if site['rtl'] %} data-select-dir="rtl"{% endif %}
+                        ></select>
+                      </div>
+                    </div>
+
+                    <div id="fields" class="dash-order-fields d-flex flex-column gap-4"></div>
+
+                    <div class="form-group mb-0">
+                      <div
+                        class="dash-charge d-flex align-items-center justify-content-between gap-3"
+                      >
+                        <label class="dash-charge__label control-label mb-0" for="charge">{{ lang('neworder.charge') }}</label>
+                        <input
+                          type="text"
+                          class="dash-charge__value form-control border-0 bg-transparent text-end p-0 shadow-none"
+                          id="charge"
+                          value="{{ order['charge'] }}"
+                          readonly
+                        >
+                      </div>
+                    </div>
+
+                    {% if check_agreement %}
+                      <div class="form-group dash-order-terms mb-0">
+                        <label class="control-label terms mb-0" for="terms">
+                          <input
+                            type="checkbox"
+                            name="OrderForm[termsofservice]"
+                            class="terms-accept-checkbox"
+                            value="1"
+                            id="terms"
+                            {{ data['termsofservice'] ? 'checked' : '' }}
+                          >
+                          {{ lang('signup.accept_terms_text') }}
+                          <a href="{{ page_url('terms') }}" target="_blank" rel="noopener noreferrer">
+                            {{ lang('terms.signup_checkbox') }}
+                          </a>
+                        </label>
+                      </div>
+                    {% endif %}
+
+                    <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+                    <button class="dash-submit btn btn-primary w-100" type="submit">
+                      {{ lang('neworder.button') }}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="dash-panel card border-0 h-100 dash-service-details-panel">
+                <div class="card-body d-flex flex-column">
+                  <div class="dash-panel__toolbar dash-panel__toolbar--details">
+                    <span class="dash-details-badge">Service Details</span>
+                  </div>
+                  <div class="dash-details-divider" aria-hidden="true"></div>
+                  <div class="dash-details-body{% if site['rtl'] %} rtl-content{% endif %}">
+                    <div
+                      class="form-group fields"
+                      id="service_description"
+                      data-service-details-content
+                    >
+                      <label class="control-label visually-hidden" for="service_description">
+                        {{ lang('neworder.description') }}
+                      </label>
+                      <div class="panel-body border-solid border-rounded">
+                        {{ service['description'] }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {% if newOrderText %}
+                <div class="dash-panel card border-0 mt-4">
+                  <div class="card-body{% if site['rtl'] %} rtl-content{% endif %}">
+                    {{ newOrderText }}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+<script>
+(function () {
+  function whenJQuery(fn) {
+    if (window.jQuery) {
+      fn(window.jQuery);
+      return;
+    }
+    var tries = 0;
+    var timer = window.setInterval(function () {
+      tries += 1;
+      if (window.jQuery) {
+        window.clearInterval(timer);
+        fn(window.jQuery);
+      } else if (tries > 100) {
+        window.clearInterval(timer);
+      }
+    }, 50);
+  }
+
+  whenJQuery(function ($) {
+    var $tabs = $("[data-order-platform-script]");
+    var $category = $("#orderform-category");
+    var $searchInput = $("#template-input");
+    if (!$tabs.length || !$category.length) return;
+
+    var fullCache = null;
+    var filtering = false;
+
+    function resolvePlatform(name) {
+      var value = String(name || "").toLowerCase().trim();
+      if (value.indexOf("facebook") !== -1) return "facebook";
+      if (value.indexOf("instagram") !== -1) return "instagram";
+      if (
+        value.indexOf("twitter") !== -1 ||
+        value.indexOf("x /") !== -1 ||
+        value.indexOf("x (") !== -1 ||
+        value === "x" ||
+        value.indexOf(" x ") !== -1
+      ) {
+        return "twitter";
+      }
+      if (value.indexOf("youtube") !== -1 || value.indexOf("youtu") !== -1) return "youtube";
+      if (value.indexOf("tiktok") !== -1 || value.indexOf("tik tok") !== -1) return "tiktok";
+      if (value.indexOf("linkedin") !== -1) return "linkedin";
+      if (value.indexOf("telegram") !== -1) return "telegram";
+      if (value.indexOf("discord") !== -1) return "discord";
+      if (value.indexOf("spotify") !== -1) return "spotify";
+      if (value.indexOf("soundcloud") !== -1) return "soundcloud";
+      if (value.indexOf("snapchat") !== -1) return "snapchat";
+      if (value.indexOf("traffic") !== -1 || value.indexOf("website") !== -1) return "traffic";
+      return "other";
+    }
+
+    function buildCacheFromSelect() {
+      var items = [];
+      $category.find("option").each(function () {
+        var $opt = $(this);
+        items.push({
+          value: String($opt.attr("value") || ""),
+          text: $.trim($opt.text()),
+          platform: $opt.attr("data-platform") || resolvePlatform($opt.text()),
+          icon: $opt.attr("data-icon") || ""
+        });
+      });
+      return items.length ? items : null;
+    }
+
+    function ensureCache() {
+      if (!fullCache || !fullCache.length) {
+        fullCache = buildCacheFromSelect();
+      } else if ($category.find("option").length > fullCache.length) {
+        fullCache = buildCacheFromSelect();
+      }
+      return fullCache;
+    }
+
+    function formatSelect2(state) {
+      if (!state.id) return state.text;
+      var icon = $(state.element).attr("data-icon");
+      if (!icon) return state.text;
+      return $('<span class="dash-select2-option"></span>')
+        .append(icon)
+        .append($('<span class="dash-select2-option__text"></span>').text(state.text));
+    }
+
+    function reinitSelect2($el) {
+      if (!$el.length || !$.fn.select2) return;
+      if ($el.hasClass("select2-hidden-accessible")) {
+        try {
+          $el.select2("destroy");
+        } catch (e) {}
+      }
+      if ($el.attr("data-select") !== "true") return;
+
+      var opts = {
+        width: "100%",
+        templateResult: formatSelect2,
+        templateSelection: formatSelect2,
+        escapeMarkup: function (markup) {
+          return markup;
+        }
+      };
+      if ($el.attr("data-select-search") === "true") {
+        opts.minimumResultsForSearch = 0;
+      }
+      if ($el.attr("data-select-dir")) {
+        opts.dir = $el.attr("data-select-dir");
+      }
+      $el.select2(opts);
+    }
+
+    function fillOptions(source, selectedValue) {
+      var hadSelect2 = $category.hasClass("select2-hidden-accessible");
+      if (hadSelect2) {
+        try {
+          $category.select2("destroy");
+        } catch (e) {}
+      }
+
+      $category.empty();
+      $.each(source, function (_, item) {
+        var $opt = $("<option></option>")
+          .attr("value", item.value)
+          .attr("data-platform", item.platform)
+          .text(item.text);
+        if (item.icon) $opt.attr("data-icon", item.icon);
+        $category.append($opt);
+      });
+
+      var next = String(selectedValue || "");
+      if (!next || !$category.find('option[value="' + next.replace(/"/g, '\\"') + '"]').length) {
+        next = source[0] ? source[0].value : "";
+      }
+
+      filtering = true;
+      $category.val(next).trigger("change");
+      filtering = false;
+
+      // Re-apply Select2 on category only; Perfect Panel refreshes the service select
+      window.setTimeout(function () {
+        reinitSelect2($category);
+      }, 40);
+    }
+
+    function filterByPlatform(platform, selectFirst) {
+      var cache = ensureCache();
+      if (!cache || !platform) return false;
+
+      var matches = $.grep(cache, function (item) {
+        return item.platform === platform;
+      });
+      var source = matches.length ? matches : cache;
+      var prev = String($category.val() || "");
+      var next = selectFirst
+        ? source[0] && source[0].value
+        : ($.grep(source, function (item) {
+            return item.value === prev;
+          }).length
+            ? prev
+            : source[0] && source[0].value);
+
+      fillOptions(source, next);
+      return Boolean(matches.length);
+    }
+
+    function restoreAllCategories(keepSelection) {
+      var cache = ensureCache();
+      if (!cache) return;
+      var prev = keepSelection ? String($category.val() || "") : "";
+      fillOptions(cache, prev);
+    }
+
+    function setActiveTab($tab) {
+      if (!$tab || !$tab.length) return;
+      $tabs.find(".platform-tab").each(function () {
+        var on = this === $tab.get(0);
+        $(this).toggleClass("is-active", on).attr("aria-selected", on ? "true" : "false");
+      });
+      syncPolygons();
+    }
+
+    function syncPolygons() {
+      var dark = document.documentElement.getAttribute("data-theme") === "dark";
+      $tabs.find(".platform-tab").each(function () {
+        var $img = $(this).find(".platform-tab__polygon");
+        if (!$img.length) return;
+        var src = String($img.attr("src") || "");
+        var slash = src.lastIndexOf("/");
+        if (slash === -1) return;
+        var dir = src.slice(0, slash + 1);
+        var active = $(this).hasClass("is-active");
+        $img.attr(
+          "src",
+          dir + (!dark || active ? "polygon.svg" : "polygon-dark.svg")
+        );
+      });
+    }
+
+    function syncTabToSelectedCategory() {
+      if (filtering) return;
+      var $selected = $category.find("option:selected").first();
+      if (!$selected.length) return;
+      var platform =
+        $selected.attr("data-platform") || resolvePlatform($selected.text());
+      var $tab = $tabs.find('.platform-tab[data-platform="' + platform + '"]').first();
+      if ($tab.length) setActiveTab($tab);
+    }
+
+    function hideEmptyPlatformTabs() {
+      var cache = ensureCache();
+      if (!cache) return;
+      $tabs.find(".platform-tab[data-platform]").each(function () {
+        var platform = $(this).attr("data-platform");
+        var has = $.grep(cache, function (item) {
+          return item.platform === platform;
+        }).length;
+        $(this).toggle(Boolean(has));
+      });
+    }
+
+    $tabs.on("click", ".platform-tab[data-platform]", function (event) {
+      event.preventDefault();
+      var $tab = $(this);
+      setActiveTab($tab);
+      filterByPlatform(String($tab.attr("data-platform") || ""), true);
+    });
+
+    // Search needs the full category list so Perfect Panel can jump to any service
+    $searchInput.on("focus", function () {
+      restoreAllCategories(true);
+    });
+
+    $category.on("change select2:select", syncTabToSelectedCategory);
+
+    var bootTries = 0;
+    var bootTimer = window.setInterval(function () {
+      bootTries += 1;
+      if ($category.find("option").length) {
+        window.clearInterval(bootTimer);
+        ensureCache();
+        hideEmptyPlatformTabs();
+
+        var $active = $tabs.find(".platform-tab.is-active:visible").first();
+        if (!$active.length) {
+          $active = $tabs.find(".platform-tab[data-platform]:visible").first();
+        }
+        if ($active.length) {
+          setActiveTab($active);
+          filterByPlatform(String($active.attr("data-platform") || ""), true);
+        } else {
+          syncTabToSelectedCategory();
+        }
+      } else if (bootTries >= 60) {
+        window.clearInterval(bootTimer);
+      }
+    }, 100);
+  });
+})();
+</script>

@@ -821,9 +821,24 @@
     });
   };
 
-  bindActiveGroup("[data-dash-platform-tabs]", ".platform-tab", true);
   bindActiveGroup("[data-order-type-toggle]", "[data-order-type]");
   bindActiveGroup("[data-ticket-filter-toggle]", "[data-ticket-filter]");
+
+  /* New Order platform tabs — handled in deployment/new-order.twig when
+     [data-order-platform-script] is present (Select2-safe filter + search). */
+  const orderPlatformTabs = document.querySelector("[data-dash-platform-tabs]");
+  const orderPlatformScripted = Boolean(
+    document.querySelector("[data-order-platform-script]")
+  );
+
+  const getOrderServiceSelect = () =>
+    document.getElementById("orderform-service");
+
+  if (!orderPlatformScripted && orderPlatformTabs) {
+    bindActiveGroup("[data-dash-platform-tabs]", ".platform-tab", true);
+  } else if (!orderPlatformTabs) {
+    bindActiveGroup("[data-dash-platform-tabs]", ".platform-tab", true);
+  }
 
   const ticketPagination = document.querySelector("[data-ticket-pagination]");
   ticketPagination?.addEventListener("click", (event) => {
@@ -1108,5 +1123,46 @@
       },
       { passive: true }
     );
+  }
+
+  /* New Order: service ID badge in select (non-destructive) */
+  const decorateServiceSelectBadge = () => {
+    const wrap = document.querySelector(".dash-select-wrap--service");
+    if (!wrap) return;
+
+    const rendered = wrap.querySelector(".select2-selection__rendered");
+    if (!rendered) return;
+    if (rendered.querySelector(".dash-select2-option__badge")) return;
+
+    const text = (rendered.textContent || "").trim();
+    const match = text.match(/^(\d+)\s*[-–—]\s*(.+)$/);
+    if (!match) return;
+
+    const badge = document.createElement("span");
+    badge.className = "dash-select2-option__badge";
+    badge.textContent = match[1];
+    const label = document.createElement("span");
+    label.className = "dash-select2-option__text";
+    label.textContent = text;
+
+    rendered.textContent = "";
+    rendered.append(badge, label);
+  };
+
+  const orderServiceSelectEl = getOrderServiceSelect();
+  if (orderServiceSelectEl) {
+    orderServiceSelectEl.addEventListener("change", () => {
+      window.setTimeout(decorateServiceSelectBadge, 30);
+    });
+
+    if (window.jQuery) {
+      window.jQuery(orderServiceSelectEl).on(
+        "change select2:select select2:synced",
+        () => window.setTimeout(decorateServiceSelectBadge, 30)
+      );
+    }
+
+    window.setTimeout(decorateServiceSelectBadge, 500);
+    window.setTimeout(decorateServiceSelectBadge, 1200);
   }
 })();
